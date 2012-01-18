@@ -1,33 +1,32 @@
 %li
   - if gallery_movie_item.serial
     %a{:href => "#", :id => gallery_movie_item.series(true).id , :class => "series-expand"}
-      %span{:id => "series-item-container_#{gallery_movie_item.id}" }
-        = image_tag(gallery_movie_item.skin.gallery_poster.url, :class => "series-item", :id => "series-item_#{gallery_movie_item.id}")
-        -#= image_tag(gallery_movie_item.skin.gallery_poster.url, :id => "bottom-image")
-        -#= image_tag('/images/gallery/seriesBack.jpg', :id => "bottom-image")
-        -#= image_tag('/images/gallery/view_all_button.png')
-        = image_tag('/images/gallery/view_all_button.png', :class => "series-item-button", :id => "series-item-button_#{gallery_movie_item.id}")
-  - else
-    %a{:href => gallery_movie_item.facebook_redirect_uri}
-      = image_tag(gallery_movie_item.skin.gallery_poster.url)
-      = image_tag('/images/gallery/watchButton.png')
-      %br
+      %p{:class => "series-item-container", :id => "series-item-container_#{gallery_movie_item.id}" }
+      = image_tag(gallery_movie_item.skin.gallery_poster.url, :class => "series-item", :id => "series-item_#{gallery_movie_item.id}")
+      -#= image_tag(gallery_movie_item.skin.gallery_poster.url, :id => "bottom-image")
+      -#= image_tag('/images/gallery/seriesBack.jpg', :id => "bottom-image")
+      -#= image_tag('/images/gallery/view_all_button.png')
+      = image_tag('/images/gallery/view_all_button.png', :class => "series-item-button", :id => "series-item-button_#{gallery_movie_item.id}")
+    - else
+      %a{:href => gallery_movie_item.facebook_redirect_uri}
+        = image_tag(gallery_movie_item.skin.gallery_poster.url)
+        = image_tag('/images/gallery/watchButton.png')
   %span.title= truncate(gallery_movie_item.title, :length => 30)
 
--#:javascript
--#  $(".series-item-container, .series-item, .series-item-button").hover(
--#    function() {
--#     var pattern = /[0-9]+/g;
--#     var element = this.id.match(pattern);
--#     var id = "#series-item-container_" + element;
--#     $(id).css("border", "1px solid #00AFEF");
--#     $(id).css("background", "#9CE4FE");
--#     },
--#    function() {
--#     var pattern = /[0-9]+/g;
--#     var element = this.id.match(pattern);
--#     var id = "#series-item-container_" + element;
--#     $(id).css("border", "1px solid #969696");
--#     $(id).css("background", "#fff");
--#     }
--#  );
+:javascript
+  $(".series-item-container, .series-item, .series-item-button").hover(
+    function() {
+     var pattern = /[0-9]+/g;
+     var element = this.id.match(pattern);
+     var id = "#series-item-container_" + element;
+     $(id).css("border", "1px solid #00AFEF");
+     $(id).css("background", "#9CE4FE");
+     },
+    function() {
+     var pattern = /[0-9]+/g;
+     var element = this.id.match(pattern);
+     var id = "#series-item-container_" + element;
+     $(id).css("border", "1px solid #969696");
+     $(id).css("background", "#fff");
+     }
+  );

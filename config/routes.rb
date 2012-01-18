@@ -1,11 +1,21 @@
 Sumuru::Application.routes.draw do
 
+
   devise_for :admins,
              :path => :admin,
              :controllers => {
                  :registrations => 'admin/registrations',
                  :sessions => 'admin/foos'
              }
+             
+  resources :supports do 
+    collection do 
+      get 'documentation'
+      get 'faqs'
+      get 'tutorial'
+      get 'contactus'
+    end
+ end    
 
   namespace :api do
     namespace :facebook_pay do
@@ -22,20 +32,29 @@ Sumuru::Application.routes.draw do
 
   namespace :admin do
     root :to => 'studios#index'
-    
+
     resource :style_guide
+
 
     resources :studios do
       resource :branding, :controller => 'studios/branding'
       resources :users, :controller => 'studios/users'
       resources :admins, :controller => 'studios/admins'
-      resources :invitations, :controller => 'studios/invitations'
-      resources :sales_reports,:controller => 'studios/sales_reports', :only=>[:index]
+      resources :invitations, :controller => 'studios/invitations'   
+         
+      resources :movie_metrics_reports, :controller=>'studios/movie_metrics_reports'      
+      resources :sales_reports, :controller=>'studios/sales_reports'   
+         
       resource :reports do
         resource :tax_report, :controller => 'studios/reports/tax', :only => [:show]
         resource :movies, :controller => 'studios/reports/movies', :only => [:show]
       end
 
+      member do          
+        get :studiodetail
+        get :archive_studiodetail
+      end
+      
       resources :movies do
 
         get "promotions"
@@ -43,13 +62,16 @@ Sumuru::Application.routes.draw do
 
         member do
           put :wysiwyg_update
+        end        
+        collection do
+          get "countrycode"
         end
-
         resources :orders, :only => [:index]
-        resources :streams
+
         resource :skin, :only => [:show, :edit, :update]
         resources :coupons
-
+        
+        resources :streams
 
         resources :comments do
           delete :moderate, :on => :collection
@@ -72,7 +94,18 @@ Sumuru::Application.routes.draw do
     resources :orders, :only => [:update]
 
     resources :invitations
+    
     resources :sales_reports
+    resources :movie_metrics_reports, :only => [:index]
+    resources :info_studios, :only => [:index]
+    resources :admin_reports, :only => [:index] do
+      post :update_user_list , :on => :collection
+      post :update_movie_list , :on => :collection
+    end
+    resources :user_detail_reports, :only => [:index] do
+      post :update_user_detail , :on => :collection
+    end
+    
   end
 
   resources :studios, :only => [:show] do
@@ -111,6 +144,14 @@ Sumuru::Application.routes.draw do
     end
   end
 
+  match "admin/studioinfo" => "admin/studios#studioinfo", :method=>:get
+  match "admin/countrycode" => "admin/studios#countrycode", :method=>:get
+  match "admin/load_movie/:id" => "admin/studios#load_movie", :method=>:post
+  match "admin/studiolist" => "admin/studios#studiolist", :method=>:get
+  match "admin/archive_studio" => "admin/studios#archive_studio", :method=>:get
+  
+  #match "admin/studiodetail/:id" => "admin/studios#studiodetail", :method=>:get
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -161,7 +202,6 @@ Sumuru::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  match "admin/reports" => "admin/studios#report", :method=>:post
   root :to => "admin/studios#index"
 
   # See how all your routes lay out with "rake routes"

@@ -1,19 +1,113 @@
-%h1 Tax Report
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn04").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").show();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub06").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub09").addClass("subOn");
 
-%table.gridTable
-  %tr
-    %th Movie
-    %th Tax Collected
-    %th Zip Code
-    %th Rented at
-    %th Facebook user
-    %th Facebook order
-    %th Status
-    %th Total credits
-  - @orders.each do |order|
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+    "Tax Report").html_safe
+    
+%style{:type => "text/css", :media => "screen"}
+  :plain
+    table.salessortable {
+      font-family:arial;
+      background-color: #CDCDCD;
+      margin:10px 0pt 15px;
+      font-size: 12pt;
+      text-align: center;
+      
+   
+        }
+    table.salessortable thead tr th, table.tablesorter tfoot tr th {
+      background-color:  #cccccc;
+      border: 1px solid #000;
+      color: black;
+      font-size: 12pt;
+      padding: 4px;
+      text-align:center;
+      vertical-align:middle;
+        }
+    table.salessortable thead tr .header {
+      background-image: url('/images/bg.gif');
+      background-repeat: no-repeat;
+      background-position: center right;
+      cursor: pointer;
+        }
+    table.salessortable tbody td {
+      color: #3D3D3D;
+      padding: 4px;
+      background-color: #FFF;
+      
+        }    
+    table.salessortable tbody th {
+     align:left;
+        }
+    table.salessortable tbody tr.odd td {
+      background-color:#F0F0F6;
+        }
+        
+    table.salessortable thead tr .headerSortUp {
+      background-image: url('/images/asc.gif');
+        }
+    table.salessortable thead tr .headerSortDown {
+      background-image: url('/images/desc.gif');
+        }
+    table.salessortable thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+     
+        }
+    
+%h1 Tax Report
+- if !current_admin.studio.present?
+  %form(action='/admin/studios/#{@studio.id}/reports/tax_report' method='get')
+    %div
+      %span 
+        %b Select Studio
+        = collection_select 'studio', 'id', @studios, 'id', 'name',{:prompt=>"All",:selected=>@current_selected} 
+        %br
+        %br
+      %input{:type => "submit", :value=>"Filter",:name=>"submit"}
+%br
+
+%hr{:class => "greenBar"}      
+%table.SalesReportTable{:id=>"taxreport"}
+  %thead
     %tr
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Movie
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Tax Collected
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Zip Code
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Rented At
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Facebook User
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Facebook Order
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Status
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"}Total Credits
+  - @orders.each do |order|
+    %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
       %td= order.movie.title
-      %td= format("%.2f",order.tax_collected)
+      %td= format("%.2f",order.tax_collected) unless order.tax_collected.nil?
       %td= order.zip_code.to_s.rjust(5, '0')
       %td= order.rented_at.strftime('%m/%d/%y - %I:%M%p') unless order.rented_at.nil?
       %td= order.user.name

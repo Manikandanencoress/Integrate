@@ -21,9 +21,8 @@ body.movies.show {
 body {
     margin: 0;
     padding: 0;
-    text-align: center;
     font-family: Trebuchet MS, Verdana, Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 90%;
+    font-size: 10px;
     height: 100%;
 }
 
@@ -64,7 +63,7 @@ div.clear {
 .header {
     position: relative;
     text-align: center;
-    background: url(../images/movies_layout/back-top.gif) 0 0px repeat-x;
+    //background: url(../images/movies_layout/back-top.gif) 0 0px repeat-x;
     padding: 0;
     margin: 0;
     height: 22px;
@@ -83,8 +82,8 @@ div.clear {
 }
 
 .likeIcons {
-    text-align: left;
-    padding: 45px 5px 0 0;
+    /* text-align: left;
+    padding: 45px 5px 0 0; */
 }
 
 .landing .likeIcons {
@@ -150,7 +149,7 @@ body.orders.show  .detailsModule {
     text-transform: uppercase;
     background: none;
     padding: 0;
-    /*color: #533c02;*/
+    color: #533c02;
     margin-bottom: 5px;
 }
 
@@ -268,7 +267,8 @@ $videoPlayerWidth: 703px;
 
     position: relative;
     text-align: center;
-    margin: 100px auto 0;
+    margin: px auto 0;
+    margin-left: 15px;
     border: 1px solid #535353;
     padding: 0;
     width: $videoPlayerWidth;
@@ -864,4 +864,5 @@ position: relative;
 #watch_now_button_preview {
     padding:5px;
     float: right;
+    margin-right: 15px;
 }

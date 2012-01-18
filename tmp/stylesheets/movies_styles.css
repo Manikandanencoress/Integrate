@@ -1,0 +1,1131 @@
+/* MIXINS */
+/*  GLOBALS  */
+/* line 4, ../../app/stylesheets/movies_styles.scss */
+html {
+  overflow-y: scroll;
+  /* forces firefox scrollbar on */
+  height: 100%;
+}
+
+/* line 9, ../../app/stylesheets/movies_styles.scss */
+body.movies.show {
+  text-align: center;
+}
+/* line 12, ../../app/stylesheets/movies_styles.scss */
+body.movies.show .continueBtn {
+  display: block;
+  width: 69px;
+  height: 25px;
+  background: url(../images/continue.png) no-repeat top left;
+  text-indent: -9999px;
+}
+
+/* line 21, ../../app/stylesheets/movies_styles.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Trebuchet MS, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  height: 100%;
+}
+
+/* line 29, ../../app/stylesheets/movies_styles.scss */
+IMG {
+  border: 0px;
+}
+
+/* line 33, ../../app/stylesheets/movies_styles.scss */
+FORM {
+  margin: 0px;
+}
+
+/* line 37, ../../app/stylesheets/movies_styles.scss */
+.fleft {
+  float: left;
+}
+
+/* line 41, ../../app/stylesheets/movies_styles.scss */
+.fright {
+  float: right;
+}
+
+/* line 45, ../../app/stylesheets/movies_styles.scss */
+div.clear {
+  clear: both;
+}
+
+/* Containers  */
+/* line 50, ../../app/stylesheets/movies_styles.scss */
+.mainContainer {
+  position: relative;
+  text-align: center;
+  width: 740px;
+  height: 1160px;
+  margin: 0px auto;
+  background: no-repeat 0 22px;
+}
+
+/* line 59, ../../app/stylesheets/movies_styles.scss */
+.mainContainer .content {
+  height: 1120px;
+}
+
+/* line 63, ../../app/stylesheets/movies_styles.scss */
+.header {
+  position: relative;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 22px;
+}
+
+/* line 72, ../../app/stylesheets/movies_styles.scss */
+.logo {
+  position: absolute;
+  top: 315px;
+  left: 18px;
+}
+
+/* line 78, ../../app/stylesheets/movies_styles.scss */
+.txt-credit {
+  position: absolute;
+  left: 25px;
+  top: 390px;
+}
+
+/* line 84, ../../app/stylesheets/movies_styles.scss */
+.likeIcons {
+  /* text-align: left;
+  padding: 45px 5px 0 0; */
+}
+
+/* line 89, ../../app/stylesheets/movies_styles.scss */
+.landing .likeIcons {
+  margin: 10px 0 15px 98px;
+}
+
+/* line 93, ../../app/stylesheets/movies_styles.scss */
+.module-menu {
+  width: 310px;
+  top: 500px;
+  left: 68px;
+  position: absolute;
+}
+
+/* line 100, ../../app/stylesheets/movies_styles.scss */
+.module-menu a {
+  color: #3fd2e7;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* line 108, ../../app/stylesheets/movies_styles.scss */
+.module-menu .shareButtons {
+  vertical-align: baseline;
+}
+
+/* line 111, ../../app/stylesheets/movies_styles.scss */
+.module-menu .shareButtons a {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+/* line 116, ../../app/stylesheets/movies_styles.scss */
+.module-menu a:hover {
+  text-decoration: underline;
+}
+
+/* line 120, ../../app/stylesheets/movies_styles.scss */
+.module-menu p {
+  margin: 2px 0;
+  color: #a4a7a7;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* line 128, ../../app/stylesheets/movies_styles.scss */
+.btn-watch {
+  margin-bottom: 0;
+}
+
+/* line 132, ../../app/stylesheets/movies_styles.scss */
+.detailsModule {
+  height: auto;
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 698px;
+  padding: 0 20px;
+  font-size: 10px;
+  text-align: left;
+}
+
+/* line 143, ../../app/stylesheets/movies_styles.scss */
+body.orders.show .detailsModule {
+  bottom: 28px;
+}
+
+/* line 147, ../../app/stylesheets/movies_styles.scss */
+.detailsModule .headerBox {
+  font-size: 14px;
+  text-transform: uppercase;
+  background: none;
+  padding: 0;
+  color: #533c02;
+  margin-bottom: 5px;
+}
+
+/* line 156, ../../app/stylesheets/movies_styles.scss */
+.detailsModule small {
+  display: block;
+  float: left;
+  width: 100px;
+  margin: 0 35px 0 0;
+  padding: 5px 0 0 0;
+}
+
+/* line 164, ../../app/stylesheets/movies_styles.scss */
+.detailsModule .column {
+  float: left;
+  width: 215px;
+  padding: 5px 20px 0 20px;
+  line-height: 12px;
+}
+
+/* line 171, ../../app/stylesheets/movies_styles.scss */
+.detailsModule .column.last {
+  width: 440px;
+  margin-right: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* line 178, ../../app/stylesheets/movies_styles.scss */
+.detailsModule p {
+  margin: 0;
+}
+
+/* line 182, ../../app/stylesheets/movies_styles.scss */
+.detailsModule a {
+  color: #a69f8c;
+}
+
+/* line 186, ../../app/stylesheets/movies_styles.scss */
+.internal .btn-duration {
+  display: block;
+}
+
+/* line 190, ../../app/stylesheets/movies_styles.scss */
+#dialogueBox h2 {
+  padding: 7px 0 0 0;
+  height: 31px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  border-bottom: 1px solid #939393;
+  margin-right: 15px;
+}
+
+/* line 202, ../../app/stylesheets/movies_styles.scss */
+#dialogueBox h2.error {
+  width: 440px;
+  text-align: center;
+  border: none;
+  padding-top: 20px;
+}
+
+/* line 209, ../../app/stylesheets/movies_styles.scss */
+.gfxModal, .logoModal {
+  color: white;
+  padding: 15px 0 0;
+}
+
+/* line 214, ../../app/stylesheets/movies_styles.scss */
+#dialogueBox form {
+  border-top: 1px solid #939393;
+  clear: both;
+  padding: 15px 0 0 0;
+  margin-right: 18px;
+}
+
+/* line 221, ../../app/stylesheets/movies_styles.scss */
+#dialogueBox label {
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0 0 0 50px;
+}
+
+/* line 227, ../../app/stylesheets/movies_styles.scss */
+#dialogueBox .btn-submit {
+  width: 100px;
+  height: 22px;
+  margin: 0px 0 0 5px;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  padding-top: 1px;
+  padding-bottom: 4px;
+  filter: alpha(opacity=9);
+  -moz-opacity: 0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
+  background: #8f0606;
+  background: url(../images/movies_layout/but-arrow.png) no-repeat 100% 0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f36f79', endColorstr = '#8f0606');
+  /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#f36f79), to(#8f0606));
+  /* for webkit browsers */
+  background: -moz-linear-gradient(top, #f36f79, #8f0606);
+  /* for firefox 3.6+ */
+  border: 1px solid #cccccc;
+}
+
+/* line 255, ../../app/stylesheets/movies_styles.scss */
+input[type="submit"]#groupDiscount {
+  width: 145px;
+}
+
+/* line 259, ../../app/stylesheets/movies_styles.scss */
+#dialogueBox .btn-submit:hover {
+  border: 1px solid #eeeeee;
+}
+
+/* Boxes  */
+/* line 266, ../../app/stylesheets/movies_styles.scss */
+.videoPlayerBox {
+  position: relative;
+  text-align: center;
+  margin: px auto 0;
+  margin-left: 15px;
+  border: 1px solid #535353;
+  padding: 0;
+  width: 703px;
+  border: 2px solid #7eafbf;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background: #000;
+}
+/* line 279, ../../app/stylesheets/movies_styles.scss */
+.videoPlayerBox h3 {
+  color: white;
+}
+
+/* line 284, ../../app/stylesheets/movies_styles.scss */
+.grayBox {
+  position: relative;
+  float: left;
+  text-align: left;
+  border: 1px solid #535353;
+  height: 225px;
+  color: #ffffff;
+}
+
+/* line 293, ../../app/stylesheets/movies_styles.scss */
+.grayBox A {
+  color: #ffffff;
+  outline: none;
+}
+
+/* line 298, ../../app/stylesheets/movies_styles.scss */
+.grayBox A:hover {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+/* line 303, ../../app/stylesheets/movies_styles.scss */
+.cbr {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  height: 11px;
+  width: 11px;
+}
+
+/* line 311, ../../app/stylesheets/movies_styles.scss */
+DIV.boxContent {
+  padding: 12px 5px 5px 20px;
+}
+
+/* line 315, ../../app/stylesheets/movies_styles.scss */
+.creditsBox {
+  width: 286px;
+  margin-left: 16px;
+}
+
+/* line 320, ../../app/stylesheets/movies_styles.scss */
+.creditsBox .fleft {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* line 326, ../../app/stylesheets/movies_styles.scss */
+.creditsBox input[type=text] {
+  background: #cccccc;
+  border: 1px solid #535353;
+  padding: 2px;
+  width: 140px;
+  margin: 0 0 20px 0px;
+}
+
+/* line 334, ../../app/stylesheets/movies_styles.scss */
+input.payFacebook {
+  margin: 15px 0 0 100px;
+}
+
+/* line 338, ../../app/stylesheets/movies_styles.scss */
+.helpBox {
+  width: 188px;
+  margin-left: 9px;
+}
+
+/* line 343, ../../app/stylesheets/movies_styles.scss */
+.detailsBox {
+  width: 208px;
+  margin-left: 9px;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+/* GENERAL CSS  */
+/* line 352, ../../app/stylesheets/movies_styles.scss */
+.rating {
+  position: absolute;
+  right: 27px;
+  bottom: 5px;
+  height: 15px;
+  width: 44px;
+}
+
+/* line 360, ../../app/stylesheets/movies_styles.scss */
+.ratingText {
+  position: relative;
+  padding: 0;
+}
+
+/* line 365, ../../app/stylesheets/movies_styles.scss */
+.useCredits {
+  position: relative;
+  padding: 10px 0 10px 0;
+}
+
+/* line 370, ../../app/stylesheets/movies_styles.scss */
+.red {
+  border: 1px solid #ff0000;
+}
+
+/*     FOOTER             */
+/* line 376, ../../app/stylesheets/movies_styles.scss */
+DIV.footer {
+  background: url(../images/movies_layout/back-footer.gif) 0 0 no-repeat;
+  margin: 0px auto;
+  width: 100%;
+  text-align: left;
+  color: #bfbfbf;
+  height: 22px;
+}
+
+/* line 385, ../../app/stylesheets/movies_styles.scss */
+DIV.footer A {
+  text-transform: uppercase;
+  color: #bfbfbf;
+  font-size: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* line 393, ../../app/stylesheets/movies_styles.scss */
+DIV.footer A:hover {
+  text-transform: uppercase;
+  color: #008fcc;
+}
+
+/* line 398, ../../app/stylesheets/movies_styles.scss */
+DIV.footer DIV.fleft A {
+  float: left;
+  margin-right: 14px;
+  margin-left: 12px;
+}
+
+/* line 404, ../../app/stylesheets/movies_styles.scss */
+DIV.footer DIV.fright A {
+  float: right;
+  margin-right: 12px;
+  margin-left: 14px;
+}
+
+/*   COPYRIGHT     */
+/* line 412, ../../app/stylesheets/movies_styles.scss */
+DIV.copyRight {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  color: #999999;
+  font-size: 11px;
+  margin: 2px 0px 0px 0;
+  padding-bottom: 15px;
+}
+
+/* line 422, ../../app/stylesheets/movies_styles.scss */
+DIV.copyRight A {
+  color: #999999;
+  text-decoration: none;
+  margin: 0px 17px 0px 12px;
+}
+
+/* line 428, ../../app/stylesheets/movies_styles.scss */
+DIV.copyRight DIV.fright {
+  width: 280px;
+  margin-right: 15px;
+  text-align: right;
+}
+
+/* line 435, ../../app/stylesheets/movies_styles.scss */
+DIV.copyRight IMG {
+  margin-bottom: -10px;
+}
+
+/* line 439, ../../app/stylesheets/movies_styles.scss */
+DIV.commentsTop {
+  background: url(../images/movies_layout/back-comments-top.png) 0 0 no-repeat;
+  margin: 0px auto;
+  position: relative;
+  width: 707px;
+  height: 74px;
+}
+
+/* line 447, ../../app/stylesheets/movies_styles.scss */
+DIV.commentsBox {
+  background: url(../images/movies_layout/back-comments-mid.png) 0 0 repeat-y;
+  margin: 0px auto;
+  position: relative;
+  width: 627px;
+  min-height: 200px;
+  text-align: left;
+  padding: 0 40px 0 40px;
+}
+
+/* line 457, ../../app/stylesheets/movies_styles.scss */
+DIV.commentsBot {
+  background: url(../images/movies_layout/back-comments-bot.png) 0 0 no-repeat;
+  margin: 0px auto;
+  position: relative;
+  width: 707px;
+  height: 31px;
+}
+
+/* line 465, ../../app/stylesheets/movies_styles.scss */
+div.midBar {
+  background: url(../images/movies_layout/back-bar-lg.gif) no-repeat scroll 0 2px transparent;
+  font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 15px;
+  margin: -5px 0 15px 15px;
+  padding: 10px;
+  text-align: left;
+  width: 685px;
+  color: #fff;
+}
+
+/* line 478, ../../app/stylesheets/movies_styles.scss */
+img.arrowDown {
+  float: left;
+  margin-right: 8px;
+}
+
+/* line 483, ../../app/stylesheets/movies_styles.scss */
+img.arrowUp {
+  float: left;
+  margin-top: -18px;
+  margin-right: 10px;
+}
+
+/* line 489, ../../app/stylesheets/movies_styles.scss */
+div.headerBox {
+  background: url(../images/movies_layout/back-bar.gif) no-repeat scroll 0 1px transparent;
+  color: #FFFFFF;
+  font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 15px;
+  margin: 0;
+  padding: 10px 0 10px 10px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* line 502, ../../app/stylesheets/movies_styles.scss */
+div.tellFriends {
+  background: url(../images/movies_layout/arrow-down-sm.png) no-repeat scroll 2px 0 transparent;
+  color: #666666;
+  font-size: 12px;
+  font-style: italic;
+  margin: -19px 0 0 40px;
+  padding: 4px 0 8px 28px;
+  text-align: left;
+}
+
+/*Overlay*/
+/*modal*/
+/* line 516, ../../app/stylesheets/movies_styles.scss */
+.module-modal {
+  position: relative;
+  padding: 0 0 0 18px;
+  width: 460px;
+  min-height: 278px;
+  filter: alpha(opacity=94);
+  -moz-opacity: 0.94;
+  -khtml-opacity: 0.94;
+  opacity: 0.94;
+  border: 1px solid #666666;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+}
+
+/* line 532, ../../app/stylesheets/movies_styles.scss */
+#simplemodal-overlay {
+  background-color: #000;
+}
+
+/* line 536, ../../app/stylesheets/movies_styles.scss */
+DIV.close {
+  width: 20px;
+  float: right;
+  padding: 5px 10px 0 0;
+}
+
+/* line 542, ../../app/stylesheets/movies_styles.scss */
+A.simplemodal-close {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* line 548, ../../app/stylesheets/movies_styles.scss */
+.warn-modal {
+  position: relative;
+  display: none;
+  padding: 0 0 0 18px;
+  width: 300px;
+  min-height: 220px;
+  border: none;
+  color: #ffffff;
+  filter: alpha(opacity=77);
+  -moz-opacity: 0.77;
+  -khtml-opacity: 0.77;
+  opacity: 0.77;
+  background: #2e5830;
+  /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#666666', endColorstr = '#000000');
+  /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(black));
+  /* for webkit browsers */
+  background: -moz-linear-gradient(top, #666666, black);
+  /* for firefox 3.6+ */
+  border: 1px solid #666666;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+}
+
+/* line 573, ../../app/stylesheets/movies_styles.scss */
+A.butWatch {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  width: 209px;
+  text-align: center;
+  height: 31px;
+  font-size: 21px;
+  padding-top: 4px;
+  filter: alpha(opacity=9);
+  -moz-opacity: 0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
+  background: #8f0606;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f36f79', endColorstr = '#8f0606');
+  /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#f36f79), to(#8f0606));
+  /* for webkit browsers */
+  border: 1px solid #cccccc;
+  margin-left: 30px;
+}
+
+/* line 595, ../../app/stylesheets/movies_styles.scss */
+A.butWatch:hover {
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+  border: 1px solid #eeeeee;
+  text-decoration: none;
+}
+
+/* line 603, ../../app/stylesheets/movies_styles.scss */
+.btn-duration {
+  left: -13px;
+  position: relative;
+}
+
+/* line 608, ../../app/stylesheets/movies_styles.scss */
+.rentalDurationBadge {
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFA31114', endColorstr='#FF834548');
+  /* for IE */
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a31114), color-stop(100%, #834548));
+  background-image: -webkit-linear-gradient(#a31114, #834548);
+  background-image: -moz-linear-gradient(#a31114, #834548);
+  background-image: -o-linear-gradient(#a31114, #834548);
+  background-image: -ms-linear-gradient(#a31114, #834548);
+  background-image: linear-gradient(#a31114, #834548);
+  display: block;
+  width: 81px;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2px;
+  font-weight: bold;
+  text-shadow: -2px -2px 2px #663333;
+  margin-left: 90px;
+}
+/* line 621, ../../app/stylesheets/movies_styles.scss */
+.rentalDurationBadge span {
+  margin: auto;
+  display: block;
+}
+/* line 626, ../../app/stylesheets/movies_styles.scss */
+.rentalDurationBadge span.duration {
+  font-size: 24px;
+}
+/* line 630, ../../app/stylesheets/movies_styles.scss */
+.rentalDurationBadge span.more {
+  font-size: 8px;
+  padding: 0.5em 0.1em;
+  margin: 2px;
+  border: solid 1px white;
+  background-color: #600;
+}
+
+/* line 642, ../../app/stylesheets/movies_styles.scss */
+.facebook_like {
+  /*position: relative;*/
+  /*top: -3px;*/
+  display: inline-block;
+  width: 200px;
+}
+
+/* line 649, ../../app/stylesheets/movies_styles.scss */
+#comments {
+  margin-top: 5px;
+  padding-top: 10px;
+  margin-left: 20px;
+  width: 700px;
+  max-height: 375px;
+  overflow-y: auto;
+}
+
+/* line 659, ../../app/stylesheets/movies_styles.scss */
+body.movies.index form.filter {
+  margin-left: 156px;
+  font-size: 14px;
+}
+/* line 662, ../../app/stylesheets/movies_styles.scss */
+body.movies.index form.filter label {
+  margin-right: 7px;
+}
+/* line 666, ../../app/stylesheets/movies_styles.scss */
+body.movies.index form.filter li {
+  list_item_style: none;
+  display: inline;
+}
+
+/* line 3, ../../app/stylesheets/comments_style.scss */
+#commentStream {
+  background-color: #e5e5e5;
+  height: 200px;
+  width: 704px;
+  color: white;
+  margin: 10px auto;
+  padding-top: -7px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -7px;
+  border-bottom: 2px groove black;
+  background: url(../images/commentBkg.png) 0 0 no-repeat;
+}
+/* line 22, ../../app/stylesheets/comments_style.scss */
+#commentStream .commentContainer {
+  width: 4600px;
+  position: relative;
+  height: 190px;
+  left: 0px;
+}
+/* line 31, ../../app/stylesheets/comments_style.scss */
+#commentStream .commentContainer .like {
+  background-color: #fff;
+  display: inline-block;
+  position: absolute;
+  padding: 5px;
+  color: #333;
+}
+/* line 38, ../../app/stylesheets/comments_style.scss */
+#commentStream .commentContainer .like span.name {
+  font-weight: bold;
+  color: #517197;
+}
+
+/* line 3, ../../app/stylesheets/quotes_style.scss */
+#quoteStream {
+  background-color: #e5e5e5;
+  height: 100px;
+  width: 703px;
+  color: white;
+  margin: 10px auto;
+  padding-top: 5px;
+  position: relative;
+  overflow: hidden;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #969696), color-stop(0.03, #cccccc), color-stop(0.07, #e7e6e2), color-stop(0.93, #e7e6e2), color-stop(0.97, #cccccc), color-stop(1, #969696));
+  background-image: -moz-linear-gradient(center bottom, #969696 0%, #cccccc 3%, #e7e6e2 7%, #e7e6e2 93%, #cccccc 97%, #969696 100%);
+}
+/* line 39, ../../app/stylesheets/quotes_style.scss */
+#quoteStream .quoteContainer {
+  width: 4600px;
+  position: relative;
+  height: 90px;
+  left: 0px;
+  border: 1px solid #E5E5E5;
+}
+/* line 49, ../../app/stylesheets/quotes_style.scss */
+#quoteStream .quoteContainer .like {
+  background-color: #fff;
+  display: inline-block;
+  position: absolute;
+  padding: 5px;
+  color: #333;
+}
+/* line 56, ../../app/stylesheets/quotes_style.scss */
+#quoteStream .quoteContainer .like span.name {
+  font-weight: bold;
+  color: #517197;
+}
+
+/* line 1, ../../app/stylesheets/heat_map.scss */
+#heatMap {
+  background: url(../images/commentBkg.png) no-repeat;
+  height: 80px;
+  margin-left: 15px;
+  margin-top: 12px;
+  z-index: -1;
+}
+
+/* line 9, ../../app/stylesheets/heat_map.scss */
+#heatSpots {
+  margin-left: 1px;
+  margin-top: 0px;
+  position: absolute;
+  z-index: 999;
+}
+
+/* line 16, ../../app/stylesheets/heat_map.scss */
+.starButton {
+  margin-right: 24px;
+  position: relative;
+  top: 24px;
+  z-index: 80;
+}
+
+/* line 23, ../../app/stylesheets/heat_map.scss */
+#starButtonBkg {
+  height: 39px;
+  margin-left: -38px;
+  margin-top: -13px;
+  width: 50px;
+}
+
+/* line 30, ../../app/stylesheets/heat_map.scss */
+#spotted {
+  z-index: 50;
+  color: #fff;
+  margin-top: 20px;
+  position: absolute;
+}
+
+/* line 41, ../../app/stylesheets/heat_map.scss */
+#spotStream {
+  background-color: #e5e5e5;
+  height: 34px;
+  width: 653px;
+  color: white;
+  margin: 10px auto;
+  padding-top: 5px;
+  position: relative;
+  overflow: hidden;
+  margin-right: 14px;
+  margin-left: 15px;
+  margin-bottom: -10px;
+  margin-top: 2px;
+  background: url(../images/commentBkg.png) no-repeat;
+}
+/* line 61, ../../app/stylesheets/heat_map.scss */
+#spotStream .spotContainer {
+  width: 4600px;
+  position: relative;
+  height: 24px;
+  left: 0px;
+}
+/* line 69, ../../app/stylesheets/heat_map.scss */
+#spotStream .spotContainer .like {
+  /*background-color: #fff;*/
+  display: inline-block;
+  position: absolute;
+  padding: 5px;
+  color: #333;
+}
+/* line 76, ../../app/stylesheets/heat_map.scss */
+#spotStream .spotContainer .like span.name {
+  font-weight: bold;
+  color: #517197;
+}
+
+/* line 677, ../../app/stylesheets/movies_styles.scss */
+.thumb {
+  height: 24px;
+  margin-right: 2px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 683, ../../app/stylesheets/movies_styles.scss */
+#commentStream .commentContainer .like {
+  padding: 0px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  border: 2px groove #000;
+  border-left: none;
+  border-right: none;
+  opacity: 0.8;
+}
+
+/* line 692, ../../app/stylesheets/movies_styles.scss */
+.bubble {
+  position: relative;
+  margin-bottom: 5px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 12px;
+  background-color: #fff;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-top: 3px;
+}
+
+/* line 705, ../../app/stylesheets/movies_styles.scss */
+img.likeButton {
+  position: relative;
+  top: 3px;
+}
+
+/* line 710, ../../app/stylesheets/movies_styles.scss */
+#two_button_row {
+  padding-bottom: 20px;
+  position: relative;
+  text-align: center;
+}
+
+/* line 716, ../../app/stylesheets/movies_styles.scss */
+#spacer {
+  padding: 0 10px;
+}
+
+/* line 720, ../../app/stylesheets/movies_styles.scss */
+#paypal_button {
+  position: relative;
+  top: 23px;
+}
+
+/* line 725, ../../app/stylesheets/movies_styles.scss */
+input[type=button]#credits, input[type=button]#groupDiscount {
+  width: 144px;
+}
+
+/* line 729, ../../app/stylesheets/movies_styles.scss */
+#quoteFrame, #clipFrame, #likeFrame {
+  background-color: #F7F0E0;
+  border: 1px solid #333342;
+  font-style: italic;
+  margin-left: 200px;
+  padding: 5px;
+  position: absolute;
+  z-index: 90;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* line 742, ../../app/stylesheets/movies_styles.scss */
+#clipFrame {
+  float: left;
+  margin-left: 6px;
+  margin-top: 0;
+  padding-top: 7px;
+  width: 170px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+/* line 753, ../../app/stylesheets/movies_styles.scss */
+#likeFrame {
+  margin-left: 135px;
+}
+
+/* line 757, ../../app/stylesheets/movies_styles.scss */
+#icon_bar {
+  background-image: url("/images/tallQueue.png");
+  border-bottom: 2px groove #000000;
+  height: auto;
+  left: 18px;
+  height: 36px;
+  margin-bottom: 6px;
+  position: relative;
+  width: 704px;
+  z-index: 0;
+}
+
+/* line 769, ../../app/stylesheets/movies_styles.scss */
+#bevel {
+  background: url(../images/bevel.png) 0 0 no-repeat;
+  width: 705px;
+}
+
+/* line 773, ../../app/stylesheets/movies_styles.scss */
+img.icon_bar {
+  position: absolute;
+  float: left;
+}
+
+/* line 778, ../../app/stylesheets/movies_styles.scss */
+.streamCreator {
+  background: url(../images/commentBkg.png) 0 0 no-repeat;
+  margin-left: 18px;
+  margin-top: -10px;
+  padding-bottom: 12px;
+  padding-top: 10px;
+}
+
+/* line 786, ../../app/stylesheets/movies_styles.scss */
+.insertCommentButton {
+  position: absolute;
+  z-index: 50;
+}
+
+/* line 791, ../../app/stylesheets/movies_styles.scss */
+.like .name {
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #33F;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: -11px;
+}
+
+/* line 799, ../../app/stylesheets/movies_styles.scss */
+#filter_comments {
+  float: right;
+  font-size: 1em;
+  margin-right: 30px;
+  position: relative;
+}
+
+/* line 806, ../../app/stylesheets/movies_styles.scss */
+#bar_marker {
+  border-left: 1px solid yellow;
+  height: 36px;
+  left: 24px;
+  opacity: 0.7;
+  position: absolute;
+  width: 1px;
+  z-index: 9;
+}
+
+/* line 818, ../../app/stylesheets/movies_styles.scss */
+img.icon_bar.clip {
+  top: 0px;
+}
+
+/* line 822, ../../app/stylesheets/movies_styles.scss */
+img.icon_bar.quote {
+  top: 10px;
+}
+
+/* line 826, ../../app/stylesheets/movies_styles.scss */
+img.icon_bar.like {
+  top: 18px;
+}
+
+/* line 830, ../../app/stylesheets/movies_styles.scss */
+#buy {
+  position: relative;
+}
+
+/* line 834, ../../app/stylesheets/movies_styles.scss */
+.nameOnButton a {
+  position: relative;
+  height: 0px;
+}
+
+/* line 839, ../../app/stylesheets/movies_styles.scss */
+.nameOnButton a[href="javascript:"] {
+  left: 85px;
+  position: relative;
+  top: 66px;
+}
+
+/* line 845, ../../app/stylesheets/movies_styles.scss */
+a.ppWatch {
+  margin-left: 30px;
+  display: block;
+  width: 209px;
+  text-align: center;
+  height: 64px;
+  font-size: 21px;
+  padding-top: 4px;
+}
+
+/* line 856, ../../app/stylesheets/movies_styles.scss */
+.most_popular_fideos {
+  position: relative;
+}
+
+/* line 864, ../../app/stylesheets/movies_styles.scss */
+#watch_now_button_preview {
+  padding: 5px;
+  float: right;
+  margin-right: 15px;
+}

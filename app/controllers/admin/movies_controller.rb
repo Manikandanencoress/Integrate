@@ -4,12 +4,6 @@ class Admin::MoviesController < AdminController
   layout "admin"
 
 
-  def new
-    new! do
-      @series = true if params[:series]
-    end
-  end
-  
   def promotions
     @studio = Studio.find params[:studio_id]
     @movie = Movie.find params[:movie_id]

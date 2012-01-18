@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120110191949) do
+ActiveRecord::Schema.define(:version => 20120109070218) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.datetime "updated_at"
   end
 
+  create_table "countries", :force => true do |t|
+    t.string  "iso"
+    t.string  "name"
+    t.string  "printable_name"
+    t.string  "iso3"
+    t.integer "numcode"
+  end
+
   create_table "coupon_redeemers", :force => true do |t|
     t.integer  "order_id"
     t.integer  "coupon_id"
@@ -103,6 +111,17 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.datetime "updated_at"
   end
 
+  create_table "ie_issues", :force => true do |t|
+    t.boolean  "fb_popped_up"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "movie_id"
+    t.integer  "user_id"
+  end
+
+  add_index "ie_issues", ["movie_id"], :name => "index_ie_issues_on_movie_id"
+  add_index "ie_issues", ["user_id"], :name => "index_ie_issues_on_user_id"
+
   create_table "invitations", :force => true do |t|
     t.string   "email"
     t.string   "token"
@@ -132,7 +151,16 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.integer  "shares_count", :limit => 8, :default => 0
   end
 
-  add_index "likes", ["movie_id"], :name => "index_likes_on_movie_id"
+  create_table "movie_metrics_reports", :force => true do |t|
+    t.date     "date"
+    t.integer  "movie_id_id"
+    t.integer  "daily_active_users"
+    t.integer  "page_views"
+    t.integer  "page_view_unique"
+    t.integer  "page_like"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "movies", :force => true do |t|
     t.string   "title"
@@ -145,8 +173,8 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.string   "video_file_path"
     t.integer  "rental_length"
     t.string   "font_color_help"
-    t.string   "popup_bk_color_1"
     t.string   "button_color_gradient_1"
+    t.string   "popup_bk_color_1"
     t.string   "description"
     t.string   "pay_dialog_title"
     t.string   "feed_dialog_link"
@@ -186,7 +214,6 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.boolean  "top_clips_enabled"
     t.boolean  "top_quotes_enabled"
     t.boolean  "top_bestsellers_enabled"
-    t.boolean  "new_release"
     t.float    "wysiwyg_watch_now_x"
     t.float    "wysiwyg_watch_now_y"
     t.float    "wysiwyg_rental_length_x"
@@ -239,6 +266,25 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
 
   add_index "paypals", ["order_id"], :name => "index_paypals_on_order_id"
 
+  create_table "quizzes", :force => true do |t|
+    t.text     "question"
+    t.text     "optiona"
+    t.text     "optionb"
+    t.text     "optionc"
+    t.text     "optiond"
+    t.integer  "movie_id"
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.string   "accesstoken"
+    t.string   "picture"
+    t.string   "source"
+    t.string   "fanpageurl"
+    t.string   "message"
+  end
+
   create_table "quotes", :force => true do |t|
     t.string   "text"
     t.integer  "quoted_at"
@@ -248,11 +294,19 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.integer  "shares_count", :limit => 8, :default => 0
   end
 
-  add_index "quotes", ["movie_id"], :name => "index_quotes_on_movie_id"
-
   create_table "redeem_discounts", :force => true do |t|
     t.integer  "order_id"
     t.integer  "group_discount_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "report_schedules", :force => true do |t|
+    t.string   "report_name"
+    t.integer  "report_id"
+    t.string   "frequency"
+    t.datetime "time"
+    t.text     "email_to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -354,8 +408,6 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
     t.string   "paypal_api_signature"
     t.text     "gallery_footer_box"
     t.text     "gallery_header_box"
-    t.string   "default_sort"
-    t.boolean  "bundles_enabled"
   end
 
   add_index "studios", ["player"], :name => "index_studios_on_player"
@@ -375,6 +427,17 @@ ActiveRecord::Schema.define(:version => 20120110191949) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "twitterfeeds", :force => true do |t|
+    t.integer  "movie_id"
+    t.string   "img_url"
+    t.text     "feed_text"
+    t.datetime "time"
+    t.string   "tweet_id"
+    t.string   "user_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

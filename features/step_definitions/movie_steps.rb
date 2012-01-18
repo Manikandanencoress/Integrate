@@ -226,7 +226,7 @@ Then /^I should see a gallery table$/ do
 end
 
 When /^I filter genre to "([^\"]*)"$/ do |genre|
-  select genre, :from => "Sort by"
+  select genre, :from => "Genre"
   click_button "Filter"
 end
 

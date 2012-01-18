@@ -2,7 +2,7 @@ class Admin::SeriesController < AdminController
 
   def index
     @studio = Studio.find(params[:studio_id])
-    @series = @studio.series.collect(&:movie).compact
+    @series = @studio.series.collect(&:movie)
   end
 
   def show
@@ -13,7 +13,7 @@ class Admin::SeriesController < AdminController
   end
 
   def search
-    @titles = Movie.search(params[:search].titlecase, params[:series_id], params[:studio_id])
+    @titles = Movie.search(params[:search], params[:series_id], params[:studio_id])
 
     respond_to do |format|
       format.js

@@ -1,6 +1,38 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub08").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub08").addClass("subOn");
+  $(document).ready(function(){
+  $("#submitEmail").click(function(){
+  if($.trim($("#invitation_email").val())==""){
+  $("#invitation_email").next().remove();
+  $("#invitation_email").after("<p class=\"inline-errors\">can't be blank</p>");
+  return false;
+  }
+  });
+  });
+-if !current_admin.studio.present?
+  - content_for :breadcrumbs do
+    = breadcrumbs(["Studios Home", [:admin, Studio]], ["#{ @studio.name } Home", [:admin, @studio]], "View Admins").html_safe
+
 = semantic_form_for [:admin, @studio, @invitation] do |f|
   = f.inputs do
-    = f.input :email
+    = f.input :email, :required => true
     = f.input :configuration_only
     = f.input :reporting_only
-  = f.submit "Send"
+  = f.submit "Send", :id=>'submitEmail'

@@ -1,0 +1,164 @@
+:css
+  .barbottom{border: 1px solid #56698E;vertical-align: top;background-color:#6C83B2;}
+  .bartop{border: 1px solid #9DACCB;vertical-align: top;background-color:#9DACCB;}
+  .lblpercent{color:#FFFFFF;font-weight:bold;}
+  .lblpercentless{color:#000000;}
+  .pvl{padding-bottom: 20px;padding-top: 20px;}
+  .uiGrid td{border: medium none;padding: 0;}
+  .pbs{text-align:center;width:100%;font-weight:bold;font-size:18px;padding-bottom: 5px;color:#000000;}
+  .fbinsight{ display: inline-block;width: 80px;}
+  .vTop hCent{text-align:center;}
+  td.fbInsightsFunnelArrow{vertical-align: middle; background-image: url('/images/facebook.png');background-position: center;
+                                  background-repeat: no-repeat;height: 55px;width: 87px;}
+        
+  .fsm{font-size: 11px;}
+  .fwb{font-weight: bold;}
+  .fcb{color: #333333;}
+  #authdiv{width:850px;text-align:center;margin:0px 0px 20px 60px;}
+  hr{background: none repeat scroll 0 0 #000000;border: medium none;color: #000000;display: block;height: 1px;margin: 0;padding: 0;}
+  .subdivfacebook{float: left;padding-top: 22px;width: 886px;}
+  table.graph{border-collapse: separate;border-spacing:2px;}
+  table.graph td{line-height:normal;}
+  table.graph td.verticaldown{vertical-align:bottom;}
+
+%script{:type => "text/javascript"}
+  $("a.tn06").addClass("tnOn");
+  $("#subnavlist1").hide();
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").show();
+  $("a.sub03").addClass("subOn");
+  
+
+%h1 Studio -  #{@studio.name} 
+%p= link_to "edit info", edit_admin_studio_path(@studio)
+%br
+- if @studio and !@studio.id.blank?   
+  - top_movies = total_visitors(@studio,true)
+  - if top_movies.length > 0
+    %table
+      %tr
+        %th{:align=>"left",:colspan=>"9"}All Titles
+      - i=1
+      %tr
+      - top_movies.each do |top_movie|
+        - movie=Movie.find(top_movie.movie_id)
+        %td{:align=>"center"}
+          = image_tag movie.skin.send(:gallery_poster).url(:thumb)
+          =# link_to image_tag("/images/no-image.jpg",:width=>"99",:height=>"99",:alt=>"#{movie.title}"), edit_admin_studio_movie_path(@studio, movie)
+        %td
+          %table
+            %tr
+              %th{:align=>"left"}= link_to movie.title, edit_admin_studio_movie_path(@studio, movie)
+            %tr
+              - cumulative = movie.movie_purchased
+              - totalvisitors = movie.total_visitors
+              %td
+                %i Views:
+                = number_with_delimiter(totalvisitors.to_i, :delimiter => ',')
+            %tr
+              %td 
+                %i Buys:
+                = number_with_delimiter(cumulative.to_i, :delimiter => ',')
+            %tr
+              %td 
+                %i Conversion:
+                - if totalvisitors == 0
+                  0.00%
+                - else
+                  = (format("%.2f",(cumulative * 100).to_f/totalvisitors.to_f)).to_s + "%"
+            %tr  
+              %td 
+                %i Profit: 
+                = "$" + (format("%.2f",(cumulative *  (movie[:price]/10)).to_f)).to_s
+        %td{:width=>"25px;"}
+        - if i%4 == 0
+          %tr 
+        - i+=1
+  
+    %hr
+    %b Gender and Age 
+    %a{:rel=>'twipsy', :href=>"#",:title=>'This data corresponds to 12/09/2011 - 01/07/2012.'}?
+    - value="padding-bottom:" + "30" + "px;"
+    - height = 1 * 3
+    .subdivfacebook
+      %table.graph
+        %tr
+          %td.verticaldown{:style => "width:200px; height:100px", :valign => "bottom", :width => "200"}
+            %label Female 17%
+          %td{:style => "width:200px;vertical-align:bottom;", :width => "200"}
+            .bartop{:style => "height:90px;"}
+              %label.lblpercent 90%
+          %td{:style => "width:200px;vertical-align:bottom;", :width => "200"}
+            .bartop{:style => "height:30px;"}
+              %label.lblpercent 30%
+          %td{:style => "width:200px;vertical-align:bottom;", :width => "200"}
+            .bartop{:style => "height:80px;"}
+              %label.lblpercent 80%
+          %td{:style => "width:200px;vertical-align:bottom;", :width => "200"}
+            .bartop{:style => "height:20px;"}
+              %label.lblpercent 20%
+          %td{:style => "width:200px;vertical-align:bottom;", :width => "200"}
+            .bartop{:style => "height:10px;"}
+              %label.lblpercent 10%
+          %td{:style => "width:200px;vertical-align:bottom;", :width => "200"}
+            .bartop{:style => "height:15px;"}
+              %label.lblpercent 15%
+        %tr
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px; height:20px", :width => "200"}
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px;  height:20px", :width => "200"}
+            %label 13-17
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px; height:20px", :width => "200"}
+            %label 18-24
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px; height:20px", :width => "200"}
+            %label 25-34
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px; height:20px", :width => "200"}
+            %label 35-44
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px; height:20px", :width => "200"}
+            %label 45-54
+          %td{:bgcolor => "#f6f6f6", :style => "width:200px; height:20px", :width => "200"}
+            %label 55+
+        %tr
+          %td{:style => "width:200px; height:100px", :valign => "top", :width => "200"}
+            %label Male 81%
+          %td{:style => "width:200px; height:100px;vertical-align:top;", :width => "200"}
+            .barbottom{:style => "height:30px;"}
+              %label.lblpercent 30%
+          %td{:style => "width:200px; height:100px;vertical-align:top;", :width => "200"}
+            .barbottom{:style => "height:40px;"}
+              %label.lblpercent 40%
+          %td{:style => "width:200px; height:100px;vertical-align:top;", :width => "200"}
+            .barbottom{:style => "height:80px;"}
+              %label.lblpercent 80%
+          %td{:style => "width:200px; height:100px;vertical-align:top;", :width => "200"}
+            .barbottom{:style => "height:20px;"}
+              %label.lblpercent 20%
+          %td{:style => "width:200px; height:100px;vertical-align:top;", :width => "200"}
+            .barbottom{:style => "height:5px;"}
+            %label.lblpercentless 5%
+          %td{:style => "width:200px; height:100px;vertical-align:top;", :width => "200"}
+            .barbottom{:style => "height:30px;"}
+              %label.lblpercent 30%
+      %hr
+      %b Auth Dialog
+      %br
+      %br
+    .subdivfacebook
+      #main.pvl
+        #authdiv
+          %table.uiGrid{:cellpadding => "0", :cellspacing => "0", :style => "width: 100%;"}
+            %tr
+              %td.vTop.hCent
+                .pbs 6
+                %div{:class=>"fbinsight"}
+                  Install Dialog Impressions
+                  %a{:rel=>"popover",:href=>"#", :title=>"Install Dialog Impressions", "data-content"=>"Total impressions of permissions dialogs by users who have not yet installed the app"}?
+              %td.vMid.hCent.fbInsightsFunnelArrow
+                %span.fsm.fwb.fcb 100%
+              %td.vTop.hCent
+                .pbs 6
+                %div{:class=>"fbinsight"}
+                  Install Dialogs Accepted
+                  %a{:rel=>"popover",:href=>"#", :title=>"Install Dialogs Accepted","data-content"=>"Total number of permissions dialogs accepted by users who have not yet installed the app"}?

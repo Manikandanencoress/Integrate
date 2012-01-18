@@ -1,0 +1,85 @@
+/* line 1, ../../app/stylesheets/admin.scss */
+form.formtastic.movie .colorpicker, form.formtastic.branding .colorpicker {
+  width: 100px;
+}
+
+/* line 5, ../../app/stylesheets/admin.scss */
+body.admin th, body.admin td {
+  padding: .5em 3em .5em 1.5em;
+}
+
+/* line 9, ../../app/stylesheets/admin.scss */
+tr.even {
+  background-color: #ccc;
+}
+
+/* line 13, ../../app/stylesheets/admin.scss */
+tr.odd {
+  background-color: #efefef;
+}
+
+/* line 17, ../../app/stylesheets/admin.scss */
+body.admin.movies.show {
+  text-align: left !important;
+  margin-left: 15px !important;
+}
+
+/* line 22, ../../app/stylesheets/admin.scss */
+body.admin.movies.show #preview_area {
+  text-align: center;
+}
+
+/* line 23, ../../app/stylesheets/admin.scss */
+body.admin.movies.show #preview_area > div {
+  margin-top: 30px;
+}
+
+/* line 24, ../../app/stylesheets/admin.scss */
+body.admin.movies.show #preview_area > div h3 {
+  font-size: 20px;
+}
+
+/* line 26, ../../app/stylesheets/admin.scss */
+body.admin.movies.show #preview_area > div .detailsModule p {
+  font-size: 10px;
+  line-height: 12px;
+  font-family: Trebuchet MS,Verdana,Tahoma,Arial,Helvetica,sans-serif;
+}
+
+/* line 32, ../../app/stylesheets/admin.scss */
+body.admin.movies.show #preview_area > div .module-menu a {
+  line-height: 25px;
+}
+
+/* line 37, ../../app/stylesheets/admin.scss */
+form.filter {
+  margin-bottom: 8px;
+}
+/* line 39, ../../app/stylesheets/admin.scss */
+form.filter li {
+  list_item_style: none;
+  display: inline;
+  padding-bottom: 8px;
+}
+/* line 42, ../../app/stylesheets/admin.scss */
+form.filter li input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* line 50, ../../app/stylesheets/admin.scss */
+#destroy_link {
+  float: right;
+  margin-top: -18px;
+}
+
+/* line 55, ../../app/stylesheets/admin.scss */
+#series-list li {
+  display: table;
+}
+
+/* line 59, ../../app/stylesheets/admin.scss */
+#loading {
+  float: right;
+  margin-right: 580px;
+  display: none;
+}

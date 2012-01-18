@@ -5,17 +5,15 @@
   %li
     = link_to "Series", admin_studio_series_index_path(@studio), :class =>  (active_tab == "Series" ? 'tabOn' : [])
   %li
-    = link_to("Users", admin_studio_users_path(@studio), :class =>  (active_tab == "Users" ? 'tabOn' : [])) #if current_admin.reporting_only?
+    = link_to("Users", admin_studio_users_path(@studio), :class =>  (active_tab == "Users" ? 'tabOn' : [])) if current_admin.reporting_only?
   %li
-    = link_to("Movies Report", admin_studio_reports_movies_path(@studio), :class =>  (active_tab == "Studio Report" ? 'tabOn' : [])) #if current_admin.reporting_only?
+    = link_to("Movies Report", admin_studio_reports_movies_path(@studio), :class =>  (active_tab == "Studio Report" ? 'tabOn' : [])) if current_admin.reporting_only?
   %li
-    = link_to("Tax Report", admin_studio_reports_tax_report_path(@studio), :class => (active_tab == "Tax Report" ? 'tabOn' : [])) #if current_admin.reporting_only?
+    = link_to("Tax Report", admin_studio_reports_tax_report_path(@studio), :class => (active_tab == "Tax Report" ? 'tabOn' : [])) if current_admin.reporting_only?
   %li
     = link_to "Studio Edit", edit_admin_studio_path(@studio), :class =>  (active_tab == "Studio Edit" ? 'tabOn' : [])
   %li
     = link_to "Branding", edit_admin_studio_branding_path(@studio), :class =>  (active_tab == "Branding" ? 'tabOn' : [])
   %li
     = link_to "View Admins", admin_studio_admins_path(@studio), :class =>  (active_tab == "Admins" ? 'tabOn' : [])
-  %li
-    = link_to "Sales Report", admin_studio_sales_reports_path(@studio), :class =>  (active_tab == "Admins" ? 'tabOn' : [])
 .clear

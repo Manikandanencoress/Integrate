@@ -165,13 +165,6 @@ body.movies.index {
             }
 
         }
-
-        .new_relases {
-            @include clearfix;
-            ol {
-                margin-left: $left_gutter;
-            }
-        }
     }
 
     #rentals.gallerySection {
@@ -184,15 +177,6 @@ body.movies.index {
     }
 
     #series-items.gallerySection {
-        .prev, .next {
-            margin-top: 42px;
-        }
-        .slides_container {
-            height: $gallery_element_height+10;
-        }
-    }
-
-    #new_releases.gallerySection {
         .prev, .next {
             margin-top: 42px;
         }

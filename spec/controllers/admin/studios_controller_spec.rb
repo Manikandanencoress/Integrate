@@ -209,7 +209,7 @@ describe Admin::StudiosController do
       it "as a milyoni admin redirects to the movies index" do
         sign_in Factory(:admin)
         request_to_make.call
-        response.should redirect_to(admin_studio_movies_path(studio))
+        response.should redirect_to(admin_info_studios_path)
       end
 
       it "as a studio admin redirects to the admin's studio's path" do
@@ -222,4 +222,50 @@ describe Admin::StudiosController do
     end
   end
 
+  describe "GET studioinfo" do
+    let(:request_to_make) do
+      lambda do
+        admin_studioinfo_path
+      end
+    end 
+    
+    describe "role-based authorizations" do
+      let(:admin_studio) { Factory :studio }
+      let(:studio_admin) { Factory :admin, :studio => admin_studio }
+
+      describe "as a milyoni admin" do
+        it "renders correctly" do
+          sign_in Factory(:admin)
+          request_to_make.call
+          response.code.should == "200"
+        end
+      end
+      
+      context "as a studio admin" do
+        it "should redirect to admin's studio page" do
+          sign_in studio_admin
+          request_to_make.call
+          response.should be_success
+        end
+      end
+    end
+    
+  end
+  
+  describe "GET studiolist" do
+    let(:studio) { Factory :studio }    
+    let(:request_to_make) do
+      lambda do
+        admin_studiolist_path
+      end
+    end 
+    describe "as a milyoni admin" do
+      it "renders correctly" do
+        sign_in Factory(:admin)
+        request_to_make.call
+        response.code.should == "200"
+      end
+    end
+  end
+  
 end

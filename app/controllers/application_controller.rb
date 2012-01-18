@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :validate_geo_restriction
+  before_filter :validate_geo_restriction, :controller => "admin/password" , :except => [:new, :create]
 
 
   def paypal_tax_format_for(tax)

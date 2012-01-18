@@ -1,18 +1,57 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub04").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub09").addClass("subOn");
+    
 - content_for :breadcrumbs do
   = breadcrumbs(["Studios Home", [:admin, Studio]],
                 ["#{ @studio.name } Home", [:admin, @studio]],
                 "Users").html_safe
 
 
-= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Users"}
+= #render :partial => 'admin/studios/nav', :locals => {:active_tab => "Users"}
 .navTabContent
   %h1 User's for #{@studio.name}
   = semantic_form_for(@filter, :url => [:admin, @studio, User], :html => {:method => :get}) do |f|
+    %span Select Studio
+    %div=collection_select 'studio', 'id', @studios, 'id', 'name',{:prompt=>"select studio"}
+    %br
+    -if !@movies.blank?
+      %span Select Movie
+      %div{:id=>"load_movies"}=collection_select 'movie', 'id', @movies, 'id', 'title',{:prompt=>"All",:selected=>@current_selected}
+    -else
+      %span Select Movie
+      %div{:id=>"load_movies"}
+        %b{:style=>"color:red;"} Movies not available in this studio, Please select another studio
+    %br
+    %span From &nbsp;&nbsp;&nbsp;&nbsp;
+    = date_select :filter1, :startdate , {:default => @fromdate}
+    %span &nbsp;&nbsp;&nbsp;&nbsp;
+    %span To &nbsp;&nbsp;&nbsp;&nbsp;
+    = date_select :filter1, :enddate , {:default => @todate}
+    %br
     = f.input :purchasers_only, :as => :boolean, :label => "Show only purchasers"
-    = link_to "| Download CSV", admin_studio_users_path(@studio.id, :format => 'csv')
+    = link_to "| Download CSV", admin_studio_users_path(@studio.id,:flag=>"export",:movie=>{ :id=>@current_selected },:fromdate=>@fromdate,:todate=>@todate,  :format => 'csv')
+    %br
     = f.submit "Filter"
-
-  %table.gridTable
+    
+%hr{:class => "greenBar"}
+  %table.SalesReportTable
     %tr
       %th.name Users
       %th.fb_id Facebook ID

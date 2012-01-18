@@ -1,0 +1,4 @@
+- if !@movies.blank?
+  =collection_select 'movie', 'id', @movies, 'id', 'title',{:prompt=>" -- Select a movie -- ",:selected=>@current_selected}
+- else
+  %b{:style=>"color:red;"} Movies not available in this studio, Please select another studio

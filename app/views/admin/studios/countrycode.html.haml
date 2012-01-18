@@ -1,0 +1,60 @@
+%style{:type => "text/css", :media => "screen"}
+  :plain
+    table.salessortable {
+      font-family:arial;
+      background-color: #CDCDCD;
+      margin:10px 0pt 15px;
+      text-align: center;
+      font-size: 10pt;
+    }
+    table.salessortable thead tr th, table.tablesorter tfoot tr th {
+      background-color:  #cccccc;
+      border: 1px solid #000;
+      color: black;
+      padding: 4px;
+      text-align:center;
+      vertical-align:middle;
+        }
+    table.salessortable thead tr .header {
+      background-image: url('/images/bg.gif');
+      background-repeat: no-repeat;
+      background-position: center right;
+      cursor: pointer;
+        }
+    table.salessortable tbody td {
+      color: #3D3D3D;
+      padding: 4px;
+      background-color: #FFF;
+      
+        }    
+    table.salessortable tbody th {
+     align:left;
+        }
+    table.salessortable tbody tr.odd td {
+      background-color:#F0F0F6;
+        }
+        
+    table.salessortable thead tr .headerSortUp {
+      background-image: url('/images/asc.gif');
+        }
+    table.salessortable thead tr .headerSortDown {
+      background-image: url('/images/desc.gif');
+        }
+    table.salessortable thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+     
+        }
+
+    
+%table.salessortable{:id=>"salessortable"}
+  %thead
+    %tr
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        Country Name
+      %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+        Country Code
+      
+  - @country.each do |country|
+    %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+      %td= country[:name]
+      %td= country[:iso]
+

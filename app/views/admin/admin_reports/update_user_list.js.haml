@@ -1,0 +1,15 @@
+- if @orders
+  $("#users_list").html("")
+  $("#purchased_movies").html("")
+  $("#users_list").html("#{escape_javascript(render 'list',:locals=>{:users=>@orders})}") 
+- else
+  $("#purchased_movies").html("")
+  $("#purchased_movies").html("#{escape_javascript(render 'list',:locals=>{:movies=>@movies})}") 
+  
+
+
+
+
+
+
+

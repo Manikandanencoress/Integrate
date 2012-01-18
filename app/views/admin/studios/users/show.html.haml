@@ -1,3 +1,23 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub04").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub09").addClass("subOn");
+    
 - content_for :breadcrumbs do
   = breadcrumbs(["Studios Home", [:admin, Studio]],
                 ["#{ @studio.name } Home", [:admin, @studio]],
@@ -6,7 +26,7 @@
 
 %h1 Orders for #{@user.name}
 
-%table.gridTable
+%table.SalesReportTable
   %tr
     %th Rented at
     %th Movie

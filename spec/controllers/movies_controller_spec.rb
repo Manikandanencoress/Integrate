@@ -56,13 +56,13 @@ describe MoviesController do
           end
         end
 
-        #context "user is whitelisted" do
-        #  it "should show unreleased movies" do
-        #    Sumuru::Application.config.whitelisted_facebook_ids << @facebook_user.facebook_user_id
-        #    get :index, :studio_id => @studio1.id
-        #    assigns(:movies).flatten.should include(@unreleased_movie)
-        #  end
-        #end
+        context "user is whitelisted" do
+          it "should show unreleased movies" do
+            Sumuru::Application.config.whitelisted_facebook_ids << @facebook_user.facebook_user_id
+            get :index, :studio_id => @studio1.id
+            assigns(:movies).flatten.should include(@unreleased_movie)
+          end
+        end
       end
 
 

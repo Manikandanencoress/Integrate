@@ -6,8 +6,7 @@ end
 When /^I fill in valid studio info$/ do
   studio = Factory :studio, :group_buy_enabled => nil
   attributes = studio.attributes
-  keys = attributes.keys - ['id', 'created_at', 'updated_at', 'brightcove_id', 'brightcove_key', 'player', 'Player', 'series_enabled']
-
+  keys = attributes.keys - ['id', 'player', 'created_at', 'updated_at', 'brightcove_id', 'brightcove_key', 'series_enabled']
 
   keys.each do |key|
     fill_in key.humanize, :with => attributes[key] unless attributes[key].nil?
@@ -19,8 +18,7 @@ end
 When /^I fill in valid studio info for a Brightcove studio$/ do
   studio = Factory :studio, :group_buy_enabled => nil
   attributes = studio.attributes
-  keys = attributes.keys - ['id', 'created_at', 'updated_at', 'player', 'Player', 'series_enabled']
-
+  keys = attributes.keys - ['id', 'player', 'created_at', 'updated_at', 'series_enabled']
 
   keys.each do |key|
     fill_in key.humanize, :with => attributes[key] unless attributes[key].nil?

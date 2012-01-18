@@ -128,6 +128,15 @@ describe Movie do
     it "should have_one :skin" do
       Movie.reflect_on_association(:skin).macro.should == :has_one
     end
+
+    it "should have_many :streams" do
+      Movie.reflect_on_association(:streams).macro.should == :has_many
+    end
+    
+    it "should have_many :movie_metrics_reports" do
+      Movie.reflect_on_association(:movie_metrics_reports).macro.should == :has_many
+    end
+    
   end
 
   #describe "movie series" do

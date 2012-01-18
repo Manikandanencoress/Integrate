@@ -1,21 +1,33 @@
+%script{:type => "text/javascript"}
+  $("a.tn03").addClass("tnOn");
+  $("#subnavlist1").hide();
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist2").show();
+  $("a.sub05").addClass("subOn");
+  
 - content_for :breadcrumbs do
   :erb
     <%= breadcrumbs(["Studios Home", [:admin, Studio]],
                     ["#{ @studio.name } Home", [:admin, @studio, Movie]],
-                    "Edit Movie - #{@movie.title}").html_safe %>
+                    "Moderate - #{@movie.title}").html_safe %>
 
-=render :partial => 'admin/shared/movie_tabs'
+=#render :partial => 'admin/shared/movie_tabs'
 
 .clear
 
-.navTabContent
-  %h1 Moderate Comments - #{@movie.title}
-  %hr{:class => "greenBar"}
-  %br
 
-.navTabContent
+%h1 Moderate Comments - #{@movie.title}
+%hr{:class => "greenBar"}
+%br
 
-  -#TODO
+
+
+-#TODO
+- if @comments.length != 0
   %table.gridTable
     %tr
       %th Created At
@@ -37,7 +49,9 @@
             %td= check_box_tag 'Delete', comment.id
 
   = will_paginate @comments
-  = link_to 'Destroy', '#', :id => 'destroy_link'
+  =# link_to 'Destroy', '#', :id => 'destroy_link'
+- if @comments.length == 0
+  %b{:style=>"color:red;"}No Moderation set to Movie #{@movie.title}
 
 :javascript
   var list = '';

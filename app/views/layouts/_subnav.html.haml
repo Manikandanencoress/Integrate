@@ -1,0 +1,34 @@
+-if (controller_name == 'movies' and (action_name=='show' or action_name=='edit') ) or (controller_name == 'skins' and action_name=='edit' ) and (!request.url.include?('reports/movies'))
+  #subnavmovielist1
+    %ul
+      %li
+        = link_to "Facebook Link", [ @studio, @movie], :class => "sub01"
+      %li
+        %a{:href=>edit_admin_studio_movie_path(@studio, @movie),:class=>"sub02"} Edit Info
+      %li
+        %a{:href=>edit_admin_studio_movie_skin_path(@studio, @movie),:class=>"sub03"} Look & Feel
+      %li
+        %a{:href=>admin_studio_movies_path(@studio),:class=>"sub04"} Back
+       
+-if ((controller_name == 'movies' and (action_name=='edit' or action_name=='promotions' or action_name=='preview')) or (controller_name == 'skins' and (action_name=='edit' or action_name=='show')) or (controller_name == 'comments' and (action_name=='index' or action_name=='edit')) or (controller_name == 'streams' and (action_name=='new' or action_name=='edit')  or (controller_name == 'series' and (action_name=='edit' or action_name=='show')) or (controller_name == 'coupons' and action_name=='new')) or (controller_path == "admin/movies" and (action_name=='show' or action_name=='update')) or (controller_path == "admin/streams" and (action_name=='create' or action_name=='update')) or (controller_path == "admin/coupons" and (action_name=='create' or action_name=='update')))
+  
+  #subnavmovielist2
+    %ul
+      %li
+        = link_to "Settings", edit_admin_studio_movie_path(@studio, @movie), :class => "sub01"
+      %li
+        = link_to "Preview", admin_studio_movie_preview_path(@studio, @movie), :class => "sub02"
+      %li
+        = link_to "Images", edit_admin_studio_movie_skin_path(@studio, @movie), :class => "sub03"
+      %li
+        = link_to "Promotions", admin_studio_movie_promotions_path(@studio, @movie), :class => "sub04"
+      %li
+        = link_to "Moderation", admin_studio_movie_comments_path(@studio, @movie), :class => "sub05"
+      %li
+        = link_to "Movie configuration", new_admin_studio_movie_stream_path(@studio,@movie), :class => "sub06"
+      - if @movie.serial
+        %li
+          = link_to "Series Settings", edit_admin_studio_series_path(@studio, @movie.series(true)),:class =>"sub07"
+     
+
+  

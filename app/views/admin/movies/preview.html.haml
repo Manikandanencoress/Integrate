@@ -1,12 +1,22 @@
+%script{:type => "text/javascript"}
+  $("a.tn03").addClass("tnOn");
+  $("#subnavlist1").hide();
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist2").show();
+  $("a.sub02").addClass("subOn");
 - content_for :breadcrumbs do
   :erb
     <%= breadcrumbs(["Studios Home", [:admin, Studio]],
                     ["#{ @studio.name } Home", [:admin, @studio, Movie]],
-                    "Promotions - #{@movie.title}").html_safe %>
+                    "Preview - #{@movie.title}").html_safe %>
 
-=render :partial => 'admin/shared/movie_tabs'
+=#render :partial => 'admin/shared/movie_tabs'
 = stylesheet_link_tag 'movies_styles', 'gallery_styles','jquery-custom', 'jquery-custom-reset'
-= stylesheet_link_tag 'ie9-hacks'
+= stylesheet_link_tag 'ie9-hacks','stylesheet'
 = javascript_include_tag 'lib/wysiwyg'
 
 = include_styles_for(@movie)

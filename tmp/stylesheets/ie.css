@@ -1,0 +1,13 @@
+/* MIXINS */
+/**
+ * IE Only
+ */
+/* line 5, ../../app/stylesheets/ie.scss */
+.module-modal {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+}

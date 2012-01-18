@@ -69,7 +69,6 @@ class OrdersController < ApplicationController
     respond_to do |format|
       order = Order.find(params[:order_id])
       scraped_key = params[:flash_config].split(/flash_config/).second.split(".").first
-      @movie = order.movie
       format.f4m if order.flash_config_key == scraped_key
     end
   end

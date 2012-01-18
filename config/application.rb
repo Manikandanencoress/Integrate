@@ -51,7 +51,7 @@ module Sumuru
 
     config.to_prepare {
       Devise::SessionsController.layout 'admin'
-      Devise::PasswordsController.layout 'admin'
+      Devise::PasswordsController.layout 'auth'
     }
   end
 end

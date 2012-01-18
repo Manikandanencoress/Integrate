@@ -1,0 +1,14 @@
+$('a[data-method="post"]').live('ajax:beforeSend', function() {$("#userdetail").hide();$("#loading1").show()});
+$("#userdetail").html("#{escape_javascript(render 'userdetail',:locals=>{:user=>@user})}");
+$("#loading1").hide();
+$("#userdetail").show();
+
+
+  
+
+
+
+
+
+
+

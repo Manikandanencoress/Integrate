@@ -138,3 +138,20 @@ Factory.define :purchase_visit, :class => PageVisit do |visit|
   visit.association :user
   visit.page 'purchase'
 end
+
+Factory.define :stream do |s|
+  s.association(:movie)
+  s.url "http://facebook.com"
+  s.bitrate "1999"
+  s.width "334"
+  s.height "343"
+end
+
+Factory.define :movie_metrics_report do |s|
+  s.association(:movie)
+  s.date "2011-12-26"
+  s.daily_active_users "2000"
+  s.page_views "10000"
+  s.page_view_unique "5000"
+  s.page_like "1000"
+end

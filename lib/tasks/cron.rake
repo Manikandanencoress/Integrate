@@ -8,7 +8,7 @@ require 'fb_graph'
 require 'fileutils'
 desc "This task is called by the Heroku cron add-on : Sales report fan count CSV creation"
 task :cron => :environment do
-  #if Time.now.min % 15 == 0 # run every 15 min
+  
     filename = "#{RAILS_ROOT}/public/movie_fan_count.csv"
     studios = Studio.find(:all)
     studio_name = ""
@@ -28,29 +28,26 @@ task :cron => :environment do
           end
         end
     end
-  #end
+  
 end
 
-task :metrics => :environment do
+task :movie_metrics_reports => :environment do
   #@myfacebook ||= FbGraph::Auth.new('196115547129805',
   #                                  'f24e25a7ee08c01d9c950c617612a829',
-   #                                 :scope => [:read_insights])
+  #                                 :scope => [:read_insights])
   ('2011-05-16'.to_date..'2011-11-14'.to_date).each do |date|
     @metrics = FbGraph::Query.new("SELECT value FROM insights WHERE object_id=161604803891265 AND metric='page_views_unique' AND end_time=end_time_date('#{date}') AND period=period('day')").fetch('AAACyXbWFh80BABkFYsHYbdl85IDiET756G1ZASj2ZAx1SFJgmFAZAQtshhNW3EZCLvmNkiuZBZCcqxvHZB1erTj8LZBwZCmoQjzX88LkxtVZBr2gZDZD')
     viewvalue = 0
     @metrics.each do |x|
-      
-    viewvalue = x["value"]
+      viewvalue = x["value"]
     end
     @metrics = FbGraph::Query.new("SELECT value FROM insights WHERE object_id=161604803891265 AND metric='page_like_adds_unique' AND end_time=end_time_date('#{date}') AND period=period('day')").fetch('AAACyXbWFh80BABkFYsHYbdl85IDiET756G1ZASj2ZAx1SFJgmFAZAQtshhNW3EZCLvmNkiuZBZCcqxvHZB1erTj8LZBwZCmoQjzX88LkxtVZBr2gZDZD')
     likevalue = 0
     @metrics.each do |x|
-      
-    likevalue = x["value"]
+      likevalue = x["value"]
     end
      movie_metrics_reports = MovieMetricsReport.create(:date=>date,:page_view_unique=>viewvalue,:movie_id_id=>107,:page_like=>likevalue) 
   end
-                                    
 end
 
 def fan_count(movie)

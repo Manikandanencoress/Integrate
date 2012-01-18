@@ -1,0 +1,50 @@
+%script{:type => "text/javascript"}
+  $(function() {
+  $("#movies_list").update(<%= escape_javascript(render(@movies))%>"); 
+  })
+- content_for :breadcrumbs do
+
+  = breadcrumbs(["Studios Home", [:admin, Studio]]).html_safe
+  = breadcrumbs("Admin Reports").html_safe
+  
+
+%table
+  %tr
+    %td{:valign=>'top'} 
+      %table{:border=>0,:cellspacing=>0}
+        %tr
+          %th{:align=>"left"} Studios
+        - @studios.each do |studio|
+          %tr
+            %td{:align=>"left"}= link_to studio.name,update_movie_list_admin_admin_reports_path(:id=>studio),:remote=>"true",:method=>:post,  :id=>"studio"
+    %td{:valign=>'top'} 
+      #movies_list{:style=>"padding-left:30px;"}
+    %td{:valign=>'top'} 
+      #users_list{:style=>"padding-left:30px;"}
+    %td{:valign=>'top'}  
+      #purchased_movies{:style=>"padding-left:30px;"}
+      
+
+
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn04").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").show();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub08").addClass("subOn");
+    $("a#studio").click(function () {
+    $("a#studio").css("background-color","white");
+    $(this).css("background-color","#9ea5b2");
+    });
+    $("a#movie").live("click", function(){
+    $("a#movie").css("background-color","white");
+    $(this).css("background-color","#9ea5b2");
+    });
+    $("a#order").live("click", function(){
+    $("a#order").css("background-color","white");
+    $(this).css("background-color","#9ea5b2");
+    });

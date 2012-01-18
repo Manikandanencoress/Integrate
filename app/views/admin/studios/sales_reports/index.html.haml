@@ -1,7 +1,13 @@
-- content_for :breadcrumbs do
- 
-  = breadcrumbs(["Studios Home", [:admin, Studio]]).html_safe
-  = breadcrumbs("Sales Report").html_safe
+%script{:type => "text/javascript"}
+  $("a.tn04").addClass("tnOn");
+  $("#subnavlist1").hide();
+  $("#subnavlist2").show();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("a.sub02").addClass("subOn");
+
 
 %style{:type => "text/css", :media => "screen"}
   :plain
@@ -52,20 +58,21 @@
      
         }
     
-
-%h1= "Sales Report for #{@studio.name} "
+- current_year = Time.now.strftime("%Y").to_i
+/ %h1= "Sales Report for #{@studio.name} "
 %form(action="/admin/studios/#{@studio.id}/sales_reports" method='get')
   #studios 
   %br
   %span From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  = date_select :filter, :startdate, {:default => @fromdate}
+  = date_select :filter, :startdate, {:default => @fromdate, :start_year => 2010, :end_year => current_year}
   %span &nbsp;&nbsp;&nbsp;&nbsp;
   %span To
-  = date_select :filter, :enddate, {:default => @todate}
+  = date_select :filter, :enddate, {:default => @todate, :start_year => 2010, :end_year => current_year}
   %br
   %br
   %span
   %input{:type => "submit", :value=>"Filter",:name=>"submit"} 
+  %br
   &nbsp;&nbsp;Sort by &nbsp;
   %span 
     = select_tag "sort_by", options_for_select([["Studio / Movie","0"],["Fan Count","1"],["Launch Date","2"],["Price","3"],["RENTALS","4"],["DOLLARS","5"],["VISITORS","6"],["CONVERSION RATE","7"]])
@@ -77,28 +84,29 @@
 
   %table
     %tr 
-      %td{:align=>"left",:style=>"width:200px;"}= link_to "Export CSV", admin_studio_sales_reports_path(:format => 'csv',:from_date=>@fromdate,:to_date=>@todate,:type=>@type,:studio_id=>@studio)
+      %td{:align=>"left",:style=>"width:200px;"}
+        %input{:type => "submit", :value=>"Export CSV",:onClick=>"location.href='#{admin_sales_reports_path(:format => 'csv',:from_date=>@fromdate,:to_date=>@todate,:studio_id=>@current_selected)}'"}
             
   #item    
     %table.SalesReportTable{:id=>"salesreport"}
       %thead
         %tr
-          %th{:rowspan=>2,:style=>"width:200px;"} 
+          %th{:rowspan=>2,:style=>"width:200px; font-size: 12px; vertical-align: middle;"} 
             %a{:href=>"Javascript:",:title=>"Click to Sort"}Studio / Movie
-          %th{:rowspan=>2,:style=>"width:120px;"} 
+          %th{:rowspan=>2,:style=>"width:120px; font-size: 12px; vertical-align: middle;"} 
             %a{:href=>"Javascript:",:title=>"Click to Sort"}Fan Count
-          %th{:rowspan=>2,:style=>"width:148px;"} 
+          %th{:rowspan=>2,:style=>"width:148px; font-size: 12px; vertical-align: middle;"} 
             %a{:href=>"Javascript:",:title=>"Click to Sort"}Launch Date
-          %th{:rowspan=>2,:style=>"width:180px;"} 
+          %th{:rowspan=>2,:style=>"width:180px; font-size: 12px; vertical-align: middle;"} 
             %a{:href=>"Javascript:",:title=>"Click to Sort"}Price 
-          %th{:colspan=>2,:style=>"background-image:none;"} 
-            %a{:href=>"Javascript:",:title=>"Click to Sort"}RENTALS
-          %th{:colspan=>2,:style=>"background-image:none;"} 
-            %a{:href=>"Javascript:",:title=>"Click to Sort"}DOLLARS
-          %th{:colspan=>2,:style=>"background-image:none;"} 
-            %a{:href=>"Javascript:",:title=>"Click to Sort"}VISITORS
-          %th{:colspan=>2,:style=>"background-image:none;"} 
-            %a{:href=>"Javascript:",:title=>"Click to Sort"}CONVERSION RATE
+          %th{:colspan=>2,:style=>"background-image:none; font-size: 12px;"} 
+            %a{:href=>"Javascript:",:title=>"Click to Sort"}Rentals
+          %th{:colspan=>2,:style=>"background-image:none; font-size: 12px;"} 
+            %a{:href=>"Javascript:",:title=>"Click to Sort"}Dollars
+          %th{:colspan=>2,:style=>"background-image:none; font-size: 12px;"} 
+            %a{:href=>"Javascript:",:title=>"Click to Sort"}Visitors
+          %th{:colspan=>2,:style=>"background-image:none; font-size: 12px;"} 
+            %a{:href=>"Javascript:",:title=>"Click to Sort"}Conversion Rate
         %tr
           %th{:style=>"width:195px;font-size:12px;"} 
             %a{:href=>"Javascript:",:title=>"Click to Sort"}Period
@@ -160,4 +168,3 @@
               - fan_count =0
       
       
-

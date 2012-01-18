@@ -10,10 +10,10 @@
       %span#dropshadowTop
       %div.filterForm
         = semantic_form_for(@filter, :url => studio_movies_path(@studio), :html => {:method => :get}) do |f|
-          = f.input :genre, :label => 'Sort by', :collection => @studio.genre_list.map {|genre| [genre, genre]}
+          = f.input :genre, :collection => @studio.genre_list.map {|genre| [genre, genre]}
           = hidden_field_tag :signed_request, params[:signed_request]
           = f.submit "Filter"
-
+          
       #rentals.gallerySection
         -if @active_rentals.present?
           %h2 Active Rentals
@@ -22,18 +22,9 @@
             %a.next{:href => "#"} Next
             .slides_container
               = movie_gallery(@active_rentals, :pages_of => 5)
-
-      #new_releases.gallerySection
-        -if @new_releases.present?
-          %h2 New Releases
-          %div.carousel
-            %a.prev{:href => "#"} Prev
-            %a.next{:href => "#"} Next
-            .slides_container
-              = movie_gallery(@new_releases, :pages_of => 5)
               
       #gallery.gallerySection
-        %h2 All Titles
+        %h2 All Movies
         %div#galleryCarousel.carousel
           %a.prev{:href => "#"} Prev
           %a.next{:href => "#"} Next
@@ -62,7 +53,6 @@
 :javascript
    var gallery_size = {
      active : #{@active_rentals.size},
-     new_releases : #{@new_releases.size},
      all : #{@movies.size }
   };
   $(".series-expand").click(function(event) {

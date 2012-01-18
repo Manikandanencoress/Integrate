@@ -1,12 +1,37 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("#subnavmovielist1").hide();
+    $("#subnavmovielist2").hide();
+    $("a.sub01").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("#subnavmovielist1").hide();
+    $("#subnavmovielist2").hide();
+    $("a.sub01").addClass("subOn");
+    
 = include_styles_for(@movie)
 - content_for(:head) do
   = stylesheet_link_tag 'movies_styles'
-
-- content_for :breadcrumbs do
-  = breadcrumbs(["Studios Home", [:admin, Studio]],
+-if !current_admin.studio.present?
+  - content_for :breadcrumbs do
+    = breadcrumbs(["Studios Home", [:admin, Studio]],
     ["#{ @studio.name } Home", [:admin, @studio, Movie]],
     "#{@movie.title} Layout Preview").html_safe
 
+%br
 = link_to "Facebook Link", [ @studio, @movie]
 \|
 = link_to 'Edit Info', edit_admin_studio_movie_path(@studio, @movie)
@@ -14,6 +39,8 @@
 = link_to 'Look & Feel', edit_admin_studio_movie_skin_path(@studio, @movie)
 \|
 = link_to 'Back', admin_studio_movies_path(@studio)
+%br
+%br
 
 - @movie.attributes.each_pair do |key, value|
   %p #{key.humanize}: #{@movie.send(key)}

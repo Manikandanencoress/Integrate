@@ -1,12 +1,32 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(["Studios Home", [:admin, Studio]], ["#{ @studio.name } Home", [:admin, @studio]], "View Admins").html_safe
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub08").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub08").addClass("subOn");
+-if !current_admin.studio.present?
+  - content_for :breadcrumbs do
+    = breadcrumbs(["Studios Home", [:admin, Studio]], ["#{ @studio.name } Home", [:admin, @studio]], "View Admins").html_safe
 
-= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Admins"}
+=# render :partial => 'admin/studios/nav', :locals => {:active_tab => "Admins"}
 .navTabContent
 
   .pageActions
     = link_to "Invite a #{@studio.name} Admin", new_admin_studio_invitation_path(@studio), :class => "butTextBlue"
-    = link_to "Pending Invitations", admin_studio_invitations_path(@studio), :class => "butTextBlue"
+    =# link_to "Pending Invitations", admin_studio_invitations_path(@studio), :class => "butTextBlue"
 
   %h1 #{@studio.name} Admins
   %table.gridTable
@@ -15,3 +35,7 @@
     - @admins.each do |admin|
       %tr
         %td #{admin.email}
+       
+  %h1 Pending #{@studio.name} Admin Invitations
+  = render :partial => "/admin/invitations/list"      
+

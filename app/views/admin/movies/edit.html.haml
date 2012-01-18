@@ -1,3 +1,29 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn03").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("#subnavmovielist1").hide();
+    $("#subnavmovielist2").show();
+    $("a.sub01").addClass("subOn");
+  -else
+    $("a.tn03").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("#subnavmovielist1").hide();
+    $("#subnavmovielist2").show();
+    
+    
+%script{:type => "text/javascript"}
+  
 - content_for :breadcrumbs do
   :erb
     <%= breadcrumbs(["Studios Home", [:admin, Studio]],
@@ -5,7 +31,7 @@
                     (@movie.serial ? "Edit Series - #{@movie.title}" : "Edit Movie - #{@movie.title}")).html_safe %>
 
 
-=render :partial => 'admin/shared/movie_tabs'
+=#render :partial => 'admin/shared/movie_tabs'
 
 .clear
 
@@ -19,6 +45,4 @@
   %br
   = render 'form'
 
-  = link_to 'Show', [:admin, @studio, @movie]
-  \|
-  = link_to 'Back', [:admin, @studio, Movie]
+

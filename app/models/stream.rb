@@ -1,5 +1,6 @@
 class Stream < ActiveRecord::Base
- validates_presence_of :bitrate,
+
+  validates_presence_of :bitrate,
                         :url,
                         :width,
                         :height,

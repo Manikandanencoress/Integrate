@@ -1,0 +1,23 @@
+%table
+  - if @movies
+    %tr
+      %th{:align=>"left"} Movies 
+    - @movies.each do|movie|
+      %tr
+        %td= link_to movie.title,update_user_list_admin_admin_reports_path(:movieid=>movie),:remote=>"true",:method=>:post,:id=>"movie"
+  - elsif @orders
+    %tr
+      %th{:align=>"left"} Users
+    - @orders.each do |order|
+      - if order.user
+        %tr
+          %td{:align=>"left"}= link_to order.user.name,update_user_list_admin_admin_reports_path(:userid=>order.user.id),:remote=>"true",:method=>:post,:id=>"order"
+  - elsif @purchasedmovies
+    %tr
+      %th{:align=>"left"} Purchased Movies
+    - @purchasedmovies.each do |order|
+      - if order.movie
+        %tr
+          %td{:align=>"left"}=  order.movie.title
+    
+     

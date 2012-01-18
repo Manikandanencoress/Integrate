@@ -6,7 +6,7 @@
     = f.input :code, :size=> '6'
     = f.input :percent, :label => "Discount Percentage %"
     = f.input :comments
-    = f.input :expires_at, :as => :date
+    = f.input :expires_at,:as => :date,:start_year =>Time.now.year
 
   = f.buttons do
     = f.commit_button "Save &amp; Continue &raquo;".html_safe

@@ -1,32 +1,69 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @studio.name } Home").html_safe
+%style{:type => "text/css", :media => "screen"}
+  :plain
 
-= render :partial => 'admin/studios/nav'
-.navTabContent
-  %h1 #{@studio.name}'s Movies
-  %table.gridTable
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub01").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub01").addClass("subOn");
+
+    
+-if !current_admin.studio.present?
+  - content_for :breadcrumbs do
+    = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @studio.name } Home").html_safe
+
+
+=# render :partial => 'admin/studios/nav'
+
+%h1 #{@studio.name}'s Movies
+
+%table.SalesReportTable{:id=>"movieslist"}
+  %thead
     %tr
-      %th Title (#{@studio.movies.count})
-      %th ID
-      %th Credits
-      %th Reports
-      %th Orders
-      %th Edit
-      %th Released (#{@studio.movies.select {|m| m.released?}.count})
-      %th Facebook
-      %th Destroy
-
-      - @movies.each do |movie|
-        - unless movie.serial
-          %tr
-            %td= link_to movie.title, [:admin, @studio, movie], :title => "View Site"
-            %td= movie.id
-            %td.center= movie.price
-            %td= link_to "View", [:admin, @studio, movie, :report]
-            %td= link_to "View", [:admin, @studio, movie, Order]
-            %td= link_to "Edit", edit_admin_studio_movie_path(@studio, movie)
-            %td= movie.released? ? "Yes" : "No"
-            %td= link_to "Link", [ @studio, movie]
-            %td= link_to 'Destroy', [:admin, @studio, movie], :confirm => 'Are you sure?', :method => :delete
+      %th
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Title (#{@studio.movies.count - @studio.series.collect(&:movie).count})
+      %th
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} ID
+      %th 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Credits
+      %th 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Reports
+      %th
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Orders
+      %th 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Edit
+      %th 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Released (#{@studio.movies.select {|m| m.released?}.count})
+      %th 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Facebook
+      %th 
+        %a{:href=>"Javascript:",:title=>"Click to Sort"} Destroy
+    - @movies.each do |movie|
+      - unless movie.serial
+        %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+          %td= link_to movie.title, [:admin, @studio, movie], :title => "View Site"
+          %td= movie.id
+          %td.center= movie.price
+          %td= link_to "View", [:admin, @studio, movie, :report]
+          %td= link_to "View", [:admin, @studio, movie, Order]
+          %td= link_to "Edit", edit_admin_studio_movie_path(@studio, movie)
+          %td= movie.released? ? "Yes" : "No"
+          %td= link_to "Link", [ @studio, movie], :target => "_blank"
+          %td= link_to 'Destroy', [:admin, @studio, movie], :confirm => 'Are you sure?', :method => :delete
+          
 .pageActions-left
   = link_to "New Movie", new_admin_studio_movie_path(@studio), :class => "butTextBlue"

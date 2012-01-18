@@ -1,5 +1,17 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(["Studios Home", [:admin, Studio]],
-      "New Studio").html_safe
+%script{:type => "text/javascript"}
+  $("a.tn01").removeClass("tnOn");
+  $("a.tn02").removeClass("tnOn");
+  $("a.tn03").removeClass("tnOn");
+  $("a.tn04").removeClass("tnOn");
+  $("a.tn05").removeClass("tnOn");
+  $("a.tn06").addClass("tnOn");
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").show();
+  $("a.sub02").addClass("subOn");
+-# content_for :breadcrumbs do
+  =# breadcrumbs(["Studios Home", [:admin, Studio]], "New Studio").html_safe
 
 = render :partial => "studio", :object => @studio

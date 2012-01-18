@@ -6,4 +6,4 @@
     = f.input :height
   = f.buttons do
     = f.commit_button "Save".html_safe
-    = link_to "Cancel", edit_admin_studio_movie_path(@studio, @movie)
+    %a{:href => new_admin_studio_movie_stream_path(@studio,@movie), :class => 'butTextBlue'}Cancel

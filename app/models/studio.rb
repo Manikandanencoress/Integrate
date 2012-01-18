@@ -1,8 +1,7 @@
 class Studio < ActiveRecord::Base
 
   PLAYERS = %w{warner brightcove milyoni}
-  DEFAULT_SORT = %w{Genre Date Released Alphabetical}
-
+  
   has_many :movies
   has_many :series
   has_many :invitations

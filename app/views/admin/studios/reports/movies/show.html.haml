@@ -1,49 +1,141 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn04").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").show();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub05").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub09").addClass("subOn");
 - content_for :breadcrumbs do
   = breadcrumbs(["Studios Home", [:admin, Studio]],
     ["#{ @studio.name } Home", [:admin, @studio, Movie]],
-    "Studio Report").html_safe
+    "Movies Report").html_safe
+%style{:type => "text/css", :media => "screen"}
+  :plain
+    table.salessortable {
+      font-family:arial;
+      background-color: #CDCDCD;
+      margin:10px 0pt 15px;
+      font-size: 12pt;
+      text-align: center;
+      
+   
+        }
+    table.salessortable thead tr th, table.tablesorter tfoot tr th {
+      background-color:  #cccccc;
+      border: 1px solid #000;
+      color: black;
+      font-size: 12pt;
+      padding: 4px;
+      text-align:center;
+      vertical-align:middle;
+        }
+    table.salessortable thead tr .header {
+      background-image: url('/images/bg.gif');
+      background-repeat: no-repeat;
+      background-position: center right;
+      cursor: pointer;
+        }
+    table.salessortable tbody td {
+      color: #3D3D3D;
+      padding: 4px;
+      background-color: #FFF;
+      
+        }    
+    table.salessortable tbody th {
+     align:left;
+        }
+    table.salessortable tbody tr.odd td {
+      background-color:#F0F0F6;
+        }
+        
+    table.salessortable thead tr .headerSortUp {
+      background-image: url('/images/asc.gif');
+        }
+    table.salessortable thead tr .headerSortDown {
+      background-image: url('/images/desc.gif');
+        }
+    table.salessortable thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+     
+        }
 
-= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Studio Report"}
+- current_year = Time.now.strftime("%Y").to_i  
+
+=# render :partial => 'admin/studios/nav', :locals => {:active_tab => "Studio Report"}
+
 .navTabContent
 
   %h1 #{params[:series] ? "Series" : "Movies"} Report For #{@studio.name}
-
-  Series
-  = radio_button_tag :choice, :serial
-  Movies
-  = radio_button_tag :choice, :movies
-
-  %br
-  %br
-
+  
   #semantic
     = semantic_form_for(@filter, :url => admin_studio_reports_movies_path(@studio), :html => {:method => :get}) do |f|
+      %label Select Studio
+      %div=collection_select 'studio', 'id', @studios, 'id', 'name'
+      %br
       = f.label :date
-      = f.date_select :date
+      = f.date_select :date, :start_year => 2010, :end_year => current_year
       = link_to "Today", admin_studio_reports_movies_path(@studio)
+      %br
+      %br
       = f.submit "Filter"
 
   #not-semantic
     = form_tag admin_studio_reports_movies_path(@studio), :class => "formtastic filter", :method => :get do
+      %label Select Studio
+      %div=collection_select 'studio', 'id', @studios, 'id', 'name'
+      %br
       = label_tag :date
-      = date_select("filter", "date")
+      = date_select("filter", "date", :start_year => 2010, :end_year => current_year)
       = hidden_field_tag :series, true
       = link_to "Today", admin_studio_reports_movies_path(@studio)
+      %br
+      %br
       = submit_tag "Filter"
+      
+  %label Series
+  = radio_button_tag :choice, :serial
+  %label Movies
+  = radio_button_tag :choice, :movies
+  %br
+  %br
 
+%hr{:class => "greenBar"}  
 
-  %table.gridTable
-    %tr
-      %th Movie
-      %th Day's Users
-      %th Day's Buys
-      %th Price
-      %th Day's Conversion
-      %th Day's Revenue
-      %th Cum. Users
-      %th Cum. Buys
-      %th Cum. Conversion
-      %th Cum. Revenue
+  %table.SalesReportTable{:id=>"moviereport"}
+    %thead
+      %tr
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Movie
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Day's Users
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Day's Buys
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Price
+        %th{:rowspan=>2,:style=>"width:220px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Day's Conversion
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Day's Revenue
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Cum. Users
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Cum. Buys
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Cum. Conversion
+        %th{:rowspan=>2,:style=>"width:200px;font-size:12px;"} 
+          %a{:href=>"Javascript:",:title=>"Click to Sort"}Cum. Revenue
+
     - @reports.each do |report|
       %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
         %td= report[:name]

@@ -1,0 +1,229 @@
+/* Slideshow CSS */
+/* line 22, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index {
+  font-size: 11px;
+}
+/* line 26, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .mainContainer {
+  text-align: left;
+}
+/* line 30, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #content {
+  width: 740px;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 10px 10px 10px;
+}
+/* line 36, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #content .copyright {
+  padding-right: 10px;
+  float: right;
+}
+/* line 39, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #content .copyright p {
+  margin: 0;
+  padding: 0;
+}
+/* line 43, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #header {
+  width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 48, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .filterForm {
+  overflow: hidden;
+  *zoom: 1;
+  float: right;
+  margin-right: 30px;
+  margin-top: 15px;
+}
+/* line 56, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection {
+  padding: 4px 0;
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 67, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection h2 {
+  margin-left: 71px;
+}
+/* line 69, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection ol {
+  padding-left: 0px;
+  margin-left: 15px;
+}
+/* line 72, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection ol li {
+  float: left;
+  width: 107px;
+  height: 210px;
+  list-style: none;
+  text-align: center;
+}
+/* line 79, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection ol li a {
+  text-decoration: none;
+  color: #000;
+}
+/* line 83, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection ol li a .title {
+  display: block;
+  height: 3em;
+  overflow: hidden;
+  margin-bottom: -5px;
+}
+/* line 94, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .active_rentals {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 96, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .active_rentals ol {
+  margin-left: 71px;
+}
+/* line 102, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .carousel .next, body.movies.index .gallerySection .carousel .prev {
+  width: 51px;
+  height: 100px;
+  float: right;
+  margin: 228px 10px 0px;
+  z-index: 1;
+  opacity: 1.0;
+  display: block;
+  background: url(/images/gallery/galleryArrowRt.png) no-repeat top left;
+  text-indent: -9999px;
+}
+/* line 114, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .carousel .prev {
+  float: left;
+  background: url(/images/gallery/galleryArrowLt.png) no-repeat top left;
+}
+/* line 119, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .carousel .slides_container {
+  width: 575px;
+  height: 630px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+/* line 125, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .carousel .slides_container div {
+  width: 575px;
+  height: 630px;
+  display: block;
+}
+/* line 137, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .series-carousel .next, body.movies.index .gallerySection .series-carousel .prev {
+  width: 51px;
+  height: 100px;
+  float: right;
+  margin: 228px 10px 0px;
+  z-index: 1;
+  opacity: 1.0;
+  display: block;
+  background: url(/images/gallery/galleryArrowRt.png) no-repeat top left;
+  text-indent: -9999px;
+}
+/* line 149, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .series-carousel .prev {
+  float: left;
+  background: url(/images/gallery/galleryArrowLt.png) no-repeat top left;
+}
+/* line 154, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .series-carousel .slides_container {
+  width: 575px;
+  height: 630px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+/* line 160, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index .gallerySection .series-carousel .slides_container div {
+  width: 575px;
+  height: 630px;
+  display: block;
+}
+/* line 171, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #rentals.gallerySection .prev, body.movies.index #rentals.gallerySection .next {
+  margin-top: 42px;
+}
+/* line 174, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #rentals.gallerySection .slides_container {
+  height: 210px;
+}
+/* line 180, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #series-items.gallerySection .prev, body.movies.index #series-items.gallerySection .next {
+  margin-top: 42px;
+}
+/* line 183, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #series-items.gallerySection .slides_container {
+  height: 210px;
+}
+/* line 188, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #dropshadow {
+  position: relative;
+  width: 730px;
+  margin: 20px auto 20px auto;
+  background: url(/images/gallery/galleryShadow.png) repeat-y -741px 0;
+  padding-bottom: 40px;
+}
+/* line 196, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #dropshadowTop {
+  position: absolute;
+  display: block;
+  background: url(/images/gallery/galleryShadow.png) no-repeat 0 0;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 100%;
+  _width: 730px;
+}
+/* line 206, ../../app/stylesheets/gallery_styles.scss */
+body.movies.index #dropshadowBot {
+  position: absolute;
+  display: block;
+  background: url(/images/gallery/galleryShadow.png) no-repeat -1481px 0;
+  bottom: 0;
+  left: 0;
+  height: 15px;
+  width: 100%;
+  _width: 730px;
+}
+
+/* line 217, ../../app/stylesheets/gallery_styles.scss */
+#top-image {
+  margin-left: -4px;
+  margin-top: -4px;
+  z-index: 50;
+  position: relative;
+}
+
+/* line 225, ../../app/stylesheets/gallery_styles.scss */
+#bottom-image {
+  margin-left: 8px;
+  margin-top: -125px;
+  z-index: 25;
+}
+
+/* line 231, ../../app/stylesheets/gallery_styles.scss */
+.series-item-container {
+  border: 1px solid #969696;
+  height: 131px;
+  margin-bottom: 1px;
+  margin-left: 0;
+  margin-top: -5px;
+  padding-top: 4px;
+  position: absolute;
+  width: 94px;
+  z-index: -500;
+}
+
+/* line 243, ../../app/stylesheets/gallery_styles.scss */
+.shadow-class {
+  -moz-box-shadow: 9px -1px 8px #cccccc;
+  -webkit-box-shadow: 9px -1px 8px #cccccc;
+  box-shadow: 9px -1px 8px #cccccc;
+  border-radius: 9px 9px 9px 9px;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#ebebeb',direction='120',strength='15');
+}

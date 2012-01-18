@@ -1,74 +1,76 @@
 require 'spec_helper'
 
 describe Admin::StreamsController do
-   def mock_stream(stubs={})
+ 
+  let(:studio_admin) { Factory(:studio_admin) }
+  let(:movie) {Factory(:movie)}
+  let(:studio) { studio_admin.studio }
+  
+  def mock_stream(stubs={})
     (@mock_stream ||= mock_model(Stream).as_null_object).tap do |stream|
       stream.stub(stubs) unless stubs.empty?
     end
   end
-
-  def index
-    @movie = Movie.find params[:movie_id]
-    @studio = @movie.studio
-    @streams = Stream.find(:all,:conditions=>["movie_id=?",@movie.id])
-  end
   
-  def show
-    @stream = Stream.find(params[:id])
-  end
-
-  def new
-    @movie = Movie.find params[:movie_id]
-    @studio = @movie.studio
-    @stream = Stream.new
-    @streams = Stream.find(:all,:conditions=>["movie_id=?",@movie.id])
-  end
-
-  def edit
-    @movie = Movie.find params[:movie_id]
-    @studio = @movie.studio
-    @stream = Stream.find(params[:id])
-    @streams = Stream.find(:all,:conditions=>["movie_id=?",@movie.id])
-  end
-
-  def create
-  
-    params[:stream][:movie_id]=params[:movie_id]
-    
-    @stream = Stream.new(params[:stream])
-    if @stream.save
-      redirect_to(new_admin_studio_movie_stream_path(@studio,@movie), :notice => 'Stream was successfully created.') 
-    else
-      @movie = Movie.find(params[:movie_id])
-      @studio = @movie.studio
-      @streams = Stream.find(:all,:conditions=>["movie_id=?",@movie.id])
-      respond_to do |format|
-       format.html { render :action => "new" }  
-       #render new_admin_studio_movie_stream_path(@studio,@movie,params[:stream])
-       end
+  describe "GET new" do
+    it "assigns a new stream as @stream" do
+      Stream.stub(:new) { mock_stream }
+      get :new,:movie_id => movie.id ,:studio_id=>studio.id
+      assigns(:stream).should be(mock_stream)
     end
-  
   end
   
-  def update
-    @stream = Stream.find(params[:id])
-    params[:stream][:movie_id]=params[:movie_id]
-      if @stream.update_attributes(params[:stream])
-        redirect_to(new_admin_studio_movie_stream_path(@studio,@movie), :notice => 'Stream was successfully updated.') 
-      else
-          @movie = Movie.find(params[:movie_id])
-          @studio = @movie.studio
-          @streams = Stream.find(:all,:conditions=>["movie_id=?",@movie.id])
-        respond_to do |format|
-         format.html { render :action => "edit" }  
-         #render new_admin_studio_movie_stream_path(@studio,@movie,params[:stream])
-         end
+  describe "GET edit" do
+    it "assigns the requested stream as @stream" do
+      Stream.stub(:find,:conditions=>["id=37 and movie_id=?",movie.id]){ mock_stream }
+      get :edit, :id => "37",:movie_id => movie.id ,:studio_id=>studio.id
+      assigns(:stream).should be(mock_stream)
+    end
+  end
+
+  describe "POST create" do
+    describe "with valid params" do
+      it "assigns a newly created stream as @stream" do
+        Stream.stub(:new).with({'these' => 'params','movie_id'=>movie.id}) { mock_stream(:save => true) }
+        post :create, :movie_id => movie.id ,:studio_id=>studio.id, :stream => {'these' => 'params','movie_id'=>movie.id}
+        assigns(:stream).should be(mock_stream)
       end
+
+      it "redirects to the created stream" do
+        Stream.stub(:new) { mock_stream(:save => true) }
+        post :create, :stream => {},:movie_id => movie.id ,:studio_id=>studio.id
+        response.should redirect_to(new_admin_studio_movie_stream_path(studio,movie))
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns a newly created but unsaved stream as @stream" do
+        Stream.stub(:new).with({'these' => 'params','movie_id'=>movie.id}) { mock_stream(:save => false) }
+        post :create,:movie_id => movie.id ,:studio_id=>studio.id,:stream => {'these' => 'params','movie_id'=>movie.id}
+        assigns(:stream).should be(mock_stream)
+      end
+      it "re-renders the 'new' template" do
+        Stream.stub(:new) { mock_stream(:save => false) }
+        post :create, :stream => {},:movie_id => movie.id ,:studio_id=>studio.id
+        response.should render_template("new")
+      end
+    end
+    
   end
+ 
   
-  def destroy
-    @stream = Stream.find(params[:id])
-    @stream.destroy
-    redirect_to(new_admin_studio_movie_stream_path(@studio,@movie), :notice => 'Stream was successfully deleted.') 
+  describe "DELETE destroy" do
+    it "destroys the requested stream" do
+      Stream.should_receive(:find).with("37") { mock_stream }
+      mock_stream.should_receive(:destroy)
+      delete :destroy, :id => "37",:movie_id => movie.id ,:studio_id=>studio.id
+    end
+
+    it "redirects to the streams list" do
+      Stream.stub(:find) { mock_stream }
+      delete :destroy, :id => "1",:movie_id => movie.id ,:studio_id=>studio.id
+      response.should redirect_to(new_admin_studio_movie_stream_path(studio,movie))
+    end
   end
+
 end

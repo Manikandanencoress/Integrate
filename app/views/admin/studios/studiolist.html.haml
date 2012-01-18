@@ -1,0 +1,66 @@
+%script{:type => "text/javascript"}
+  $("a.tn03").addClass("tnOn");
+  $("#subnavlist1").hide();
+  $("#subnavlist2").hide();
+  $("#subnavlist3").show();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist2").hide();  
+  
+  $("a.sub01").addClass("subOn");
+  
+  $("a.sub01, a.sub02, a.sub03, a.sub04, a.sub05, a.sub06").live("click", function(){
+  $("a").removeClass("subOn");
+  $(this).addClass("subOn");
+  $("#selected_menu").val(($(this).attr("href")));
+  return false;
+  });
+  
+- content_for :breadcrumbs do
+  = breadcrumbs("Title").html_safe
+  
+%form(action='/admin/studiolist' method='get')
+  %div
+    %b Select Studio
+    = collection_select('studio', 'id', @studios, 'id', 'name',{:prompt =>'Select a studio', :selected=>@current_selected},:onchange=>"submit();")
+    %br
+    %br
+    -if !@movies.blank?
+      %b Select Movie
+      = collection_select('movie', 'id', @movies, 'id', 'title',{:prompt =>'Select a movie'})
+    -elsif !@studios.blank? && !params[:studio].blank?
+      %b{:style=>"color:red;"} Movies not available in this studio, Please select another studio
+    = hidden_field_tag(:selected_menu, @selected_menu)
+    
+%script{:type => "text/javascript"}
+  $(document).ready(function(){
+  $("a").removeClass("subOn");
+  $("#subnavlist3 ul li a").each(function(){
+  if($("#selected_menu").val() == ($(this).attr("href"))){
+  $(this).addClass("subOn");
+  return false;
+  }
+  });
+  
+  $("#movie_id").change(function(){
+  var studio_id = $("#studio_id").val();
+  var movie_id = $("#movie_id").val();
+  var submenu = $("#selected_menu").val();
+  var urlLink = "/admin/studios/"+ studio_id + "/movies/" + movie_id
+  if(submenu=="Settings")
+  urlLink += "/edit";
+  if(submenu=="Preview")
+  urlLink += "/preview";
+  if(submenu=="Images")
+  urlLink += "/skin/edit";
+  if(submenu=="Promotions")
+  urlLink += "/promotions";
+  if(submenu=="Moderation")
+  urlLink += "/comments";
+  if(submenu=="Movie configuration")
+  urlLink += "/streams/new";
+  $(window.location).attr('href', urlLink);
+  });
+  
+  });

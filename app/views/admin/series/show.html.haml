@@ -14,8 +14,6 @@
   = image_tag('loading.gif', :size => '25x25', :id => 'loading')
   = form_tag search_admin_studio_series_index_path, :method => 'get', :id => "titles_search" do
     = text_field_tag :search, params[:search]
-    < Search your title to add
-
     = hidden_field_tag :series_id, params[:id]
     -#= submit_tag "Search", :name => nil
   %p

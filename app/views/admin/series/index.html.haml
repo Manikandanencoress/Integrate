@@ -1,7 +1,28 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @studio.name } Home").html_safe
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn02").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub02").addClass("subOn");
+  -else
+    $("a.tn01").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").show();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub02").addClass("subOn");
 
-= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Series"}
+-if !current_admin.studio.present?    
+  - content_for :breadcrumbs do
+    = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @studio.name } Home").html_safe
+
+= #render :partial => 'admin/studios/nav', :locals => {:active_tab => "Series"}
 .navTabContent
   %h1 #{@studio.name}'s Series
   %table.gridTable
@@ -14,6 +35,7 @@
       %th Facebook
       %th Destroy
       %th
+
       - @series.each do |movie|
         %tr
           %td= link_to movie.title, [:admin, @studio, movie], :title => "View Site"
@@ -25,4 +47,4 @@
           %td= link_to 'Destroy', [:admin, @studio, movie], :confirm => 'Are you sure?', :method => :delete
           %td= link_to "Add Movies", admin_studio_series_path(@studio.id,movie.series_id)
 .pageActions-left
-  = link_to "New Series", new_admin_studio_movie_path(@studio, :series => '1'), :class => "butTextBlue"
+  = link_to "New Series", new_admin_studio_movie_path(@studio), :class => "butTextBlue"

@@ -477,10 +477,6 @@ function showCarouselControls() {
         $('#rentals.gallerySection a.prev').css('opacity', '0.0');
         $('#rentals.gallerySection a.next').css('opacity', '0.0');
     }
-    if (window.gallery_size && window.gallery_size.new_releases <= 5) {
-        $('#new_releases.gallerySection a.prev').css('opacity', '0.0');
-        $('#new_releases.gallerySection a.next').css('opacity', '0.0');
-    }
     if (window.gallery_size && window.gallery_size.all <= 15) {
         $('div#galleryCarousel.carousel a.prev').css('opacity', '0.0');
         $('div#galleryCarousel.carousel a.next').css('opacity', '0.0');

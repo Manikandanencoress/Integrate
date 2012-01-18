@@ -9,7 +9,7 @@ When /^choose all the images to upload$/ do
       :player_background,
       :facebook_dialog_icon
   ].each do |attachment|
-    attach_file(attachment.to_s, File.expand_path(path))
+    attach_file(attachment.to_s.humanize, File.expand_path(path))
   end
 end
 

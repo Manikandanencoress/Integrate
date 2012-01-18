@@ -3,45 +3,168 @@
   %head
     = hoptoad_javascript_notifier
     = javascript_include_tag 'vendor/jquery/jquery.min', "vendor/rails"
-    = javascript_include_tag 'vendor/jquery/jquery.form-2.72', 'vendor/jquery.miniColors-0.1/jquery.miniColors', 'vendor/jquery/jquery-ui.js'
+    = javascript_include_tag 'vendor/jquery/jquery-tools-min'
+    = javascript_include_tag 'vendor/jquery/jquery.form-2.72', 'vendor/jquery.miniColors-0.1/jquery.miniColors' , 'vendor/jquery/bootstrap-twipsy','vendor/jquery/bootstrap-popover'
     = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'
     = javascript_include_tag 'admin'
+    = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = javascript_include_tag 'vendor/jquery/jquery.tablesorter.js'
-    = javascript_include_tag 'vendor/jquery/jquery.metadata.js'
-    = stylesheet_link_tag  'formtastic', 'formtastic_changes', 'scaffold', 'admin', 'admin_template'
+    = stylesheet_link_tag  'formtastic', 'formtastic_changes', 'scaffold','bootstrap', 'admin', 'admin_template','stylesheet'
     = stylesheet_link_tag '/javascripts/vendor/jquery.miniColors-0.1/jquery.miniColors.css'
     = csrf_meta_tag
 
     %title Milyoni Admin
     = yield(:head)
-
-  %body{:class => [:admin, controller_name, action_name]}
-
-    #dropshadow
-      %span#dropshadowTop
-      #allcontent
-        #header
-          %a{:href => "/"}
-            %img#logo{:alt => "milyoni", :src => "/images/admin/logo.png"}/
-          %img#phonetics{:alt => "milyoni", :src => "/images/admin/milyoni-phonetics.png"}/
-          #snNav
-          .adminTitle Social Theater Admin
-          .tertiary
-
+%body
+  #wrap
+    #header
+      #masthead{:class=>"clearfix"}
+        #logo
+          %a{:href=>"#"}
+            %img{:src=>"/images/milyoni_logo.png",:width=>"74", :height=>"41",:alt=>"milyoni"}    
+        #courtesyNav
+          %ul
+            %li
+              = "Welcome "+ current_admin.email + "!" if current_admin
+            %li
+              - if current_admin
+                = link_to "Signout", destroy_admin_session_path 
+              
+      
+        
+      - if current_admin != nil 
+        - if !current_admin.studio.present?
+          #navbar{:class=>"clearfix"}
+            #navlistContainer
+              #navlist
+                %ul
+                  %li
+                    %a{:href=>admin_studioinfo_path,:class=>"tn02"} Studio
+                  %li
+                    %a{:href=>admin_studiolist_path,:class=>"tn03"} Titles
+                  %li
+                    %a{:href=>admin_movie_metrics_reports_path,:class=>"tn04"} Reports
+                  %li
+                    %a{:href=>documentation_supports_path,:class=>"tn05"} Support
+              #navlistRight
+                %ul
+                  %li
+                    %a{:href=>admin_root_path,:class=>"tn06"}=  "Milyoni"
+          
+          = render :partial => 'layouts/milisubnav'
+                     
+        - else #studio admin
+          #navbar{:class=>"clearfix"}
+            #navlistContainer
+              #navlist
+                %ul
+                  %li
+                    %a{:href=>admin_info_studios_path,:class=>"tn01"} Home
+                  %li
+                    %a{:href=>edit_admin_studio_path(current_admin.studio),:class=>"tn02"} Edit Studio
+                  %li
+                    %a{:href=>admin_studio_movies_path(current_admin.studio),:class=>"tn03"} Edit Titles
+                  %li
+                    %a{:href=>admin_studio_movie_metrics_reports_path(current_admin.studio),:class=>"tn04"} Reports
+                  %li
+                    %a{:href=>documentation_supports_path,:class=>"tn05"} Support
+          
+          = render :partial => 'layouts/studioadminnav'
+          
+    
+    #main{:class=>"clearfix"}
+      #mainContent
         #breadcrumbs
-          = yield(:breadcrumbs)
-          - if current_admin
-            = link_to "Logout", destroy_admin_session_path, :class => "logOutlink"
-
-        %p.notice= notice
-        %p.alert= alert
-
+          = yield(:breadcrumbs)  
         = yield
 
-        #footer
-          \&copy; 2011 Milyoni
-          %a{:href => "/"} home
-          %a{:href => "http://www.milyoni.com/contact/", :target => "_new"} contact us
-          %a{:href => "http://www.milyoni.com/", :target => "_new"} milyoni.com
-
-      %span#dropshadowBot
+  #footer
+%script{:type => "text/javascript"}
+  $("a.tn01").click(function() {
+  $("a.tn01").addClass("tnOn");
+  $("a.tn02").removeClass("tnOn");
+  $("a.tn03").removeClass("tnOn");
+  $("a.tn04").removeClass("tnOn");
+  $("a.tn05").removeClass("tnOn");
+  $("a.tn06").removeClass("tnOn");
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  });
+  $("a.tn02").click(function() {
+  $("a.tn01").removeClass("tnOn");
+  $("a.tn02").addClass("tnOn");
+  $("a.tn03").removeClass("tnOn");
+  $("a.tn04").removeClass("tnOn");
+  $("a.tn05").removeClass("tnOn");
+  $("a.tn06").removeClass("tnOn");
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").show();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist1").hide();
+  $("#subnavmovielist2").hide();
+  });
+  $("a.tn03").click(function() {
+  $("a.tn01").removeClass("tnOn");
+  $("a.tn02").removeClass("tnOn");
+  $("a.tn03").addClass("tnOn");
+  $("a.tn04").removeClass("tnOn");
+  $("a.tn05").removeClass("tnOn");
+  $("a.tn06").removeClass("tnOn");
+  $("#subnavlist2").hide();
+  $("#subnavlist3").show();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist1").hide();
+  $("#subnavmovielist2").hide();
+  });
+  $("a.tn04").click(function() {
+  $("a.tn01").removeClass("tnOn");
+  $("a.tn02").removeClass("tnOn");
+  $("a.tn03").removeClass("tnOn");
+  $("a.tn04").addClass("tnOn");
+  $("a.tn05").removeClass("tnOn");
+  $("a.tn06").removeClass("tnOn");
+  $("#subnavlist2").show();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist1").hide();
+  $("#subnavmovielist2").hide();
+  });
+  $("a.tn05").click(function() {
+  $("a.tn01").removeClass("tnOn");
+  $("a.tn02").removeClass("tnOn");
+  $("a.tn03").removeClass("tnOn");
+  $("a.tn04").removeClass("tnOn");
+  $("a.tn05").addClass("tnOn");
+  $("a.tn06").removeClass("tnOn");
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").show();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist1").hide();
+  $("#subnavmovielist2").hide();
+  }); 
+  $("a.tn06").click(function() {
+  $("a.tn01").removeClass("tnOn");
+  $("a.tn02").removeClass("tnOn");
+  $("a.tn03").removeClass("tnOn");
+  $("a.tn04").removeClass("tnOn");
+  $("a.tn05").removeClass("tnOn");
+  $("a.tn06").addClass("tnOn");
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").show();
+  $("#subnavmovielist1").hide();
+  $("#subnavmovielist2").hide();
+  }); 

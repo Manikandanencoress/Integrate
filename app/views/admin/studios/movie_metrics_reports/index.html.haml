@@ -1,0 +1,68 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn04").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").show();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub01").addClass("subOn");
+  -else
+    $("a.tn04").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").show();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("a.sub01").addClass("subOn");
+    
+
+
+- current_year = Time.now.strftime("%Y").to_i  
+
+%form(action="/admin/studios/#{@studio.id}/movie_metrics_reports" method='get')
+  #studios
+    %span{:style=>"display:none;"} Select Studio
+    %div{:style=>"display:none;"}=collection_select 'studio', 'id', @studios, 'id', 'name'
+    %br
+    %span Select Movie
+    %div{:id=>"load_movies"}=collection_select 'movie', 'id', @movies, 'id', 'title',{:prompt=>" -- select a movie -- "}
+    %br
+    %span From &nbsp;&nbsp;&nbsp;&nbsp;
+    = date_select :filter, :startdate , {:default => @fromdate, :start_year => 2010, :end_year => current_year}
+    %span &nbsp;&nbsp;&nbsp;&nbsp;
+    %span To &nbsp;&nbsp;&nbsp;&nbsp;
+    = date_select :filter, :enddate , {:default => @todate, :start_year => 2010, :end_year => current_year}
+    %br
+    %span
+    %br
+    %input{:type => "submit", :value=>"Show", :name=>"submit"}
+    %br
+- if params[:submit] and params[:submit] == 'Show' and params[:studio] and params[:studio][:id]!=""
+  %hr{:class => "greenBar"}
+  %br     
+  #item{:style=>"width:800px;"}        
+    %table.gridTable 
+      %thead
+        %tr
+          %th{:style=>"width:100px;"} Date
+          %th{:style=>"width:100px;"} Discovery / Sell Page
+          %th{:style=>"width:100px;"} Purchase Page
+          %th{:style=>"width:100px;"} Watch Page
+          %th{:style=>"width:100px;"} Movie Like
+          
+          -(@fromdate..@todate).each do |date|
+            
+            - @metrics = MovieMetricsReport.find(:first,:conditions=>["movie_id_id=? and date = ? ",params[:movie][:id],date])
+            %tr
+              %td{:align=>"center"}= date
+              %td{:align=>"center"}= @metrics.page_view_unique if @metrics != nil
+              -purchase_page=PageVisit.find(:all,:select => 'DISTINCT user_id',:conditions=>["movie_id=? and page='purchase' and date(created_at) = ? ",params[:movie][:id],date])
+              -@purchase_count += purchase_page.count
+              -watch_page=PageVisit.find(:all,:select => 'DISTINCT user_id',:conditions=>["movie_id=? and page='watch' and date(created_at) = ? ",params[:movie][:id],date])
+              -@watch_count += watch_page.count   
+              %td{:align=>"center"}= @purchase_count
+              %td{:align=>"center"}= @watch_count
+              %td{:align=>"center"}= @metrics.page_like if @metrics != nil

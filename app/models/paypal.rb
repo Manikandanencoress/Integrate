@@ -172,7 +172,7 @@ class Paypal < ActiveRecord::Base
           "&TOKEN=#{token}" +
           "&PAYERID=#{payer_id}" +
 
-          params_for_product(request, order.movie, order.id, user_id)
+          params_for_product(order.movie, order.id, user_id)
 
       puts "********** END POINT ***********"
 

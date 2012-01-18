@@ -1,25 +1,50 @@
+%script{:type => "text/javascript"}
+  -if !current_admin.studio.present?
+    $("a.tn03").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("#subnavmovielist1").hide();
+    $("#subnavmovielist2").show();
+    $("a.sub03").addClass("subOn");
+  -else
+    $("a.tn03").addClass("tnOn");
+    $("#subnavlist1").hide();
+    $("#subnavlist2").hide();
+    $("#subnavlist3").hide();
+    $("#subnavlist4").hide();
+    $("#subnavlist5").hide();
+    $("#subnavlist6").hide();
+    $("#subnavmovielist1").hide();
+    $("#subnavmovielist2").show();
+    $("a.sub03").addClass("subOn");
+
+  
 - content_for :breadcrumbs do
   :erb
     <%= breadcrumbs(["Studios Home", [:admin, Studio]],
                     ["#{ @studio.name } Home", [:admin, @studio, Movie]],
                     "Edit Movie - #{@movie.title}").html_safe %>
 
-=render :partial => 'admin/shared/movie_tabs'
+=#render :partial => 'admin/shared/movie_tabs'
 
 .clear
 
-.navTabContent
-  %h1 Edit Images - #{@movie.title}
-  %hr{:class => "greenBar"}
-  %br
-  = semantic_form_for @skin,
-      :url => admin_studio_movie_skin_path(@studio, @movie),
-      :html => {:multipart => true} do |f|
-    = f.inputs do
-      - Skin::PICTURES.each do |image, dimensions|
-        %hr
-        = image_tag @skin.send(image).url(:thumb)
-        - label = "#{really_humanize image.to_s} <br />File Name:#{@skin.send("#{image}_file_name".to_sym)}<br /> Size:(#{dimensions} px)".html_safe
-        = f.input image, :label => label
 
-    = f.buttons
+%h1 Edit Images - #{@movie.title}
+%hr{:class => "greenBar"}
+%br
+= semantic_form_for @skin,
+    :url => admin_studio_movie_skin_path(@studio, @movie),
+    :html => {:multipart => true} do |f|
+  = f.inputs do
+    - Skin::PICTURES.each do |image, dimensions|
+      %hr
+      = image_tag @skin.send(image).url(:thumb)
+      - label = "#{image.to_s.humanize} <br />File Name:#{@skin.send("#{image}_file_name".to_sym)}<br /> Size:(#{dimensions} px)".html_safe
+      = f.input image, :label => label
+
+  = f.buttons

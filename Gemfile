@@ -27,6 +27,7 @@ gem 'geoip', '~> 1.1.1'
 gem 'acts-as-taggable-on', '~> 2.0.6'
 gem 'will_paginate', '~> 3.0.0', :require => 'will_paginate'
 gem "rufus-scheduler"
+
 gem "informal", "~> 0.0.3"
 gem "devise", "~> 1.3.4"
 gem "cancan", "~> 1.6.5"

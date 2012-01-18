@@ -29,10 +29,12 @@ class Movie < ActiveRecord::Base
   has_one :skin
   has_many :comments
   has_many :coupons
-  has_many :streams
+
   has_many :likes
   has_many :quotes
   has_many :hot_spots
+  has_many :streams
+  has_many :movie_metrics_reports
 
   before_create :skin_me
   after_create :serialize_it
@@ -207,6 +209,7 @@ class Movie < ActiveRecord::Base
     end
     recommendation.count == 3 ? recommendation : studio.bestsellers
   end
+
   # Code Added for Sales report start here
 
   def movie_purchased
@@ -225,7 +228,8 @@ class Movie < ActiveRecord::Base
     
     return PageVisit.count(:conditions=>["movie_id = ?",self.id])
   end
-# Code Added for Sales report end here
+  # Code Added for Sales report end here
+
   private
 
   def curl_the_linter

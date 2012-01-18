@@ -1,0 +1,22 @@
+%table.GridTable{:width=>"100%"}
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td Name
+    %td= @user.name
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td Age
+    %td= Date.today.year - @user.birthday.year
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td Sex
+    %td= @user.gender
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td Email
+    %td= @user.email
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td Friends
+    %td= friend_count(@user)
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td City
+    %td= @user.city
+  %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+    %td State
+    %td= @user.state

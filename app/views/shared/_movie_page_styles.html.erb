@@ -22,30 +22,20 @@ img.thumb {
 border: 3px solid <%= movie.button_color_gradient_1 %>;
 }
 
-
 <% if movie.skin %>
-    body.movies.show .mainContainer, .admin.movies.show .mainContainer {
-    background-image: url(<%= movie.skin.purchase_background.url %>)
-    }
+body.movies.show .mainContainer, .admin.movies.show .mainContainer {
+background-image: url(<%= movie.skin.purchase_background.url %>)
+}
 
-    body.orders.show .mainContainer, .admin.orders.show .mainContainer {
-    background-image: url(<%= movie.skin.watch_background.url %> )
-    }
+body.orders.show .mainContainer, .admin.orders.show .mainContainer {
+background-image: url(<%= movie.skin.watch_background.url %> )
+}
 <% end %>
+
 .module-modal {
 background: -moz-linear-gradient(center top, <%= movie.popup_bk_color_1 %>, <%= movie.popup_bk_color_2 %> ) repeat scroll 0 0 transparent );
 }
 
-/*the position of the "action box" purchase*/
-.module-menu {
-<% if movie.action_box_top %>
-    top: <%= movie.action_box_top %>px;
-<% end %>
-
-<% if movie.action_box_left %>
-    left: <%= movie.action_box_left %>px;
-<% end %>
-}
 
 /*# for IE*/
 .module-modal {
@@ -73,3 +63,17 @@ background: -webkit-gradient(linear, left top, left bottom, from(<%= movie.butto
 
 background: -moz-linear-gradient(top, <%= movie.button_color_gradient_1 %>, <%= movie.button_color_gradient_2 %>);
 }
+
+<% %w{ watch_now
+       rental_length
+       share_buttons
+       fan_page_likers
+       coupon_code }.each do |i| %>
+    <% if movie.send('wysiwyg_' + i + "_x") != nil %>
+        <%= "#w_#{i}" %> {
+        position: relative;
+        top: <%= movie.send('wysiwyg_' + i + "_y") %>px;
+        left: <%= movie.send('wysiwyg_' + i + "_x") %>px
+        }
+    <% end %>
+<% end %>

@@ -1,9 +1,12 @@
 class Filter::StudioUser < Filter
   attr_accessor :purchasers_only
 
-  def initialize(studio, params)
+  def initialize(studio,movie,fromdate,todate, params)
     super(params)
     @studio = studio
+    @movie = movie 
+    @fromdate = fromdate
+    @todate = todate
     self.purchasers_only= @params[:purchasers_only]
   end
 
@@ -13,7 +16,8 @@ class Filter::StudioUser < Filter
   end
 
   def page_visit_count_users
-    users_with_studio(:page_visits).select("users.id, count(page_visits.id) as page_visits_count").group("users.id")
+    #users_with_studio(:page_visits).select("users.id, count(page_visits.id) as page_visits_count").group("users.id")
+    users_with_studio(:page_visits).where("date(page_visits.created_at) >= '#{@fromdate}' and date(page_visits.created_at) <= '#{@todate}'").select("users.id, count(page_visits.id) as page_visits_count").group("users.id")
   end
 
   def fetch_users!
@@ -27,7 +31,12 @@ class Filter::StudioUser < Filter
   end
 
   def users_with_studio(collection)
-    User.where(collection => {:movies => {:studio_id => @studio.id}}).joins(collection => {:movie => :studio})
+    if @movie and @movie.id!=nil
+      User.where(collection => {:movies => {:studio_id => @studio.id,:id=> @movie.id}}).joins(collection => {:movie => :studio})
+    else
+      User.where(collection => {:movies => {:studio_id => @studio.id}}).joins(collection => {:movie => :studio})
+    end
+    #User.where(collection => {:movies => {:studio_id => @studio.id}}).joins(collection => {:movie => :studio})
   end
 
   def studio_user_ids

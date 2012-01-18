@@ -6,6 +6,8 @@ class Invitation < ActiveRecord::Base
 
   after_create :send_email
 
+  validates :email, :presence => true
+
   validates :token,
             :uniqueness => true,
             :presence => true

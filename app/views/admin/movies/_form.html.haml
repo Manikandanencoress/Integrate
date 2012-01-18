@@ -1,5 +1,5 @@
 = stylesheet_link_tag 'movies_styles', 'gallery_styles','jquery-custom', 'jquery-custom-reset'
-= stylesheet_link_tag 'ie9-hacks'
+= stylesheet_link_tag 'ie9-hacks','stylesheet'
 = javascript_include_tag 'lib/wysiwyg'
 
 = include_styles_for(@movie)
@@ -10,13 +10,13 @@
     = f.input :title
     = f.input :price
     = f.input :director
-    = f.input :lead_actors
-    = f.input :year_released, :as => :date
+    = f.input :lead_actors, :label => "Lead Actors"
+    = f.input :year_released, :as => :date, :label => "Year Released"
     = f.input :MPAA_rating, :label => "MPAA Rating"
-    = f.input :running_time
+    = f.input :running_time, :label => "Running Time"
     
     (For free, enter zero)
-    = f.input :facebook_fan_page_url, :input_html => {:type => "notUrl"}
+    = f.input :facebook_fan_page_url, :input_html => {:type => "notUrl"},:label => "Facebook Fan Page Url"
     - if @studio.is_warner?
       = f.input :cdn_path
       = f.input :video_file_path
@@ -26,48 +26,45 @@
       = f.input :subtitled_video_link
       = f.input :dubbed_video_link
     - elsif @studio.is_brightcove?
-      - if @series
-        = f.input :brightcove_movie_id, :value => 000, :as => 'hidden'
-      - else
-        = f.input :brightcove_movie_id, :label => 'Brightcove movie ID'
-    = f.input :rental_length
-    = f.input :twitter_share_text, :input_html => {:rows => "7"}
-    = f.input :facebook_share_text, :input_html => {:rows => "7"}
-    = f.input :fb_comments_color, :collection => ['light', 'dark'], :include_blank => false
-    = f.input :font_color_help, :input_html => {:class => "colorpicker"}
+      = f.input :brightcove_movie_id, :label => 'Brightcove movie ID'
+    = f.input :rental_length,:label => "Running Length"
+    = f.input :twitter_share_text, :input_html => {:rows => "7"},:label => "Twitter Share Text"
+    = f.input :facebook_share_text, :input_html => {:rows => "7"},:label => "Facebook Share Text"
+    = f.input :fb_comments_color, :collection => ['light', 'dark'], :include_blank => false,:label => "Fb Comments Color"
+    = f.input :font_color_help, :input_html => {:class => "colorpicker"},:label => "Font Color Help"
+    = f.input :button_color_gradient_1, :input_html => {:class => "colorpicker"},:label => "Button Color Gradient 1"
+    = f.input :button_color_gradient_2, :input_html => {:class => "colorpicker"},:label => "Button Color Gradient 2"
 
-    = f.input :button_color_gradient_1, :input_html => {:class => "colorpicker"}
-    %span#watch_now_button_preview
-      %a.butWatch#payButton{} Watch Now
-    = f.input :button_color_gradient_2, :input_html => {:class => "colorpicker"}
-    = f.input :popup_bk_color_1, :input_html => {:class => "colorpicker"}
-    = f.input :popup_bk_color_2, :input_html => {:class => "colorpicker"}
+    = f.input :popup_bk_color_1, :input_html => {:class => "colorpicker"},:label => "Popup Bk Color 1"
+    = f.input :popup_bk_color_2, :input_html => {:class => "colorpicker"},:label => "Popup Bk Color 2"
+    %li
+      %span#watch_now_button_preview
+        %a.butWatch#payButton{} Watch Now    
     = f.input :description
-    = f.input :pay_dialog_title
-    = f.input :action_box_top
-    = f.input :action_box_left
-    = f.input :feed_dialog_link
-    = f.input :discount_redirect_link
-    = f.input :linter_url
-    = f.input :feed_dialog_name
-    = f.input :feed_dialog_caption
-    = f.input :released
-    = f.input :age_restricted
-    = f.input :rental_badge
-    = f.input :new_release
-    = f.input :badge_number
-    = f.input :badge_text
-    = f.input :genre, :collection => @studio.genre_list
-    .navTabContent
-      %h2 Block Settings.
-      = f.input :fb_likers_enabled
-      = f.input :top_clips_enabled
-      = f.input :top_quotes_enabled
-      = f.input :top_bestsellers_enabled
-    - if @series
-      = f.input :serial, :as => 'hidden', :checked => true
-    - else
-      = f.input :serial
+    = f.input :pay_dialog_title,:label => "Pay Dialog Title"
+    = f.input :action_box_top,:label => "Action Box Top"
+    = f.input :action_box_left,:label => "Action Box Left"
+    = f.input :feed_dialog_link,:label => "Feed Dialog Link"
+    = f.input :discount_redirect_link,:label => "Discount Redirect Link"
+    = f.input :linter_url,:label => "Linter Url"
+    = f.input :feed_dialog_name,:label => "Feed Dialog Name"
+    = f.input :feed_dialog_caption,:label => "Feed Dialog Caption"
+    = f.input :released,:label => "Released"
+    = f.input :age_restricted,:label => "Age Restricted"
+    = f.input :rental_badge,:label => "Rental Badge"
+    = f.input :badge_number,:label => "Badge Number"
+    = f.input :badge_text,:label => "Badge Text"
+    = f.input :genre, :collection => @studio.genre_list,:label => "Genre"
+    .navTabContent1
+      %h2 Block Settings
+      = f.input :fb_likers_enabled,:label => "Fb Likers Enabled"
+      = f.input :top_clips_enabled,:label => "Top Clips Enabled"
+      = f.input :top_quotes_enabled,:label => "Top Quotes Enabled"
+      = f.input :top_bestsellers_enabled,:label => "Top Bestsellers Enabled"
+    = f.input :serial,:label => "Serial"
 
   = f.buttons do
-    = f.commit_button "Save &amp; Continue &raquo;".html_safe
+    = f.commit_button "Save &amp; Continue &raquo;".html_safe    
+    %a{:href => admin_studio_movies_path(@studio), :class => 'butTextBlue'}Back
+
+

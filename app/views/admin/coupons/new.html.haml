@@ -1,10 +1,21 @@
+%script{:type => "text/javascript"}
+  $("a.tn03").addClass("tnOn");
+  $("#subnavlist1").hide();
+  $("#subnavlist2").hide();
+  $("#subnavlist3").hide();
+  $("#subnavlist4").hide();
+  $("#subnavlist5").hide();
+  $("#subnavlist6").hide();
+  $("#subnavmovielist2").show();
+  $("a.sub04").addClass("subOn");
+
 - content_for :breadcrumbs do
   :erb
     <%= breadcrumbs(["Studios Home", [:admin, Studio]],
                     ["#{ @studio.name } Home", [:admin, @studio, Movie]],
                     "Edit Movie - #{@movie.title}").html_safe %>
 
-=render :partial => 'admin/shared/movie_tabs'
+=#render :partial => 'admin/shared/movie_tabs'
 
 .clear
 
@@ -12,6 +23,3 @@
   %br
   = render 'form'
 
-  = link_to 'Show', [:admin, @studio, @movie]
-  \|
-  = link_to 'Back', [:admin, @studio, Movie]

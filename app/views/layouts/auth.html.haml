@@ -1,0 +1,42 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    = hoptoad_javascript_notifier
+    = javascript_include_tag 'vendor/jquery/jquery.min', "vendor/rails"
+    = javascript_include_tag 'vendor/jquery/jquery.form-2.72', 'vendor/jquery.miniColors-0.1/jquery.miniColors'
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'
+    = javascript_include_tag 'admin'
+    = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+    = javascript_include_tag 'vendor/jquery/jquery.tablesorter.js'
+    = stylesheet_link_tag  'formtastic', 'formtastic_changes', 'scaffold', 'admin', 'admin_template','stylesheet'
+    = stylesheet_link_tag '/javascripts/vendor/jquery.miniColors-0.1/jquery.miniColors.css'
+    = csrf_meta_tag
+
+    %title Milyoni Admin
+    = yield(:head)
+%body
+  #wrap
+    #header
+      #masthead{:class=>"clearfix"}
+        #logo
+          %a{:href=>"#"}
+            %img{:src=>"/images/milyoni_logo.png",:width=>"74",:height=>"41",:alt=>"milyoni"}    
+        #courtesyNav
+        
+      #navbar{:class=>"clearfix"}  
+        #navlistContainer
+          #navlist
+              
+      
+    #main{:class=>"clearfix"}
+      #mainContent
+        %p.notice= notice
+        %p.alert= alert
+        = yield
+
+  #footer
+
+%script{:type => "text/javascript"}
+  $("a.tn02").addClass("tnOn");  // Sets the top blue bar active section
+  $("a.sub01").addClass("subOn"); // Sets the sub gray bar active page
+

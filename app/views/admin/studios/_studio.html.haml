@@ -1,38 +1,36 @@
+
+
 = semantic_form_for [:admin, studio] do |f|
   = f.inputs do
     = f.input :name
-    = f.input :facebook_app_id
-    = f.input :facebook_app_secret
-    = f.input :facebook_canvas_page
+    = f.input :facebook_app_id,:label=>"Facebook App"
+    = f.input :facebook_app_secret,:label=>"Facebook App Secret"
+    = f.input :facebook_canvas_page,:label=>"Facebook Canvas Page"
     = f.input :player, :as => 'select', :collection => Studio::PLAYERS
-    = f.input :default_sort, :as => 'select', :collection => Studio::DEFAULT_SORT
     - if studio.is_brightcove?
       = f.input :brightcove_id, :label => "Brightcove ID"
       = f.input :brightcove_key
-    = f.input :privacy_policy_url, :input_html => {:type => "notUrl"}
-    = f.input :viewing_details
-    = f.input :copyright_notice
-    = f.input :help_text
-    = f.input :max_ips_for_movie
-    = f.input :og_prefix
+    = f.input :privacy_policy_url, :input_html => {:type => "notUrl"},:label=>"Privacy Policy Url"
+    = f.input :viewing_details, :input_html => { :rows => "5" },:label=>"Viewing Details"
+    = f.input :copyright_notice, :input_html => { :rows => "5" },:label=>"Copyright Notice"
+    = f.input :help_text, :input_html => { :rows => "5" },:label=>"Help Text"
+    = f.input :max_ips_for_movie,:label=>"Max Ips For Movie"
+    = f.input :og_prefix,:label=>"Og Prefix"
 
     .navTabContent
       %ul
         %h2 Enter the country codes using Comma Separated Values(eg: MX,CA,US)
-        %li US - USA
-        %li MX - Mexico
-        %li CA - Canada
+        %a{:href => "#",:onclick=>'window.open("/admin/countrycode","Country Codes","width=400,height=800,location=0,menubar=0,titlebar=0,scrollbars=1,resizable=0,left=0");'}Click Here To See The Country Codes
+    = f.input :white_listed_country_codes,:label=>"White Listed Country Codes"
+ 
+    = f.input :black_listed_country_codes,:label=>"Black Listed Country Codes"
 
-    = f.input :white_listed_country_codes
-
-    = f.input :black_listed_country_codes
-
-    = f.input :genre_list, :label => "Genre list (comma separated)", :input_html => { :value => studio.genre_list.join(', ')}
+    = f.input :genre_list, :label => "Genre List (Comma Separated)", :input_html => { :value => studio.genre_list.join(', ')}
     - if current_admin.milyoni_admin?
       = f.input :series_enabled, :label => "Enable Serialized Content"
       = f.input :comment_stream_enabled, :label => "Enable Comment Stream"
-      = f.input :gallery_header_box
-      = f.input :gallery_footer_box
+      = f.input :gallery_header_box, :input_html => { :rows => "5" },:label => "Gallery Header Box"
+      = f.input :gallery_footer_box, :input_html => { :rows => "5" },:label => "Gallery Footer Box"
 
     = f.input :paypal_enabled, :label => "Activate Paypal"
 
@@ -43,12 +41,12 @@
         %li
           = link_to "Accept Micro Payments", "https://www.paypal.com/us/cgi-bin/?cmd=_micropay-pricing-agreement&fli=true", :target => "_blank"
         %li
-          = link_to "Click View API Signature under 'Option 2'", "https://www.paypal.com/cgi-bin/customerprofileweb?cmd=_profile-api-access", :target => "_blank"
-        %li Plug your credentials below.
+          = link_to "Click View API Signature Under 'Option 2'", "https://www.paypal.com/cgi-bin/customerprofileweb?cmd=_profile-api-access", :target => "_blank"
+        %li Plug Your Credentials Below.
 
-    = f.input :paypal_api_user
-    = f.input :paypal_api_password
-    = f.input :paypal_api_signature
+    = f.input :paypal_api_user,:label => "Paypal Api User"
+    = f.input :paypal_api_password,:label => "Paypal Api Password"
+    = f.input :paypal_api_signature,:label => "Paypal Api Signature"
 
     = f.input :group_buy_enabled, :label => "Enable Group Buy"
 

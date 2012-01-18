@@ -21,10 +21,10 @@ Feature: Admin edits movies in the admin panel
     And I should see "Facebook Link"
     And I should see the admin movie preview
 
-#    When I follow "Look & Feel"
-#    When choose all the images to upload
-#    And I press "Update Skin"
-#    Then I should see all of the image previews
+    When I follow "Look & Feel"
+    When choose all the images to upload
+    And I press "Update Skin"
+    Then I should see all of the image previews
 
   Scenario: Create a new movie for Brightcove Studio
     Given a studio with a "brightcove" player called "Miramax"

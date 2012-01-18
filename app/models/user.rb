@@ -21,23 +21,59 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.export_to_csv(users)
+  # def self.export_to_csv(users)
+ 
+    # csv_string = CSV.generate do |csv|
+      # # header row
+      # csv << ["Name",
+              # "Facebook User ID",
+              # "Created At",
+              # "Email",
+              # "Birthday"
+      # ]
+ 
+      # users.each do |u|
+        # csv << [u.name,
+                # u.try(:facebook_user_id),
+                # u.created_at,
+                # u.email,
+                # u.birthday
+        # ]
+      # end
+    # end
+ 
+  # end
+  
+  def self.export_to_csv(users,counts)
 
     csv_string = CSV.generate do |csv|
       # header row
       csv << ["Name",
               "Facebook User ID",
+              "Gender",
+              "City",
+              "State",
+              "Country",
               "Created At",
               "Email",
-              "Birthday"
+              "Birthday",
+              "Orders",
+              "Visits",
+              
       ]
-
+      
       users.each do |u|
         csv << [u.name,
                 u.try(:facebook_user_id),
+                u.gender,
+                u.city,
+                u.state,
+                u.country,
                 u.created_at,
                 u.email,
-                u.birthday
+                u.birthday,
+                counts[u.id][:orders].to_i,
+                counts[u.id][:page_visits]
         ]
       end
     end

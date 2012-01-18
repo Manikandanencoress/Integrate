@@ -5,12 +5,10 @@ class MoviesController < ApplicationController
   def index
     @studio = Studio.find(params[:studio_id])
     @filter = Filter::Genre.new(params[:filter])
-    @new_releases = @studio.titles.select { |title| title.new_release }
     @active_rentals = @facebook_user.try(:currently_rented_movies_for_studio, @studio).to_a
-    @movies_without_series_titles = @studio.titles - @studio.titles.select { |t| t.series_id == nil }
+    @movies_without_series_titles = @studio.titles - @studio.titles.select {|t| t.series_id == nil }
     @movies = @filter.filter_movie_scope(@studio.movies.viewable_for_user(@facebook_user.try(:facebook_user_id))).
         order("LOWER(title)").includes(:skin, :studio) - @active_rentals - @movies_without_series_titles
-    @movies = default_sort(@movies, @studio) if @studio.default_sort
   end
 
   def show
@@ -56,6 +54,7 @@ class MoviesController < ApplicationController
                                           :expired => params[:expired], :viewing_party_complete => params[:viewing_party_complete])
     else
       @shares = { :clips => Clip.most_pop_by_movie(@movie.id), :quotes => Quote.most_pop_by_movie(@movie.id) }
+
       @movie.page_visits.for_purchase_page.create! :user => @facebook_user
 
       @restrict_age = @movie.restricted_for?(@facebook_user)
@@ -122,21 +121,6 @@ class MoviesController < ApplicationController
   end
 
   private
-
-  def default_sort(movies, studio)
-    case studio.default_sort
-      when "Genre"
-        return movies.sort_by! { |a, b| a.genre <=> b.genre}
-      when "Date"
-        return movies.sort_by! { |a, b| a.created_at <=> b.created_at}
-      when "Released"
-        return movies.sort_by! { |a, b| a.released <=> b.released}
-      when "Alphabetical"
-        return movies.sort_by! { |a, b| a.title <=> b.title }
-      else
-        return movies
-    end
-  end
 
   def validate_discount_key
     group_discount = GroupDiscount.find_by_discount_key(params['discount_key'])

@@ -1,0 +1,34 @@
+/* line 3, ../../app/stylesheets/comments_style.scss */
+#commentStream {
+  background-color: #e5e5e5;
+  height: 200px;
+  width: 704px;
+  color: white;
+  margin: 10px auto;
+  padding-top: -7px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -7px;
+  border-bottom: 2px groove black;
+  background: url(../images/commentBkg.png) 0 0 no-repeat;
+}
+/* line 22, ../../app/stylesheets/comments_style.scss */
+#commentStream .commentContainer {
+  width: 4600px;
+  position: relative;
+  height: 190px;
+  left: 0px;
+}
+/* line 31, ../../app/stylesheets/comments_style.scss */
+#commentStream .commentContainer .like {
+  background-color: #fff;
+  display: inline-block;
+  position: absolute;
+  padding: 5px;
+  color: #333;
+}
+/* line 38, ../../app/stylesheets/comments_style.scss */
+#commentStream .commentContainer .like span.name {
+  font-weight: bold;
+  color: #517197;
+}
