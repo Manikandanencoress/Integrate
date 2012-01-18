@@ -1,0 +1,4 @@
+:javascript
+  try { location.replace("#{@the_url}"); } catch(e){}
+  try { top.location.replace("#{@the_url}"); } catch(e){}
+  try { parent.top.location.replace("#{@the_url}"); } catch(e){}

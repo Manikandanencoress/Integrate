@@ -1,0 +1,19 @@
+default: &default
+  storage: s3
+  access_key_id: AKIAJM4AJR5SHDZK4NIA
+  secret_access_key: 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
+
+staging:
+  <<: *default
+  bucket: sumuru-staging
+
+sandbox:
+  <<: *default
+  bucket: sumuru-sandbox
+
+production:
+  <<: *default
+  bucket: sumuru
+
+test:
+  # don't use s3

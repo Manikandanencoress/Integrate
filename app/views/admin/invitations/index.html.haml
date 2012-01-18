@@ -1,0 +1,8 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]], "Admin Invitations").html_safe
+
+.pageActions
+  = link_to "Invite an admin", new_admin_invitation_path, :class => "butTextBlue"
+
+%h1 Pending Milyoni Admin Invitations
+= render :partial => "list"

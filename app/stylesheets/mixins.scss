@@ -1,0 +1,9 @@
+/* MIXINS */
+
+@import "compass/css3";
+@import "compass/utilities";
+
+@mixin backgroundGradient($topColor, $bottomColor) {
+    @include filter-gradient($topColor, $bottomColor);  /* for IE */
+    @include background-image(linear-gradient($topColor, $bottomColor));
+}

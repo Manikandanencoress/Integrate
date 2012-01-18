@@ -1,0 +1,38 @@
+= include_styles_for(@movie)
+- content_for(:head) do
+  = stylesheet_link_tag 'movies_styles'
+
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+    "#{@movie.title} Layout Preview").html_safe
+
+= link_to "Facebook Link", [ @studio, @movie]
+\|
+= link_to 'Edit Info', edit_admin_studio_movie_path(@studio, @movie)
+\|
+= link_to 'Look & Feel', edit_admin_studio_movie_skin_path(@studio, @movie)
+\|
+= link_to 'Back', admin_studio_movies_path(@studio)
+
+- @movie.attributes.each_pair do |key, value|
+  %p #{key.humanize}: #{@movie.send(key)}
+%p="Genre: #{@movie.genre}"
+%p="Facebook fan page id: #{@movie.facebook_fan_page_id}"
+
+:javascript
+  window.facebook_app_id = '#{@studio.facebook_app_id}';
+
+#fb-root
+= javascript_include_tag "facebook_initializer"
+
+#preview_area
+  .splash_preview
+    %h3 Splash Image
+    =image_tag(@movie.skin.splash_image.url)
+  .purchase_preview.admin.movies.show
+    %h3 Purchase Page
+    = render :file => 'movies/purchase'
+  .watch_preview.admin.orders.show
+    %h3 Watch Page
+    = render :file => 'orders/show'

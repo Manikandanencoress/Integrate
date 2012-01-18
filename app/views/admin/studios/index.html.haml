@@ -1,0 +1,14 @@
+- content_for :breadcrumbs do
+  = breadcrumbs("Studios Home").html_safe
+
+.pageActions
+  = link_to "New Studio", new_admin_studio_path, :class => "butTextBlue"
+  = link_to "Invitations", admin_invitations_path, :class => "butTextBlue"
+  = link_to "Sales Report",  admin_sales_reports_path, :class => "butTextBlue"
+
+%h1 Studios
+- @studios.each do |studio|
+  %h2= link_to studio.name, admin_studio_movies_path(studio)
+  %p= link_to "edit info", edit_admin_studio_path(studio)
+
+

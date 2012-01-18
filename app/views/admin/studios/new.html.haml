@@ -1,0 +1,5 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+      "New Studio").html_safe
+
+= render :partial => "studio", :object => @studio

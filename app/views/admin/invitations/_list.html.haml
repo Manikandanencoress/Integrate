@@ -1,0 +1,6 @@
+%ul.invitations
+  - @invitations.each do |invitation|
+    %li
+      = invitation.email
+      - delete_path_parts = invitation.studio.present? ? [:admin, invitation.studio, invitation] : [:admin, invitation]
+      = button_to "Delete", delete_path_parts, :method => :delete, :confirm => "Are you sure you want to delete this invite?"

@@ -1,0 +1,150 @@
+- content_for :breadcrumbs do
+ 
+  = breadcrumbs(["Studios Home", [:admin, Studio]]).html_safe
+  = breadcrumbs("Sales Report").html_safe
+
+%style{:type => "text/css", :media => "screen"}
+  :plain
+    table.salessortable {
+      font-family:arial;
+      background-color: #CDCDCD;
+      margin:10px 0pt 15px;
+      font-size: 8pt;
+      text-align: center;
+      
+   
+        }
+    table.salessortable thead tr th, table.tablesorter tfoot tr th {
+      background-color:  #cccccc;
+      border: 1px solid #000;
+      color: black;
+      font-size: 12pt;
+      padding: 4px;
+      text-align:center;
+      vertical-align:middle;
+        }
+    table.salessortable thead tr .header {
+      background-image: url('/images/bg.gif');
+      background-repeat: no-repeat;
+      background-position: center right;
+      cursor: pointer;
+        }
+    table.salessortable tbody td {
+      color: #3D3D3D;
+      padding: 4px;
+      background-color: #FFF;
+      
+        }    
+    table.salessortable tbody th {
+     align:left;
+        }
+    table.salessortable tbody tr.odd td {
+      background-color:#F0F0F6;
+        }
+        
+    table.salessortable thead tr .headerSortUp {
+      background-image: url('/images/asc.gif');
+        }
+    table.salessortable thead tr .headerSortDown {
+      background-image: url('/images/desc.gif');
+        }
+    table.salessortable thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+     
+        }
+    
+  
+
+%form(action='/admin/reports' method='get')
+  #studios 
+     
+    %span Select Studio
+    %span= collection_select 'studio', 'studio_id', Studio.find(:all), 'id', 'name',{:prompt=>"All",:selected=>@current_selected}
+  %br
+  %span From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = date_select :filter, :startdate, {:default => @fromdate}
+  %span &nbsp;&nbsp;&nbsp;&nbsp;
+  %span To
+  = date_select :filter, :enddate, {:default => @todate}
+  %br
+  %br
+  %span
+  %input{:type => "submit", :value=>"Filter",:name=>"submit"}
+  &nbsp;&nbsp;Sort by &nbsp;
+  %span 
+    = select_tag "sort_by", options_for_select([["Studio / Movie","0"],["Fan Count","1"],["Launch Date","2"],["Price","3"],["RENTALS","4"],["DOLLARS","5"],["VISITORS","6"],["CONVERSION RATE","7"]])
+    &nbsp;&nbsp;
+%br
+%h1(text-align:left) Movie Purchases for week of #{Date::ABBR_MONTHNAMES[@fromdate.month]} #{@fromdate.day.ordinalize} #{@fromdate.year} to #{Date::ABBR_MONTHNAMES[@todate.month]} #{@todate.day.ordinalize} #{@todate.year}
+%hr{:class => "greenBar"}
+%br
+
+
+  %table
+    %tr 
+      %td{:align=>"left",:style=>"width:200px;"}= link_to "Export CSV", admin_reports_path(:format => 'csv',:from_date=>@fromdate,:to_date=>@todate,:studio_id=>@current_selected)
+            
+  #item    
+    %table.SalesReportTable{:id=>"salesreport"}
+      %thead
+        %tr
+          %th{:rowspan=>2,:style=>""} Studio / Movie
+          %th{:rowspan=>2,:style=>""} Fan Count
+          %th{:rowspan=>2,:style=>""} Launch Date
+          %th{:rowspan=>2,:style=>""} Price 
+          %th{:colspan=>2,:style=>"background-image:none;"} RENTALS
+          %th{:colspan=>2,:style=>"background-image:none;"} DOLLARS
+          %th{:colspan=>2,:style=>"background-image:none;"} VISITORS
+          %th{:colspan=>2,:style=>"background-image:none;"} CONVERSION RATE
+        %tr
+          %th{:style=>""} Period
+          %th{:style=>""} Cum.
+          %th{:style=>""} Period
+          %th{:style=>""} Cum.
+          %th{:style=>"width:150px;font-size:12px;"} Period
+          %th{:style=>"width:130px;font-size:12px;"} Cum.
+          %th{:style=>"width:150px;font-size:12px;"} Period
+          %th{:style=>"width:130px;font-size:12px;"} Cum.
+               
+      - filename = "#{RAILS_ROOT}/public/movie_fan_count.csv"
+      
+      - @movies.each do |movie|
+        - if movie.studio_id !=nil and movie.facebook_fan_page_id != nil
+          - lastweek_sales = movie.movie_purchased_period(@fromdate,@todate)
+          - lastweek_visitors = movie.visitors_lastweek((@fromdate.to_date + 1.days) , @todate)
+          - sales = movie.movie_purchased_period(@fromdate.to_date + 1.days,@todate)
+          - cumulative = movie.movie_purchased 
+          - totalvisitors = movie.total_visitors 
+          - fan_count = 0
+          - #fan_count = fan_count(movie) if movie.facebook_fan_page_id != nil
+          - CSV.foreach(filename, :quote_char => '"', :col_sep =>',', :row_sep =>:auto, :headers => true) do |row|
+            - fan_count =  row["fan_count"].to_i if row["movie_id"].to_i == movie.id
+    
+          - visitors_rate_cumulative = 0
+          - if lastweek_visitors.to_i > 0
+            - last_week_conversion_rate = format("%.2f",(sales* 100).to_f/lastweek_visitors .to_f)
+          - else
+            - last_week_conversion_rate = 0
+  
+          - if fan_count != nil
+            - visitors_rate_cumulative = (format("%.5f",(totalvisitors * 100).to_f/fan_count.to_f)).to_s if fan_count > 0
+     
+            %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+              %td{:align=>"left"}= movie.studio.name + " / " + movie.title
+              %td{:style=>"width:50px;"}=  number_with_delimiter(fan_count.to_i, :delimiter => ',')
+              %td= movie[:created_at].to_date
+              %td= "$" + ( movie[:price] / 10 ).to_s 
+              %td{:style=>"width:150px;"}= sales
+              %td{:style=>"width:150px;"}= cumulative
+              %td= "$" + (format("%.2f",(lastweek_sales *  (movie[:price]/10)).to_f)).to_s 
+              %td= "$" + (format("%.2f",(cumulative *  (movie[:price]/10)).to_f)).to_s 
+              %td= number_with_delimiter(lastweek_visitors.to_i, :delimiter => ',') 
+              %td= number_with_delimiter(totalvisitors.to_i, :delimiter => ',')
+              %td= (last_week_conversion_rate).to_s + "%" 
+              - if totalvisitors == 0
+                %td 0.00%
+              - else
+                %td= (format("%.2f",(cumulative * 100).to_f/totalvisitors.to_f)).to_s + "%"
+              - studioname = movie.studio.name 
+              - fan_count =0
+      
+      

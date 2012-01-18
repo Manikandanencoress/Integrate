@@ -1,0 +1,56 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://webservices.datapakservices.com:443/TaxServiceTest
+    body: <?xml version="1.0" encoding="UTF-8"?><DatapakServices><Source><Username>mi53nna</Username><Password>y34dfr2</Password></Source><TaxService><CompNum>239</CompNum><ProjNum>002</ProjNum><ShipToZip>98111</ShipToZip><ShipHandle>0.00</ShipHandle><ItemDetail>true</ItemDetail><TaxDetail>true</TaxDetail><TaxItems><TaxItem><ProductID>FB_VOD01</ProductID><Quantity>1</Quantity><Price>1.00</Price></TaxItem></TaxItems></TaxService></DatapakServices>
+    headers: 
+      content-type: 
+      - text/xml
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      server: 
+      - Apache-Coyote/1.1
+      date: 
+      - Wed, 04 May 2011 00:09:43 GMT
+    body: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <DatapakServices method="response"><TaxService><Result><Code>001</Code><Description>Action successful</Description><CalculatedTax>0.10</CalculatedTax><TaxItems><TaxItem><ProductID>FB_VOD01</ProductID><Quantity>1</Quantity><Price>1.0</Price><TaxApplied>0.10</TaxApplied><Detail><Tax><TaxName>STATE SALES TAX-GENERAL MERCHANDISE</TaxName><AuthorityName>WASHINGTON, STATE OF</AuthorityName><AuthorityType>1</AuthorityType><TaxableAmount>1.00</TaxableAmount><TaxApplied>0.07</TaxApplied><TaxRate>0.065000000000</TaxRate><ExemptAmt>0.000</ExemptAmt><ExemptQty>0.00000000</ExemptQty><FeeApplied>0.000</FeeApplied><BaseType>00</BaseType><PassFlag>1</PassFlag><PassType>00</PassType></Tax><Tax><TaxName>COUNTY SALES TAX-GENERAL MERCHANDISE</TaxName><AuthorityName>KING, COUNTY OF</AuthorityName><AuthorityType>2</AuthorityType><TaxableAmount>1.00</TaxableAmount><TaxApplied>0.03</TaxApplied><TaxRate>0.030000000000</TaxRate><ExemptAmt>0.000</ExemptAmt><ExemptQty>0.00000000</ExemptQty><FeeApplied>0.000</FeeApplied><BaseType>00</BaseType><PassFlag>1</PassFlag><PassType>00</PassType></Tax></Detail></TaxItem><TaxItem><ProductID>SHIPHANDLE</ProductID><Quantity>1</Quantity><Price>0.0</Price><TaxApplied>0.00</TaxApplied></TaxItem></TaxItems></Result></TaxService></DatapakServices>
+
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://graph.facebook.com:443/00001?oauth_token=217556128271512%7C2.Yw2eceI24HLevhDE4FaSkA__.3600.1304100000.1-100002312958755%7CAZkP7f2Ed8g1tnteeiR2On5gdrw
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 400
+      message: Bad Request
+    headers: 
+      cache-control: 
+      - no-store
+      content-type: 
+      - text/javascript; charset=UTF-8
+      expires: 
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      pragma: 
+      - no-cache
+      www-authenticate: 
+      - "OAuth \"Facebook Platform\" \"invalid_token\" \"Error validating access token: Session has expired at unix time 1304100000. The current unix time is 1308680390.\""
+      x-fb-rev: 
+      - "395044"
+      x-fb-server: 
+      - 10.42.62.47
+      x-cnection: 
+      - close
+      date: 
+      - Tue, 21 Jun 2011 18:19:50 GMT
+      content-length: 
+      - "160"
+    body: "{\"error\":{\"type\":\"OAuthException\",\"message\":\"Error validating access token: Session has expired at unix time 1304100000. The current unix time is 1308680390.\"}}"
+    http_version: "1.1"

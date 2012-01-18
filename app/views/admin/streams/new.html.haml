@@ -1,0 +1,47 @@
+- content_for :breadcrumbs do
+  :erb
+    <%= breadcrumbs(["Studios Home", [:admin, Studio]],
+                    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+                    "New stream - #{@movie.title}").html_safe %>
+
+=render :partial => 'admin/shared/movie_tabs'
+
+.clear
+  
+.navTabContent
+  %h1 New stream - #{@movie.title}
+  %hr{:class => "greenBar"}
+  %br
+  = render 'form'
+  %hr{:class => "greenBar"}
+  
+  - if @streams and @streams.length > 0
+    %h1 List of movie streams
+    #item
+      %table.SalesReportTable
+        %thead
+          %tr
+            %th S.no
+            %th Movie
+            %th Url
+            %th Bitrate
+            %th Width
+            %th Height
+            %th{:colspan=>2,:align=>"center"} Action
+              
+          - i=1
+        - @streams.each do |stream|
+          %tr{:class => cycle(:odd,:even, :name => 'zebra_stripes')}
+            %td{:align=>"right"}= i.to_s + "."
+            %td= @movie.title
+            %td=  truncate(stream.url,:length => 50)
+            %td= stream.bitrate
+            %td= stream.width
+            %td= stream.height
+            %td{:align=>"center"}
+              = link_to 'Edit', edit_admin_studio_movie_stream_path(@studio,@movie,stream) 
+            %td{:align=>"center"}
+              = link_to 'Destroy', admin_studio_movie_stream_path(@studio,@movie,stream), :confirm => 'Are you sure?', :method => :delete
+          -i+=1
+        
+    %br

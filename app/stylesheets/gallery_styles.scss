@@ -1,0 +1,265 @@
+@import 'compass/utilities/general/clearfix';
+
+/* Slideshow CSS */
+
+$gallery_element_width: 115px;
+$gallery_element_height: 200px;
+$gallery_rows: 3;
+$movies_per_gallery_row: 5;
+
+$gallery_height: $gallery_element_height * $gallery_rows + 30;
+$gallery_width: $gallery_element_width * $movies_per_gallery_row;
+
+$galleryShadowSprite: url(/images/gallery/galleryShadow.png);
+$galleryDropShadowWidth: 730px;
+$galleryContentWidth: $galleryDropShadowWidth + 10;
+
+@mixin center-with-margins {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+body.movies.index {
+
+    font-size: 11px;
+
+    .mainContainer {
+        text-align: left;
+    }
+
+    #content {
+        width: $galleryContentWidth;
+        z-index:1;
+        @include center-with-margins;
+        padding: 0px 10px 10px 10px;
+
+        .copyright {
+            padding-right: 10px;
+            float: right;
+            p { margin: 0; padding: 0; }
+        }
+    }
+
+    #header {
+        width: $galleryContentWidth;
+        @include center-with-margins;
+    }
+
+    .filterForm {
+        @include clearfix;
+        float:right;
+        margin-right:30px;
+        margin-top: 15px;
+    }
+
+
+    .gallerySection {
+
+        $button_margin: 10px;
+        $button_width: 51px;
+        $button_height: 100px;
+        $left_gutter: $button_width + $button_margin * 2;
+
+        padding: 4px 0;
+        width:720px;
+        @include center-with-margins;
+
+        h2 { margin-left: $left_gutter }
+
+        ol {
+            padding-left: 0px;
+            margin-left: 15px;
+            li {
+                float: left;
+                width: $gallery_element_width - 8;
+                height: $gallery_element_height+10;
+                list-style: none;
+                text-align: center;
+                      
+                a {
+                    text-decoration: none;
+                    color: #000;
+
+                    .title {
+                        display: block;
+                        height: 3em;
+                        overflow: hidden;
+                        margin-bottom: -5px;
+                    }
+                }
+            }
+
+        }
+
+        .active_rentals {
+            @include clearfix;
+            ol {
+                margin-left: $left_gutter;
+            }
+        }
+
+        .carousel {
+            .next, .prev {
+                width: $button_width;
+                height: $button_height;
+                float: right;
+                margin: 228px $button_margin 0px;
+                z-index: 1;
+                opacity: 1.0;
+                display: block;
+                background: url(/images/gallery/galleryArrowRt.png) no-repeat top left;
+                text-indent: -9999px;
+            }
+
+            .prev {
+                float: left;
+                background: url(/images/gallery/galleryArrowLt.png) no-repeat top left;
+            }
+
+            .slides_container {
+                width: $gallery_width;
+                height: $gallery_height;
+                overflow-x: hidden;
+                overflow-y: hidden;
+
+                div {
+                  width: $gallery_width;
+                  height: $gallery_height;
+                  display:block;
+                }
+            }
+
+        }
+
+
+
+        .series-carousel {
+            .next, .prev {
+                width: $button_width;
+                height: $button_height;
+                float: right;
+                margin: 228px $button_margin 0px;
+                z-index: 1;
+                opacity: 1.0;
+                display: block;
+                background: url(/images/gallery/galleryArrowRt.png) no-repeat top left;
+                text-indent: -9999px;
+            }
+
+            .prev {
+                float: left;
+                background: url(/images/gallery/galleryArrowLt.png) no-repeat top left;
+            }
+
+            .slides_container {
+                width: $gallery_width;
+                height: $gallery_height;
+                overflow-x: hidden;
+                overflow-y: hidden;
+
+                div {
+                  width: $gallery_width;
+                  height: $gallery_height;
+                  display:block;
+                }
+            }
+
+        }
+
+        .new_relases {
+            @include clearfix;
+            ol {
+                margin-left: $left_gutter;
+            }
+        }
+    }
+
+    #rentals.gallerySection {
+        .prev, .next {
+            margin-top: 42px;
+        }
+        .slides_container {
+            height: $gallery_element_height+10;
+        }
+    }
+
+    #series-items.gallerySection {
+        .prev, .next {
+            margin-top: 42px;
+        }
+        .slides_container {
+            height: $gallery_element_height+10;
+        }
+    }
+
+    #new_releases.gallerySection {
+        .prev, .next {
+            margin-top: 42px;
+        }
+        .slides_container {
+            height: $gallery_element_height+10;
+        }
+    }
+
+    #dropshadow     {
+        position:relative;
+        width: $galleryDropShadowWidth;
+        margin:20px auto 20px auto;
+        background: $galleryShadowSprite repeat-y -741px 0;
+        padding-bottom:40px;
+    }
+
+    #dropshadowTop  {
+        position:absolute;
+        display:block;
+        background: $galleryShadowSprite no-repeat 0 0;
+        top:0; left:0;
+        height:15px;
+        width:100%;
+        _width:$galleryDropShadowWidth;
+    }
+
+    #dropshadowBot  {
+        position:absolute;
+        display:block;
+        background:$galleryShadowSprite no-repeat -1481px 0;
+        bottom:0; left:0;
+        height:15px;
+        width:100%;
+        _width:$galleryDropShadowWidth;
+    }
+}
+
+#top-image{
+    margin-left: -4px;
+    margin-top: -4px;
+    z-index: 50;
+    position:relative;
+}
+
+
+#bottom-image{
+    margin-left: 8px;
+    margin-top: -125px;
+    z-index: 25;
+}
+
+.series-item-container{
+    border: 1px solid #969696;
+    height: 131px;
+    margin-bottom: 1px;
+    margin-left: 0;
+    margin-top: -5px;
+    padding-top: 4px;
+    position: absolute;
+    width: 94px;
+    z-index: -500;
+}
+
+.shadow-class {
+    -moz-box-shadow: 9px -1px 8px #ccc;
+    -webkit-box-shadow: 9px -1px 8px #ccc;
+    box-shadow: 9px -1px 8px #ccc;
+    border-radius: 9px 9px 9px 9px;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color='#ebebeb',direction='120',strength='15');
+}

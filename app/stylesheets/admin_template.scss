@@ -1,0 +1,378 @@
+@import "mixins";
+@import "compass/css3/images";
+
+$adminHightlightColor: #0d5cab;
+$lightGreyBackground: #fafafa;
+$darkerGreyBackground: #cccccc;
+$lightAdminHighlightColor: #879ed5;
+$veryLightGrey: #eeeeee;
+
+@import 'tom_reset';
+
+/* =2 Links
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+a {
+    color: $adminHightlightColor;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $adminHightlightColor;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: $adminHightlightColor;
+}
+
+/* =3 Headings
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+h1, h2 {
+  color: $adminHightlightColor;
+  font-weight: normal;
+}
+
+h1 {
+    font-size: 2.0em;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+h2 {
+    font-size: 1.636em;
+    margin-bottom: 5px;
+}
+
+h3 { font-size: 1em; }
+h4 { font-size: .875em; }
+h5 { font: .75em; }
+
+/* =4 Header
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+#header {
+    height: 100px;
+    position: relative;
+    background: #fff;
+}
+
+#logo {
+    float: left;
+    margin-top: 14px;
+}
+
+#phonetics {
+    position: absolute;
+    top: 23px;
+    left: 156px;
+}
+
+DIV.adminTitle {
+    position: absolute;
+    top: 63px;
+    left: 156px;
+    font-size: 30px;
+    color: $adminHightlightColor
+}
+
+/*MAIN FLASH*/
+#bannerMain img {
+    float: left;
+}
+
+DIV.tertiary {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    font-size: .9em;
+}
+
+/* =6 Middle
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+#dropshadow {
+    width: 795px;
+    padding: 13px 47px 15px 45px;
+    margin: 20px auto 20px auto;
+    background: url(../images/admin/sprite-dropshadow.png) repeat-y -900px 0;
+    position: relative;
+}
+
+#dropshadowTop {
+    height: 13px;
+    display: block;
+    background: url(../images/admin/sprite-dropshadow.png) no-repeat 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    _width: 889px;
+}
+
+#dropshadowBot {
+    height: 15px;
+    display: block;
+    background: url(../images/admin/sprite-dropshadow.png) no-repeat -1800px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    _width: 889px;
+}
+
+#allcontent {
+    width: 797px;
+}
+
+#allcontent:after {
+    clear: both;
+    content: '.';
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+#breadcrumbs {
+    background: $adminHightlightColor;
+    color: #fff;
+    font-size: .9em;
+    padding: 3px 18px;
+    margin-bottom: 7px;
+
+    a {
+        color: $veryLightGrey
+    }
+}
+
+DIV.pageActions {
+    float: right;
+
+    a {
+        margin-bottom: 5px;
+    }
+}
+
+DIV.pageActions-left, #forgotYourPassword{
+    float: left;
+
+    a {
+        margin-bottom: 5px;
+    }
+}
+
+label {
+    font-weight:bold;
+}
+
+.logOutlink {
+   float: right;
+}
+
+.greenBar {
+background:#8cc63f;
+height:4px;
+}
+
+input[type=submit] {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold !important;
+    display: block;
+    text-align: center;
+    padding: 5px 15px !important;
+    background: $adminHightlightColor;
+    @include backgroundGradient($adminHightlightColor, $lightAdminHighlightColor);
+    border: 1px solid $darkerGreyBackground;
+    @include border-radius(5px);
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    @include backgroundGradient($lightAdminHighlightColor, $adminHightlightColor)
+}
+
+input[type=text], input[type=notUrl], textarea {
+    @include backgroundGradient(#ffffff, #f3f3f3);
+    border: 1px solid $darkerGreyBackground;
+    padding: 2px !important;
+
+    @include border-radius(2px);
+}
+
+/* =7 Form
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+DIV.navTabContent {
+    border: 1px solid $darkerGreyBackground;
+    background: $lightGreyBackground;
+    margin-top: 4px;
+    padding: 15px 5px 15px 20px;
+    @include border-radius(0 5px 5px 5px);
+    margin-bottom: 5px;
+}
+
+UL.navTabs {
+    padding: 0px;
+    list-style: none;
+    margin-top: 15px;
+
+
+    li {
+        margin: 0px 2px 0 0;
+        list-style: none;
+        float: left;
+
+        a {
+            border: 1px solid $darkerGreyBackground;
+            border-bottom: 0px;
+            padding: 5px 20px;
+
+            @include border-radius(5px 5px 0 0);
+
+            $experimental-support-for-svg: true;
+            $legacy-support-for-ie8: true;
+            $legacy-support-for-ie7: true;
+
+
+            @include backgroundGradient($lightGreyBackground, $darkerGreyBackground);
+
+            &:hover {
+                text-decoration: none;
+                background: $lightGreyBackground;
+            }
+
+            &.tabOn {
+                border-bottom: 1px solid $lightGreyBackground;
+                background: $lightGreyBackground;
+
+                @include backgroundGradient($adminHightlightColor, $lightGreyBackground);
+                font-weight: bold;
+                cursor: default;
+            }
+        }
+    }
+}
+
+
+hr {
+    margin-bottom: 10px;
+}
+
+/* =8 Extra
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+table.gridTable {
+    border-collapse: collapse;
+
+    th {
+        text-align: left;
+        background: $darkerGreyBackground;
+        padding: 6px 15px 6px 10px;
+        @include backgroundGradient(#f3f3f3, $darkerGreyBackground);
+        border: 1px solid $veryLightGrey;
+    }
+
+    td {
+        padding: 4px 15px 4px 10px;
+        border: 1px solid $veryLightGrey;
+
+        &.center {
+            text-align: center;
+        }
+    }
+}
+
+table.SalesReportTable {
+    border-collapse: collapse;
+
+    th {
+        text-align: center;
+        background: $darkerGreyBackground;
+        padding: 1px 1px 0px 0px;
+        @include backgroundGradient(#f3f3f3, $darkerGreyBackground);
+        border: 1px solid $veryLightGrey;
+        
+    }
+
+    td {
+        padding: 4px 15px 0px 0px;
+        border: 1px solid $veryLightGrey;
+
+        &.center {
+            text-align: center;
+        }
+    }
+}
+
+A.butTextBlue {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    height: 23px;
+    padding: 6px 10px 0 10px;
+    background: $adminHightlightColor;
+
+    @include backgroundGradient($adminHightlightColor, $lightAdminHighlightColor);
+    border: 1px solid $darkerGreyBackground;
+    @include border-radius(5px);
+}
+
+A.butTextBlue:hover {
+    @include backgroundGradient($lightAdminHighlightColor, $adminHightlightColor);
+}
+
+A.butTwo:hover {
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    border: 1px solid $veryLightGrey;
+
+    background: $lightAdminHighlightColor;
+    color: #dce9c1
+}
+
+/* =9 Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+#footer {
+    border-top: 13px solid $adminHightlightColor;
+    clear: both;
+    text-align: right;
+    color: $adminHightlightColor;
+    font-weight: bold;
+    padding: 7px 0;
+    font-size: .909em;
+    background-color: #fff;
+    margin-top: 2em;
+
+    a {
+        color: #000;
+        border-left: 1px solid #86aed5;
+        padding: 0 6px 0 4px;
+
+        &:hover { color: #86aed5; }
+    }
+}
+
+#ui-datepicker-div {
+ background-color:white;
+}
+.ui-datepicker-header {
+    text-align:center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.ui-datepicker-prev {
+float: left;
+}
+.ui-datepicker-next {
+float: right;
+}

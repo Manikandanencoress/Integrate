@@ -1,0 +1,8 @@
+= semantic_form_for [:admin, @studio, @series], :html => {:multipart => true} do |f|
+  = f.inputs do
+    = f.input :price
+    = f.input :enable_series_pass
+
+  = f.buttons do
+    = f.commit_button "Save".html_safe
+

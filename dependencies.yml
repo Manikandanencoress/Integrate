@@ -1,0 +1,674 @@
+--- 
+- name: "abstract"
+  version: "1.0.0"
+  license: "Ruby License"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/abstract-1.0.0/README.txt"
+- name: "actionmailer"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/actionmailer-3.0.7/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/actionmailer-3.0.7/README.rdoc"
+- name: "actionpack"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/actionpack-3.0.7/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/actionpack-3.0.7/README.rdoc"
+- name: "activemodel"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/activemodel-3.0.7/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/activemodel-3.0.7/README.rdoc"
+- name: "activerecord"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/activerecord-3.0.7/README.rdoc"
+- name: "activeresource"
+  version: "3.0.7"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/activeresource-3.0.7/README.rdoc"
+- name: "activesupport"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/activesupport-3.0.7/README.rdoc"
+- name: "arel"
+  version: "2.0.10"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/arel-2.0.10/MIT-LICENSE.txt"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/arel-2.0.10/README.markdown"
+- name: "attr_required"
+  version: "0.0.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/attr_required-0.0.3/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/attr_required-0.0.3/README.rdoc"
+- name: "auto_tagger"
+  version: "0.2.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/auto_tagger-0.2.3/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/auto_tagger-0.2.3/README.md"
+- name: "aws-s3"
+  version: "0.6.2"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/aws-s3-0.6.2/COPYING"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/aws-s3-0.6.2/README"
+- name: "bcrypt-ruby"
+  version: "2.1.4"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/bcrypt-ruby-2.1.4/COPYING"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/bcrypt-ruby-2.1.4/README"
+- name: "builder"
+  version: "2.1.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/builder-2.1.2/README"
+- name: "bundler"
+  version: "1.0.13"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/bundler-1.0.13/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/bundler-1.0.13/README.md"
+- name: "cancan"
+  version: "1.6.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/cancan-1.6.5/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/cancan-1.6.5/README.rdoc"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/cancan-1.6.5/spec/README.rdoc"
+- name: "capistrano"
+  version: "2.6.0"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/capistrano-2.6.0/README.mdown"
+- name: "chunky_png"
+  version: "1.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/chunky_png-1.2.0/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/chunky_png-1.2.0/README.rdoc"
+- name: "compass"
+  version: "0.11.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/compass-0.11.1/frameworks/compass/templates/pie/LICENSE"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/compass-0.11.1/frameworks/compass/templates/pie/LICENSE-APACHE2.txt"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/compass-0.11.1/frameworks/compass/templates/pie/LICENSE-GPL2.txt"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/compass-0.11.1/LICENSE.markdown"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/compass-0.11.1/examples/README.markdown"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/compass-0.11.1/README.markdown"
+- name: "configuration"
+  version: "1.2.0"
+  license: "Ruby License"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/configuration-1.2.0/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/configuration-1.2.0/README"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/configuration-1.2.0/README.erb"
+- name: "devise"
+  version: "1.3.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/devise-1.3.4/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/devise-1.3.4/lib/generators/templates/README"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/devise-1.3.4/README.rdoc"
+- name: "erubis"
+  version: "2.6.6"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/erubis-2.6.6/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/erubis-2.6.6/doc-api/files/README_txt.html"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/erubis-2.6.6/README.txt"
+- name: "fb_graph"
+  version: "1.8.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/bundler/gems/fb_graph-3c93caeef41a/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/bundler/gems/fb_graph-3c93caeef41a/README.rdoc"
+- name: "formtastic"
+  version: "1.2.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/formtastic-1.2.3/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/formtastic-1.2.3/README.textile"
+- name: "fssm"
+  version: "0.2.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/fssm-0.2.7/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/fssm-0.2.7/README.markdown"
+- name: "geoip"
+  version: "1.1.1"
+  license: "GPL 2.1"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/geoip-1.1.1/README.rdoc"
+- name: "haml"
+  version: "3.1.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/MIT-LICENSE"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/vendor/sass/MIT-LICENSE"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/vendor/sass/vendor/fssm/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/README.md"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/test/haml/spec/README.md"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/vendor/sass/README.md"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-3.1.1/vendor/sass/vendor/fssm/README.markdown"
+- name: "haml-rails"
+  version: "0.3.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/haml-rails-0.3.4/README.md"
+- name: "has_scope"
+  version: "0.5.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/has_scope-0.5.0/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/has_scope-0.5.0/README.rdoc"
+- name: "heroku"
+  version: "2.2.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/heroku-2.2.4/README.md"
+- name: "highline"
+  version: "1.6.2"
+  license: "Ruby License"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/highline-1.6.2/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/highline-1.6.2/README"
+- name: "hoptoad_notifier"
+  version: "2.4.11"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/hoptoad_notifier-2.4.11/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/hoptoad_notifier-2.4.11/README.md"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/hoptoad_notifier-2.4.11/README_FOR_HEROKU_ADDON.md"
+- name: "httpclient"
+  version: "2.2.1"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "i18n"
+  version: "0.5.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/i18n-0.5.0/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/i18n-0.5.0/README.textile"
+- name: "informal"
+  version: "0.0.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/informal-0.0.3/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/informal-0.0.3/README.md"
+- name: "inherited_resources"
+  version: "1.2.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/inherited_resources-1.2.2/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/inherited_resources-1.2.2/README.rdoc"
+- name: "json"
+  version: "1.4.6"
+  license: "Ruby License"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/json-1.4.6/COPYING"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/json-1.4.6/README"
+- name: "launchy"
+  version: "0.4.0"
+  license: "ISC License"
+  approved: false
+  license_url: "http://opensource.org/licenses/isc-license.txt"
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/launchy-0.4.0/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/launchy-0.4.0/README"
+- name: "mail"
+  version: "2.2.19"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/mail-2.2.19/README.rdoc"
+- name: "mime-types"
+  version: "1.16"
+  license: "Ruby License"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/mime-types-1.16/README.txt"
+- name: "mustache"
+  version: "0.99.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/mustache-0.99.4/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/mustache-0.99.4/README.md"
+- name: "net-scp"
+  version: "1.0.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/net-scp-1.0.4/README.rdoc"
+- name: "net-sftp"
+  version: "2.0.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/net-sftp-2.0.5/README.rdoc"
+- name: "net-ssh"
+  version: "2.1.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/net-ssh-2.1.4/README.rdoc"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/net-ssh-2.1.4/test/README.txt"
+- name: "net-ssh-gateway"
+  version: "1.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/net-ssh-gateway-1.1.0/README.rdoc"
+- name: "nokogiri"
+  version: "1.4.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/nokogiri-1.4.4/README.ja.rdoc"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/nokogiri-1.4.4/README.rdoc"
+- name: "orm_adapter"
+  version: "0.0.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/orm_adapter-0.0.5/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/orm_adapter-0.0.5/README.rdoc"
+- name: "paperclip"
+  version: "2.3.11"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/paperclip-2.3.11/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/paperclip-2.3.11/README.md"
+- name: "pg"
+  version: "0.11.0"
+  license: "Ruby License"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/pg-0.11.0/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/pg-0.11.0/README"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/pg-0.11.0/README.ja"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/pg-0.11.0/README.OS_X"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/pg-0.11.0/README.windows"
+- name: "polyglot"
+  version: "0.3.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/polyglot-0.3.1/License.txt"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/polyglot-0.3.1/README.txt"
+- name: "rack"
+  version: "1.2.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-1.2.3/COPYING"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-1.2.3/README"
+- name: "rack-facebook-method-fix"
+  version: "0.3.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-facebook-method-fix-0.3.0/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-facebook-method-fix-0.3.0/README.rdoc"
+- name: "rack-mount"
+  version: "0.6.14"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-mount-0.6.14/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-mount-0.6.14/README.rdoc"
+- name: "rack-oauth2"
+  version: "0.8.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-oauth2-0.8.1/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-oauth2-0.8.1/README.rdoc"
+- name: "rack-test"
+  version: "0.5.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-test-0.5.7/MIT-LICENSE.txt"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rack-test-0.5.7/README.rdoc"
+- name: "rails"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "railties"
+  version: "3.0.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/railties-3.0.7/lib/rails/generators/rails/plugin/templates/MIT-LICENSE.tt"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/railties-3.0.7/guides/assets/images/icons/README"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/railties-3.0.7/lib/rails/generators/rails/app/templates/doc/README_FOR_APP"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/railties-3.0.7/lib/rails/generators/rails/app/templates/README"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/railties-3.0.7/lib/rails/generators/rails/plugin/templates/README.tt"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/railties-3.0.7/README.rdoc"
+- name: "rake"
+  version: "0.8.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rake-0.8.7/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rake-0.8.7/README"
+- name: "rdiscount"
+  version: "1.6.8"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rdiscount-1.6.8/COPYING"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rdiscount-1.6.8/README.markdown"
+- name: "responders"
+  version: "0.6.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/responders-0.6.4/MIT-LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/responders-0.6.4/README.rdoc"
+- name: "rest-client"
+  version: "1.6.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/rest-client-1.6.1/README.rdoc"
+- name: "sass"
+  version: "3.1.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/sass-3.1.2/MIT-LICENSE"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/sass-3.1.2/vendor/fssm/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/sass-3.1.2/README.md"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/sass-3.1.2/vendor/fssm/README.markdown"
+- name: "term-ansicolor"
+  version: "1.0.5"
+  license: "GPL 2"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/term-ansicolor-1.0.5/COPYING"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/term-ansicolor-1.0.5/README"
+- name: "thor"
+  version: "0.14.6"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/thor-0.14.6/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/thor-0.14.6/README.md"
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/thor-0.14.6/spec/fixtures/doc/README"
+- name: "treetop"
+  version: "1.4.9"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/treetop-1.4.9/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/treetop-1.4.9/README.md"
+- name: "tzinfo"
+  version: "0.3.27"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/tzinfo-0.3.27/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/tzinfo-0.3.27/README"
+- name: "warden"
+  version: "1.0.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/warden-1.0.4/LICENSE"
+  readme_files:
+  - path: "/Users/pivotal/.rvm/gems/ruby-1.9.2-p180@sumuru/gems/warden-1.0.4/README.textile"
+- name: "xml-simple"
+  version: "1.0.16"
+  license: "other"
+  approved: false
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:

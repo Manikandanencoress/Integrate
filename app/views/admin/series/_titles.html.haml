@@ -1,0 +1,27 @@
+%table.gridTable
+  %tr
+    %th Title
+    %th ID
+    %th Price
+    %th Released
+    %th Facebook
+    %th Positon
+    %th
+    %th
+
+    - @titles.each do |title|
+      %tr
+        %td= link_to title.title, [:admin, @studio, title], :title => "View Site", :id => "movie_#{title.id}"
+        %td= title.id
+        %td.center= title.price
+        %td= title.released? ? "Yes" : "No"
+        %td= link_to "Link", [ @studio, title]
+        %td= title.position
+        %td
+          = form_tag('', :method => 'delete') do
+            = hidden_field_tag :title_to_remove, title.id
+            = submit_tag "Remove"
+        %td
+          = form_tag('', :method => 'put') do
+            = hidden_field_tag :title_to_add, title.id
+            = submit_tag "Add"

@@ -1,0 +1,8 @@
+.detailsModule
+  .column
+    .headerBox Help
+    %p= thing.studio.help_text.html_safe
+
+  .column.last
+    .headerBox Viewing Details
+    = viewing_details_for(thing)

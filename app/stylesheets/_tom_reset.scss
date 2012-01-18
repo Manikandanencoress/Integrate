@@ -1,0 +1,98 @@
+
+html {
+    overflow-y: scroll; /* forces firefox scrollbar on */
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: top;
+    font-size: .83em;
+    color: #595959;
+    line-height: 1.3em;
+}
+
+.clearfix:after, .clear {
+    clear: both;
+    content: '.';
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #000;
+    height: 1px;
+    border: none;
+    display: block;
+}
+
+.altColor {
+    background: #d9e8a3;
+}
+
+p, ul, ol, dl, table {
+    margin-bottom: 15px;
+}
+
+li {
+    list-style: disc;
+    margin-left: 25px;
+}
+
+/*.altText {color:#000; font-size:1.091em;}
+.altText li {margin-bottom:10px; padding-left:14px; background:url(../images/admin/arrow-common.png) no-repeat 0 3px; list-style:none; margin-left:0;}
+.altColor .altText li {background:url(../images/admin/arrow-common-alt.png) no-repeat 0 3px;}
+
+.listSBS li {width:125px; float:left;}*/

@@ -1,0 +1,45 @@
+!!!
+%html{"xmlns:og".to_sym => "http://ogp.me/ns#"}
+  %head{:prefix => "#{@studio.try(:og_prefix)}"}
+    - if @movie
+      = facebook_metadata_for_movie(@movie)
+    = hoptoad_javascript_notifier
+    = stylesheet_link_tag 'movies_styles', 'gallery_styles','jquery-custom', 'jquery-custom-reset'
+    = stylesheet_link_tag 'ie9-hacks'
+    = stylesheet_link_tag 'facebox'
+
+    /[if IE]
+      =stylesheet_link_tag 'ie'
+
+    :javascript
+      window.facebook_app_id = '#{@studio.try(:facebook_app_id)}';
+      window.most_recent_signed_request = '#{params['signed_request']}';
+
+    = javascript_include_tag 'vendor/jquery/jquery.min', "vendor/rails", "vendor/jquery/facebox-1.3/facebox.js", "vendor/jquery/slides.min.jquery"
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'
+    = javascript_include_tag 'vendor/jquery/jquery.form-2.72', 'vendor/swfobject'
+    = javascript_include_tag 'vendor/jquery.cookie', 'vendor/underscore', 'vendor/jtruncate'
+    = javascript_include_tag 'vendor/json2', 'vendor/ICanHaz', 'vendor/backbone-0.5.0', 'vendor/jsonp.min'
+
+    = javascript_include_tag 'lib/players/brightcove', 'lib/players/milyoni', 'lib/players/warner'
+    = javascript_include_tag 'lib/page_behaviors', 'lib/comment_stream', 'lib/que_bar'
+
+    = javascript_include_tag "application"
+    = javascript_include_tag "lib/facebook_calls"
+
+
+    = csrf_meta_tag
+
+
+    %title Social Cinema
+
+    = yield(:head)
+  %body{:class => [controller_name, action_name]}
+    #fb-root
+    = javascript_include_tag "facebook_initializer"
+    = yield
+
+    :javascript
+      $(function(){
+        Behaviors.addBehaviors();
+      });

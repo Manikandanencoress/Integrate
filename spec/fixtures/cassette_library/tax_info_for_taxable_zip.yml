@@ -1,0 +1,23 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://webservices.datapakservices.com:443/TaxServiceTest
+    body: <?xml version="1.0" encoding="UTF-8"?><DatapakServices><Source><Username>mi53nna</Username><Password>y34dfr2</Password></Source><TaxService><CompNum>239</CompNum><ProjNum>002</ProjNum><ShipToZip>98111</ShipToZip><ShipHandle>0.00</ShipHandle><ItemDetail>true</ItemDetail><TaxDetail>true</TaxDetail><TaxItems><TaxItem><ProductID>FB_VOD01</ProductID><Quantity>1</Quantity><Price>1.00</Price></TaxItem></TaxItems></TaxService></DatapakServices>
+    headers: 
+      content-type: 
+      - text/xml
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      server: 
+      - Apache-Coyote/1.1
+      date: 
+      - Tue, 03 May 2011 21:42:40 GMT
+    body: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <DatapakServices method="response"><TaxService><Result><Code>001</Code><Description>Action successful</Description><CalculatedTax>0.10</CalculatedTax><TaxItems><TaxItem><ProductID>FB_VOD01</ProductID><Quantity>1</Quantity><Price>1.0</Price><TaxApplied>0.10</TaxApplied><Detail><Tax><TaxName>STATE SALES TAX-GENERAL MERCHANDISE</TaxName><AuthorityName>WASHINGTON, STATE OF</AuthorityName><AuthorityType>1</AuthorityType><TaxableAmount>1.00</TaxableAmount><TaxApplied>0.07</TaxApplied><TaxRate>0.065000000000</TaxRate><ExemptAmt>0.000</ExemptAmt><ExemptQty>0.00000000</ExemptQty><FeeApplied>0.000</FeeApplied><BaseType>00</BaseType><PassFlag>1</PassFlag><PassType>00</PassType></Tax><Tax><TaxName>COUNTY SALES TAX-GENERAL MERCHANDISE</TaxName><AuthorityName>KING, COUNTY OF</AuthorityName><AuthorityType>2</AuthorityType><TaxableAmount>1.00</TaxableAmount><TaxApplied>0.03</TaxApplied><TaxRate>0.030000000000</TaxRate><ExemptAmt>0.000</ExemptAmt><ExemptQty>0.00000000</ExemptQty><FeeApplied>0.000</FeeApplied><BaseType>00</BaseType><PassFlag>1</PassFlag><PassType>00</PassType></Tax></Detail></TaxItem><TaxItem><ProductID>SHIPHANDLE</ProductID><Quantity>1</Quantity><Price>0.0</Price><TaxApplied>0.00</TaxApplied></TaxItem></TaxItems></Result></TaxService></DatapakServices>
+
+    http_version: "1.1"

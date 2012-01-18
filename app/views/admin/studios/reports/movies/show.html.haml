@@ -1,0 +1,70 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+    "Studio Report").html_safe
+
+= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Studio Report"}
+.navTabContent
+
+  %h1 #{params[:series] ? "Series" : "Movies"} Report For #{@studio.name}
+
+  Series
+  = radio_button_tag :choice, :serial
+  Movies
+  = radio_button_tag :choice, :movies
+
+  %br
+  %br
+
+  #semantic
+    = semantic_form_for(@filter, :url => admin_studio_reports_movies_path(@studio), :html => {:method => :get}) do |f|
+      = f.label :date
+      = f.date_select :date
+      = link_to "Today", admin_studio_reports_movies_path(@studio)
+      = f.submit "Filter"
+
+  #not-semantic
+    = form_tag admin_studio_reports_movies_path(@studio), :class => "formtastic filter", :method => :get do
+      = label_tag :date
+      = date_select("filter", "date")
+      = hidden_field_tag :series, true
+      = link_to "Today", admin_studio_reports_movies_path(@studio)
+      = submit_tag "Filter"
+
+
+  %table.gridTable
+    %tr
+      %th Movie
+      %th Day's Users
+      %th Day's Buys
+      %th Price
+      %th Day's Conversion
+      %th Day's Revenue
+      %th Cum. Users
+      %th Cum. Buys
+      %th Cum. Conversion
+      %th Cum. Revenue
+    - @reports.each do |report|
+      %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+        %td= report[:name]
+        %td= report[:todays_visits]
+        %td= report[:todays_orders]
+        %td= report[:price]
+        %td= decimal_ratio_to_percentage(report[:todays_conversion])
+        %td= report[:todays_revenue]
+        %td= report[:cumulative_visits]
+        %td= report[:cumulative_orders]
+        %td= decimal_ratio_to_percentage(report[:cumulative_conversion])
+        %td= report[:cumulative_revenue]
+
+:javascript
+  $("#not-semantic").hide();
+  $('#choice_movies').prop('checked', true);
+  $("#choice_movies").click(function() {
+      $("#semantic").show();
+      $("#not-semantic").hide();
+  });
+  $("#choice_serial").click(function() {
+      $("#semantic").hide();
+      $("#not-semantic").show();
+  });

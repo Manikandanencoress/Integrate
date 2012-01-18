@@ -1,0 +1,14 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+    "Studio Branding").html_safe
+    
+= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Branding"}
+.navTabContent
+
+  = semantic_form_for @branding,
+      :url => admin_studio_branding_path(@studio),
+      :html => {:multipart => true} do |f|
+    = f.inputs do
+      = f.input :logo
+    = f.buttons

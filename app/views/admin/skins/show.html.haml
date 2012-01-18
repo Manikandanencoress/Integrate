@@ -1,0 +1,17 @@
+= link_to 'Edit Info', edit_admin_studio_movie_path(@studio, @movie)
+\|
+= link_to 'Look & Feel', edit_admin_studio_movie_skin_path(@studio, @movie)
+\|
+= link_to 'Back', admin_studio_movies_path(@studio)
+
+-[:splash_image,
+  :purchase_background,
+  :tax_popup_logo           ,
+  :tax_popup_icon           ,
+  :watch_background         ,
+  :player_background        ,
+  :facebook_dialog_icon].each do |skin_image|
+  %p
+    = skin_image.to_s.humanize
+    %br
+    = image_tag @skin.send(skin_image).url

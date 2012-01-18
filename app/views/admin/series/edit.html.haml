@@ -1,0 +1,20 @@
+- content_for :breadcrumbs do
+  :erb
+    <%= breadcrumbs(["Studios Home", [:admin, Studio]],
+                    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+                    "Edit Series - #{@series.movie.title}").html_safe %>
+
+=render :partial => 'admin/shared/movie_tabs'
+
+.clear
+
+.navTabContent
+  %h1 Edit Series - #{@series.movie.title}
+
+  %hr{:class => "greenBar"}
+  %br
+  = render 'form'
+
+  = link_to 'Show', [:admin, @studio, @series.movie]
+  \|
+  = link_to 'Back', [:admin, @studio, Movie]

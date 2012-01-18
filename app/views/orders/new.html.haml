@@ -1,0 +1,15 @@
+%h2 Total price with tax:
+%img.fleft.gfxModal{:alt => "", :src => @movie.skin.tax_popup_icon.url }/
+.fleft.logoModal{:style => "padding-left: 10px"}
+  %h3 Price including sales tax
+  %p
+    Price:
+    = "#{number_to_currency @order[:price], :unit => '' } Credits"
+  %p
+    Tax:
+    = "#{number_to_currency @order[:tax], :unit => '' } Credits"
+  %p
+    Total:
+    = "#{number_to_currency @order[:total], :unit => '' } Credits"
+
+  = link_to "Continue", "#", :class => 'continueBtn', :onclick => "milyoni.renderPurchaseDialog(#{@movie.id}, #{@order[:price]}, #{@order[:tax]}, '#{@order[:zip_code]}', 'false');"

@@ -1,0 +1,39 @@
+= include_styles_for(@movie)
+- content_for(:head) do
+  = facebook_metadata_for_movie(@movie)
+
+.internal
+  .mainContainer
+    .header
+    .content
+      .likeIcons
+        =# image_tag "/images/movies_layout/btn-rental-duration.jpg", :alt => "48 Hour Rental", :class => "btn-duration fright"
+        .clear
+      .videoPlayerBox
+        - if @ip_can_watch_movie
+          = show_video_player_for(@movie)
+        - else
+          %h3 We're sorry, but you have exceeded the maximum number of devices allowed to playback your purchase.
+
+      = render :partial => 'shared/movie_details_module', :locals => { :thing => @movie }
+
+      = render :partial => 'shared/comments', :locals => { :movie => @movie }
+
+    = render :partial => 'shared/movie_footer', :locals => { :thing => @movie }
+
+    - @movie.action_link_name ? actions = [{name: @movie.action_link_name, link: @movie.action_link_url}] : actions = nil
+
+- if !controller.to_s.match(/Admin/)
+  :javascript
+    var movie = #{@movie.as_json.merge( :feed_dialog_desc => @movie.facebook_share_text ).merge(:actions => actions).merge(:discount_key_link => @discount_key_link, :expired => @expired, :viewing_party_complete => @viewing_party_complete).merge(@movie.skin.as_json).to_json };
+
+    var user = { facebook_id : "#{@facebook_user.try(:facebook_user_id)}",
+                name : "#{@facebook_user.try(:name)}",
+                friends : #{facebook_friends} };
+
+    var show_facebook_feed_dialog = #{@show_facebook_feed_dialog};
+    var show_facebook_feed_dialog_with_group_discount = #{@show_facebook_feed_dialog_with_group_discount};
+    var flash_player_upgrade_dialog = true;
+    if(window)
+    var order_hash = {order_id : "#{@order.id}",
+                    key : "#{@order.flash_config_key}" };

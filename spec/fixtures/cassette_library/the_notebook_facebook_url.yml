@@ -1,0 +1,38 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://graph.facebook.com:443/TheNotebookMovie
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      cache-control: 
+      - private, no-cache, no-store, must-revalidate
+      content-type: 
+      - text/javascript; charset=UTF-8
+      etag: 
+      - "\"33e779b2d14fdbc04aa18360e2a09bfd0104d071\""
+      expires: 
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      p3p: 
+      - "CP=\"Facebook does not have a P3P policy. Learn why here: http://fb.me/p3p\""
+      pragma: 
+      - no-cache
+      x-fb-rev: 
+      - "403555"
+      set-cookie: 
+      - datr=5IAcTqbwTxTudqz-mbPJ_gvC; expires=Thu, 11-Jul-2013 17:14:12 GMT; path=/; domain=.facebook.com; httponly
+      x-fb-server: 
+      - 10.32.11.118
+      x-cnection: 
+      - close
+      date: 
+      - Tue, 12 Jul 2011 17:14:12 GMT
+      content-length: 
+      - "1292"
+    body: "{\"id\":\"204558349574109\",\"name\":\"The Notebook\",\"picture\":\"http:\\/\\/profile.ak.fbcdn.net\\/hprofile-ak-snc4\\/211128_204558349574109_63775_s.jpg\",\"link\":\"http:\\/\\/www.facebook.com\\/TheNotebookMovie\",\"likes\":7262923,\"category\":\"Movie\",\"website\":\"http:\\/\\/www.newline.com\\/properties\\/notebookthe.html\",\"username\":\"TheNotebookMovie\",\"release_date\":\"June 24, 2004 \",\"genre\":\"Romance\",\"starring\":\"Ryan Gosling, Rachel Mcadams, James Garner, Gena Rowlands\",\"screenplay_by\":\"Jeremy Levenm, Jan Sardi\",\"directed_by\":\"Nick Cassavetes\",\"produced_by\":\"Toby Emmerich (Executive Producer), Avram 'Butch' Kaplan (Executive Producer), Lynn Harris (Producer), Mark Johnson (Producer)\",\"studio\":\"Warner Bros.\",\"plot_outline\":\"As teenagers, Allie (Rachel McAdams) and Noah (Ryan Gosling) begin a whirlwind courtship that soon blossoms into tender intimacy. The young couple is quickly separated by Allie's upper-class parents who insist that Noah isnt right for her. Several years pass, and when they meet again, their passion is rekindled, forcing Allie to choose between her soulmate and class order. This beautiful tale has a particularly special meaning to an older gentleman (James Garner) who regularly reads the timeless love story to his aging companion (Gena Rowlands).\",\"written_by\":\"Nicholas Sparks\\t\"}"
+    http_version: "1.1"

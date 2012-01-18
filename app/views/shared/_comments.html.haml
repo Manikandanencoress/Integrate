@@ -1,0 +1,28 @@
+- if movie.studio.comment_stream_enabled?
+  :erb
+    <script id="comment_template" type="text/html">
+    <div id = "{{comment_id}}" title = "{{facebook_user_id}}" class="bubble" onClick="stackComments({{comment_id}})">
+     <div class="comment_row" >
+      <img class="thumb" src="http://graph.facebook.com/{{facebook_user_id}}/picture" height="10px">
+     <span class="name">{{user_name}}</span><span id='stream_element_{{id}}' class="stream_element"> {{text}} </span>
+    </div>
+    </div>
+    </script>
+     <script id="spot_template" type="text/html">
+       <img src='/images/heatMarker.png' height="{{height}}px" width="3px">
+    </script>
+  = render(:partial => 'shared/scenes_and_quotes', :locals => { :movie => @movie })
+  #commentStream
+
+  .streamCreator
+    %input.commentText{:style => "width: 420px; font-size:  18px; height: 20px; margin-left: -80px;"}
+    %select#filter_comments{:style=>'display:none'}
+      %option{:value=>''} Filter Comments
+      %option{:value=>'all'} Show All
+      %option{:value=>'mine_and_friends'} Mine & Friends
+      %option{:value=>'none'} Show None
+    %input.insertCommentButton{:alt => "Submit", :src => "/images/addComment.png", :type => "image", :value => "Submit"}/
+
+- else
+  #comments{:style=> "background:#{movie.fb_comments_color == 'light' ? 'white' : 'black'}"}
+    = facebook_comments_for(movie)

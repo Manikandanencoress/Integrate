@@ -1,0 +1,64 @@
+$videoPlayerWidth: 703px;
+
+#quoteStream {
+    $momentStreamHeight: 100px;
+    background-color: #e5e5e5;
+    height: $momentStreamHeight;
+    width: $videoPlayerWidth;
+    color: white;
+    margin: 10px auto;
+    padding-top: 5px;
+    position: relative;
+    overflow: hidden;
+
+    $outerColor: #969696;
+    $secondOuterColor: #ccc;
+    $innerColor: #e7e6e2;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.00, $outerColor),
+        color-stop(0.03, $secondOuterColor),
+        color-stop(0.07, $innerColor),
+        color-stop(0.93, $innerColor),
+        color-stop(0.97, $secondOuterColor),
+        color-stop(1.00, $outerColor)
+    );
+
+    background-image: -moz-linear-gradient(
+        center bottom,
+        $outerColor 0%,
+        $secondOuterColor 3%,
+        $innerColor 7%,
+        $innerColor 93%,
+        $secondOuterColor 97%,
+        $outerColor 100%
+    );
+
+    .quoteContainer {
+        $videoSeconds : 200;
+        $pixelsPerSecond : 23px;
+        width: $videoSeconds * $pixelsPerSecond;
+        position: relative;
+        height: $momentStreamHeight - 10;
+        left: 0px;
+        border: 1px solid #E5E5E5;
+
+
+        .like {
+            background-color: #fff;
+            display: inline-block;
+            position: absolute;
+            padding: 5px;
+            color: #333;
+
+            span.name {
+                font-weight: bold;
+                color: #517197;
+            }
+        }
+    }
+
+
+}

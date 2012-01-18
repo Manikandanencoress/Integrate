@@ -1,0 +1,6 @@
+= semantic_form_for [:admin, @studio, @invitation] do |f|
+  = f.inputs do
+    = f.input :email
+    = f.input :configuration_only
+    = f.input :reporting_only
+  = f.submit "Send"

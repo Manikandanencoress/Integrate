@@ -1,0 +1,7 @@
+@import "mixins";
+/**
+ * IE Only
+ */
+.module-modal {
+    @include border-radius(0px);
+}

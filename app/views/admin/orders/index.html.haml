@@ -1,0 +1,29 @@
+%h1 Orders for #{@movie.title}
+%hr{:class => "greenBar"}
+%br
+
+= link_to "Back", [:admin, @movie.studio, @movie]
+= link_to "Export CSV", admin_studio_movie_orders_path(@movie.studio, @movie, :format => 'csv')
+
+%table.gridTable
+  %tr
+    %th Rented at
+    %th Facebook user
+    %th Facebook order
+    %th Status
+    %th Total credits
+    %th Refund
+    %th Tax Amount
+    %th Zip Code
+
+  - @orders.each do |order|
+    %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+      %td= order.rented_at.strftime('%m/%d/%y - %I:%M%p')
+      %td= order.user.name
+      %td= order.facebook_order_id
+      %td= order.status
+      %td.center= order.total_credits
+      %td= refund_button_for_order(order)
+      %td= order.tax_collected
+      %td= order.zip_code.to_s.rjust(5, '0')
+

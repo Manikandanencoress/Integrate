@@ -1,0 +1,5 @@
+%fieldset.bestsellers
+  Movies you may Like
+  %br
+  - movie.recommended_movies.each do |m|
+    = image_tag m.skin.gallery_poster.url, :size => '45x45'

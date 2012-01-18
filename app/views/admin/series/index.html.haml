@@ -1,0 +1,28 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @studio.name } Home").html_safe
+
+= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Series"}
+.navTabContent
+  %h1 #{@studio.name}'s Series
+  %table.gridTable
+    %tr
+      %th Title
+      %th ID
+      %th Credits
+      %th Edit
+      %th Released
+      %th Facebook
+      %th Destroy
+      %th
+      - @series.each do |movie|
+        %tr
+          %td= link_to movie.title, [:admin, @studio, movie], :title => "View Site"
+          %td= movie.id
+          %td.center= movie.price
+          %td= link_to "Edit", edit_admin_studio_movie_path(@studio, movie)
+          %td= movie.released? ? "Yes" : "No"
+          %td= link_to "Link", [ @studio, movie]
+          %td= link_to 'Destroy', [:admin, @studio, movie], :confirm => 'Are you sure?', :method => :delete
+          %td= link_to "Add Movies", admin_studio_series_path(@studio.id,movie.series_id)
+.pageActions-left
+  = link_to "New Series", new_admin_studio_movie_path(@studio, :series => '1'), :class => "butTextBlue"

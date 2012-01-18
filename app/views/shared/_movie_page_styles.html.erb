@@ -1,0 +1,75 @@
+cfg.detailsModule p, .detailsModule a {
+color: <%= movie.font_color_help %>;
+}
+
+.detailsModule, .detailsModule .headerBox {
+color: <%= movie.font_color_help %>;
+}
+
+
+#ageRestriction {
+color: <%= movie.font_color_help %>;
+}
+
+.fanPageLikers {
+position: absolute;
+background: white;
+top : <%= movie.like_box_top %>px;
+left : <%= movie.like_box_left %>px;
+}
+
+img.thumb {
+border: 3px solid <%= movie.button_color_gradient_1 %>;
+}
+
+
+<% if movie.skin %>
+    body.movies.show .mainContainer, .admin.movies.show .mainContainer {
+    background-image: url(<%= movie.skin.purchase_background.url %>)
+    }
+
+    body.orders.show .mainContainer, .admin.orders.show .mainContainer {
+    background-image: url(<%= movie.skin.watch_background.url %> )
+    }
+<% end %>
+.module-modal {
+background: -moz-linear-gradient(center top, <%= movie.popup_bk_color_1 %>, <%= movie.popup_bk_color_2 %> ) repeat scroll 0 0 transparent );
+}
+
+/*the position of the "action box" purchase*/
+.module-menu {
+<% if movie.action_box_top %>
+    top: <%= movie.action_box_top %>px;
+<% end %>
+
+<% if movie.action_box_left %>
+    left: <%= movie.action_box_left %>px;
+<% end %>
+}
+
+/*# for IE*/
+.module-modal {
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = "<%= movie.popup_bk_color_1 %>", endColorstr = "<%= movie.popup_bk_color_2 %>");
+}
+
+/*# for webkit browsers*/
+.module-modal {
+background: -webkit-gradient(linear, left top, left bottom, from( <%= movie.popup_bk_color_1 %> ) , to( <%= movie.popup_bk_color_2 %>)  );
+}
+
+/*# for firefox 3.6 +*/
+.module-modal {
+background: -moz-linear-gradient(top, <%= movie.popup_bk_color_1 %>, <%= movie.popup_bk_color_2 %>);
+}
+
+/*# Popup Buttons:*/
+#payButton.butWatch, #zeroPayButton.butWatch, #dialogueBox .btn-submit {
+background: <%= movie.button_color_gradient_2 %>;
+/* for IE */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = <%= movie.button_color_gradient_1 %>, endColorstr = <%= movie.button_color_gradient_2 %>);
+
+/* for webkit browsers */
+background: -webkit-gradient(linear, left top, left bottom, from(<%= movie.button_color_gradient_1 %>), to(<%= movie.button_color_gradient_2 %>));
+
+background: -moz-linear-gradient(top, <%= movie.button_color_gradient_1 %>, <%= movie.button_color_gradient_2 %>);
+}

@@ -1,0 +1,19 @@
+%p= link_to "Back", [:admin, @movie.studio, Movie]
+
+
+%h1 Report for #{@movie.title}
+
+%hr{:class => "greenBar"}
+%br
+
+%p Lifetime Orders: #{@report[:cumulative_orders]}
+%p Lifetime Purchase Page Visits: #{@report[:cumulative_visits]}
+%p Lifetime Watch Page Visits: #{@report[:cumulative_watches]}
+%p Lifetime Revenue: #{@report[:cumulative_revenue]}
+%p Lifetime Conversion Rate: #{ decimal_ratio_to_percentage(@report[:cumulative_conversion])  }
+
+%p Today's Orders: #{@report[:todays_orders]}
+%p Today's Purchase Page Visits: #{@report[:todays_visits]}
+%p Today's Watch Page Visits: #{@report[:todays_watches]}
+%p Today's Revenue: #{@report[:todays_revenue]}
+%p Today's Conversion Rate: #{ decimal_ratio_to_percentage(@report[:todays_conversion])  }

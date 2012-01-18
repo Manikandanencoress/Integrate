@@ -1,0 +1,29 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+                ["#{ @studio.name } Home", [:admin, @studio]],
+                ["Users", [:admin, @studio, User]],
+                "#{@user.name}'s Orders").html_safe
+
+%h1 Orders for #{@user.name}
+
+%table.gridTable
+  %tr
+    %th Rented at
+    %th Movie
+    %th Facebook order
+    %th Status
+    %th Total credits
+    %th Tax Amount
+    %th Zip Code
+    %th Refund
+
+  - @orders.each do |order|
+    %tr{:class => cycle(:odd, :even, :name => 'zebra_stripes')}
+      %td= order.rented_at.strftime('%m/%d/%y - %I:%M%p')
+      %td= order.movie.title
+      %td= order.facebook_order_id
+      %td= order.status
+      %td.center= order.total_credits
+      %td= order.tax_collected
+      %td= order.zip_code.to_s.rjust(5, '0')
+      %td= refund_button_for_order(order)

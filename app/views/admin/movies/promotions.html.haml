@@ -1,0 +1,36 @@
+- content_for :breadcrumbs do
+  :erb
+    <%= breadcrumbs(["Studios Home", [:admin, Studio]],
+                    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+                    "Promotions - #{@movie.title}").html_safe %>
+
+=render :partial => 'admin/shared/movie_tabs'
+
+.clear
+
+.navTabContent
+  %h1 Promotions - #{@movie.title}
+  %hr{:class => "greenBar"}
+  %table.gridTable
+    %tr
+      %th Title
+      %th ID
+      %th CODE
+      %th Expires At
+
+      %th Modify
+      %th Link
+      %th Remove
+
+    - @coupons.each do |c|
+      %tr
+        %td= link_to c.title, [:admin, @studio, @movie, c], :title => "View Coupon"
+        %td= c.id
+        %td= c.code
+        %td= c.expires_at
+
+        %td= link_to "Edit", edit_admin_studio_movie_coupon_path(@studio, @movie, c)
+        %td= link_to "Link", [:admin, @studio, @movie, c]
+        %td= link_to 'Destroy', [:admin, @studio, @movie, c], :confirm => 'Are you sure?', :method => :delete
+
+= link_to "New Coupon", new_admin_studio_movie_coupon_path(@studio, @movie), :class => "butTextBlue"

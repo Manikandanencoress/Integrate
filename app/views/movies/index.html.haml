@@ -1,0 +1,90 @@
+.mainContainer.gallery
+  #content
+    #header
+      - if @studio.gallery_header_box?
+        = @studio.gallery_header_box.html_safe
+      - else
+        = image_tag(@studio.branding.logo.url)
+
+    #dropshadow
+      %span#dropshadowTop
+      %div.filterForm
+        = semantic_form_for(@filter, :url => studio_movies_path(@studio), :html => {:method => :get}) do |f|
+          = f.input :genre, :label => 'Sort by', :collection => @studio.genre_list.map {|genre| [genre, genre]}
+          = hidden_field_tag :signed_request, params[:signed_request]
+          = f.submit "Filter"
+
+      #rentals.gallerySection
+        -if @active_rentals.present?
+          %h2 Active Rentals
+          %div.carousel
+            %a.prev{:href => "#"} Prev
+            %a.next{:href => "#"} Next
+            .slides_container
+              = movie_gallery(@active_rentals, :pages_of => 5)
+
+      #new_releases.gallerySection
+        -if @new_releases.present?
+          %h2 New Releases
+          %div.carousel
+            %a.prev{:href => "#"} Prev
+            %a.next{:href => "#"} Next
+            .slides_container
+              = movie_gallery(@new_releases, :pages_of => 5)
+              
+      #gallery.gallerySection
+        %h2 All Titles
+        %div#galleryCarousel.carousel
+          %a.prev{:href => "#"} Prev
+          %a.next{:href => "#"} Next
+          
+          .slides_container
+            = movie_gallery(@movies, :pages_of => 15)
+        :javascript
+            $(function(){
+                $(".carousel").slides({
+                  generatePagination: false
+                });
+            });
+
+      %span#dropshadowBot
+
+    - if @studio.gallery_footer_box?
+      #gallery_footer_box
+      = @studio.gallery_footer_box.html_safe
+
+    .copyright= copyright_for(@studio)
+
+  #gallery_footer_box
+
+%p.ui-dialog#dialog-modal
+
+:javascript
+   var gallery_size = {
+     active : #{@active_rentals.size},
+     new_releases : #{@new_releases.size},
+     all : #{@movies.size }
+  };
+  $(".series-expand").click(function(event) {
+    event.preventDefault();
+    var path = "/studios/" + #{@studio.id} + "/series/" + this.id ;
+    $("#dialog-modal").html(function() {
+      $.ajax({
+        url: path,
+        type: "GET",
+        dataType: "script"
+      });
+    });
+    $("#dialog-modal").dialog({
+    height: 'auto',
+    width: 840,
+    modal: true,
+    position: 'center',
+    dialogClass: 'shadow-class',
+    resizable: false
+    });
+  });
+
+
+
+

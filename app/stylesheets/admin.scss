@@ -1,0 +1,63 @@
+form.formtastic.movie .colorpicker, form.formtastic.branding .colorpicker {
+    width: 100px;
+}
+
+body.admin th, body.admin td {
+    padding: .5em 3em .5em 1.5em;
+}
+
+tr.even {
+    background-color: #ccc;
+}
+
+tr.odd {
+    background-color: #efefef;
+}
+
+body.admin.movies.show {
+    text-align: left !important;
+    margin-left: 15px !important;
+}
+
+body.admin.movies.show #preview_area { text-align: center;}
+body.admin.movies.show #preview_area > div { margin-top: 30px; }
+body.admin.movies.show #preview_area > div h3 { font-size: 20px;}
+
+body.admin.movies.show #preview_area > div .detailsModule p {
+    font-size: 10px;
+    line-height: 12px;
+    font-family: Trebuchet MS,Verdana,Tahoma,Arial,Helvetica,sans-serif;
+}
+
+body.admin.movies.show #preview_area > div .module-menu a {
+  line-height: 25px;
+}
+
+
+form.filter {
+
+      li {
+          list_item_style: none;
+          display: inline;
+          input[type="checkbox"] {
+              margin-right: 8px;
+          }
+          padding-bottom: 8px;
+      }
+      margin-bottom: 8px;
+}
+
+#destroy_link{
+float:right;
+margin-top:-18px;
+}
+
+#series-list li{
+display:table;
+}
+
+#loading {
+float:right;
+margin-right: 580px;
+display:none;
+}

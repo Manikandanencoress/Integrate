@@ -1,0 +1,19 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @studio.name } Home").html_safe
+    - Coupon.all.each do |c|
+      %tr
+        %td= link_to c.title, [:admin, @studio, movie], :title => "View Coupon"
+        %td= c.id
+        %td.center= c.code
+        %td= link_to "View", [:admin, @studio, c, :report]
+        %td= link_to "View", [:admin, @studio, c, Order]
+        %td= link_to "Edit", edit_admin_studio_movie_promotion_path(@studio, movie, c)
+        %td= link_to "Link", [ @studio, @movie, c]
+        %td= link_to 'Destroy', [:admin, @studio, c], :confirm => 'Are you sure?', :method => :delete
+.pageActions-left
+  = link_to "New Coupon", new_admin_studio_movie_coupon_path(@studio), :class => "butTextBlue"
+
+=render :partial => 'admin/shared/movie_tabs', :locals => {:active => 'movie'}
+.clear
+
+.navTabContent

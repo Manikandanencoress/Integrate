@@ -1,0 +1,50 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]], "#{ @movie.title } Home").html_safe
+
+= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Series"}
+.clear
+%p
+  %h1 Series - #{@movie.title}
+
+.navTabContent
+  = render 'series'
+  .clear
+
+.navTabContent
+  = image_tag('loading.gif', :size => '25x25', :id => 'loading')
+  = form_tag search_admin_studio_series_index_path, :method => 'get', :id => "titles_search" do
+    = text_field_tag :search, params[:search]
+    < Search your title to add
+
+    = hidden_field_tag :series_id, params[:id]
+    -#= submit_tag "Search", :name => nil
+  %p
+    #movies= render 'titles'
+
+:javascript
+  $(function() {
+  $( "#series-list" ).sortable( {cursor: 'crosshair' });
+  $( "#series-list" ).disableSelection();
+
+  $( "#series-list" ).bind( "sortupdate", function(event, ui) {
+     ids = [];
+     $("#series-list li").each(function(n){
+      ids.push($(this).attr('id'));
+      });
+     $.ajax({
+      type: 'PUT',
+      data: {ids: ids, positions: true}
+    });
+
+  });
+
+  $("#titles_search input").keyup(function() {
+    $.get($("#titles_search").attr("action"), $("#titles_search").serialize(), function(data) {
+      $("#loading").hide();
+    }, "script");
+    $("#loading").show();
+    return false;
+  });
+
+
+  });

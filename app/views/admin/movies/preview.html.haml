@@ -1,0 +1,71 @@
+- content_for :breadcrumbs do
+  :erb
+    <%= breadcrumbs(["Studios Home", [:admin, Studio]],
+                    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+                    "Promotions - #{@movie.title}").html_safe %>
+
+=render :partial => 'admin/shared/movie_tabs'
+= stylesheet_link_tag 'movies_styles', 'gallery_styles','jquery-custom', 'jquery-custom-reset'
+= stylesheet_link_tag 'ie9-hacks'
+= javascript_include_tag 'lib/wysiwyg'
+
+= include_styles_for(@movie)
+
+
+.clear
+
+.mainContainer
+  .header
+  .content
+    = like_box_for(@movie)
+    .module-menu
+      = render :partial => 'blocks/top_quotes_clips', :locals => {:shares => @shares, :movie => @movie}
+      = render(:partial =>  'blocks/bestsellers', :locals => {:movie => @movie}) if @movie.top_bestsellers_enabled?
+
+      - unless @restrict_age
+        #w_watch_now
+          - if @movie.price.zero?
+            %a.butWatch#zeroPayButton{:href => "#", :rel => "#dialogueBox"} Watch Now
+            - else
+            - if @paypal_token
+              #payNormalButton
+                %img{:src=>"/images/pay-with-fb.png"}
+              #paypal_ecdg
+                %a.ppWatch{ :href=>"#{Paypal.incontext_url @paypal_token}", :id=>"submitBtn"}
+                  %img{:src=>"https://www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif", :border => "0" }
+              :javascript
+                var dg = new PAYPAL.apps.DGFlow({ trigger: "submitBtn" });
+            - else
+              %a.butWatch#payButton{} Watch Now
+
+      - else
+        %h2#ageRestriction You are not old enough to view this movie
+      - if @movie.series
+        = (link_to "Buy Series", "#", :class => "butWatch", :id => "seriesPassButton", :rel => "#dialogueBox") if @movie.series.enable_series_pass
+      - if @movie.rental_badge
+        :erb
+          <div id = "w_rental_length" class="rentalDurationBadge">
+            <span class="duration"><%= @movie.badge_number %></span>
+            <span><%= @movie.badge_text %></span>
+            <span class="more">Details Below</span>
+          </div>
+      #w_coupon_code
+        #coupon_text{:onclick =>'$("#coupon_input").show();'}
+          %a Coupon Code? Click here
+        #coupon_input{:style=>'display:none'}
+          %input{:id => 'coupon_value', :name =>"coupon_value", :movie_id => @movie.id, :value => "CODE" }
+            %button{:id=>'coupon_button'}
+              Check
+      #w_share_buttons.shareButtons
+        %a.butShare#facebookShareButton{:href => "#"}
+          = image_tag("icon-facebook.png")
+        = tweet_button_for(@movie)
+        = like_button_for(@movie)
+
+      - if @movie.fb_likers_enabled
+        #w_fan_page_likers
+          %img{:src=>'/images/mock_fb_likers.png'}
+
+    = render :partial => 'shared/movie_details_module', :locals => {:thing => @movie}
+  = render :partial => 'shared/movie_footer', :locals => {:thing => @movie}
+

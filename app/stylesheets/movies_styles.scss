@@ -1,0 +1,867 @@
+@import "mixins";
+
+/*  GLOBALS  */
+html {
+    overflow-y: scroll; /* forces firefox scrollbar on */
+    height: 100%;
+}
+
+body.movies.show {
+    text-align: center;
+
+    .continueBtn {
+        display: block;
+        width: 69px;
+        height: 25px;
+        background: url(../images/continue.png) no-repeat top left;
+        text-indent: -9999px
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Trebuchet MS, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 90%;
+    height: 100%;
+}
+
+IMG {
+    border: 0px;
+}
+
+FORM {
+    margin: 0px;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+div.clear {
+    clear: both;
+}
+
+/* Containers  */
+.mainContainer {
+    position: relative;
+    text-align: center;
+    width: 740px;
+    height: 1160px;
+    margin: 0px auto;
+    background: no-repeat 0 22px;
+}
+
+.mainContainer .content {
+    height: 1120px;
+}
+
+.header {
+    position: relative;
+    text-align: center;
+    background: url(../images/movies_layout/back-top.gif) 0 0px repeat-x;
+    padding: 0;
+    margin: 0;
+    height: 22px;
+}
+
+.logo {
+    position: absolute;
+    top: 315px;
+    left: 18px;
+}
+
+.txt-credit {
+    position: absolute;
+    left: 25px;
+    top: 390px;
+}
+
+.likeIcons {
+    text-align: left;
+    padding: 45px 5px 0 0;
+}
+
+.landing .likeIcons {
+    margin: 10px 0 15px 98px;
+}
+
+.module-menu {
+    width: 310px;
+    top: 500px;
+    left: 68px;
+    position: absolute;
+}
+
+.module-menu a {
+    color: #3fd2e7;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.module-menu .shareButtons {
+    vertical-align: baseline;
+}
+.module-menu .shareButtons a {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.module-menu a:hover {
+    text-decoration: underline;
+}
+
+.module-menu p {
+    margin: 2px 0;
+    color: #a4a7a7;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-watch {
+    margin-bottom: 0;
+}
+
+.detailsModule {
+    height: auto;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 698px;
+    padding: 0 20px;
+    font-size: 10px;
+    text-align: left;
+}
+
+body.orders.show  .detailsModule {
+  bottom: 28px;
+}
+
+.detailsModule .headerBox {
+    font-size: 14px;
+    text-transform: uppercase;
+    background: none;
+    padding: 0;
+    /*color: #533c02;*/
+    margin-bottom: 5px;
+}
+
+.detailsModule small {
+    display: block;
+    float: left;
+    width: 100px;
+    margin: 0 35px 0 0;
+    padding: 5px 0 0 0;
+}
+
+.detailsModule .column {
+    float: left;
+    width: 215px;
+    padding: 5px 20px 0 20px;
+    line-height: 12px;
+}
+
+.detailsModule .column.last {
+    width: 440px;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.detailsModule p {
+    margin: 0;
+}
+
+.detailsModule a {
+    color: #a69f8c;
+}
+
+.internal .btn-duration {
+    display: block;
+}
+
+#dialogueBox h2 {
+    padding: 7px 0 0 0;
+    height: 31px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    border-bottom: 1px solid #939393;
+    margin-right: 15px;
+}
+
+#dialogueBox h2.error {
+    width: 440px;
+    text-align: center;
+    border: none;
+    padding-top: 20px;
+}
+
+.gfxModal, .logoModal {
+    color: white;
+    padding: 15px 0 0;
+}
+
+#dialogueBox form {
+    border-top: 1px solid #939393;
+    clear: both;
+    padding: 15px 0 0 0;
+    margin-right: 18px;
+}
+
+#dialogueBox label {
+    color: #ffffff;
+    font-size: 18px;
+    padding: 0 0 0 50px;
+}
+
+#dialogueBox .btn-submit {
+    width: 100px;
+    height: 22px;
+    margin: 0px 0 0 5px;
+    cursor: pointer;
+
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+
+    text-align: center;
+
+    font-size: 14px;
+    padding-top: 1px;
+    padding-bottom: 4px;
+    filter: alpha(opacity = 9);
+    -moz-opacity: 0.9;
+    -khtml-opacity: 0.9;
+    opacity: 0.9;
+    background: #8f0606;
+    background: url(../images/movies_layout/but-arrow.png) no-repeat 100% 0;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f36f79', endColorstr = '#8f0606'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#f36f79), to(#8f0606)); /* for webkit browsers */
+    background: -moz-linear-gradient(top, #f36f79, #8f0606); /* for firefox 3.6+ */
+    border: 1px solid #cccccc;
+}
+
+
+input[type="submit"]#groupDiscount {
+width: 145px;
+}
+
+#dialogueBox .btn-submit:hover {
+    border: 1px solid #eeeeee;
+}
+
+$videoPlayerWidth: 703px;
+
+/* Boxes  */
+.videoPlayerBox {
+
+    position: relative;
+    text-align: center;
+    margin: 100px auto 0;
+    border: 1px solid #535353;
+    padding: 0;
+    width: $videoPlayerWidth;
+    border: 2px solid #7eafbf;
+    @include border-radius(3px);
+    background: #000;
+
+    h3 {
+        color: white;
+    }
+}
+
+.grayBox {
+    position: relative;
+    float: left;
+    text-align: left;
+    border: 1px solid #535353;
+    height: 225px;
+    color: #ffffff;
+}
+
+.grayBox A {
+    color: #ffffff;
+    outline: none;
+}
+
+.grayBox A:hover {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.cbr {
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    height: 11px;
+    width: 11px;
+}
+
+DIV.boxContent {
+    padding: 12px 5px 5px 20px;
+}
+
+.creditsBox {
+    width: 286px;
+    margin-left: 16px;
+}
+
+.creditsBox .fleft {
+    font-size: 17px;
+    font-weight: bold;
+
+}
+
+.creditsBox input[type=text] {
+    background: #cccccc;
+    border: 1px solid #535353;
+    padding: 2px;
+    width: 140px;
+    margin: 0 0 20px 0px;
+}
+
+input.payFacebook {
+    margin: 15px 0 0 100px;
+}
+
+.helpBox {
+    width: 188px;
+    margin-left: 9px;
+}
+
+.detailsBox {
+    width: 208px;
+    margin-left: 9px;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+/* GENERAL CSS  */
+
+.rating {
+    position: absolute;
+    right: 27px;
+    bottom: 5px;
+    height: 15px;
+    width: 44px;
+}
+
+.ratingText {
+    position: relative;
+    padding: 0;
+}
+
+.useCredits {
+    position: relative;
+    padding: 10px 0 10px 0;
+}
+
+.red {
+    border: 1px solid #ff0000
+}
+
+/*     FOOTER             */
+
+DIV.footer {
+    background: url(../images/movies_layout/back-footer.gif) 0 0 no-repeat;
+    margin: 0px auto;
+    width: 100%;
+    text-align: left;
+    color: #bfbfbf;
+    height: 22px;
+}
+
+DIV.footer  A {
+    text-transform: uppercase;
+    color: #bfbfbf;
+    font-size: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+DIV.footer  A:hover {
+    text-transform: uppercase;
+    color: #008fcc;
+}
+
+DIV.footer DIV.fleft A {
+    float: left;
+    margin-right: 14px;
+    margin-left: 12px;
+}
+
+DIV.footer DIV.fright A {
+    float: right;
+    margin-right: 12px;
+    margin-left: 14px;
+}
+
+/*   COPYRIGHT     */
+
+DIV.copyRight {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    color: #999999;
+    font-size: 11px;
+    margin: 2px 0px 0px 0;
+    padding-bottom: 15px;
+}
+
+DIV.copyRight  A {
+    color: #999999;
+    text-decoration: none;
+    margin: 0px 17px 0px 12px;
+}
+
+DIV.copyRight DIV.fright {
+    width: 280px;
+    margin-right: 15px;
+    text-align: right;
+
+}
+
+DIV.copyRight  IMG {
+    margin-bottom: -10px;
+}
+
+DIV.commentsTop {
+    background: url(../images/movies_layout/back-comments-top.png) 0 0 no-repeat;
+    margin: 0px auto;
+    position: relative;
+    width: 707px;
+    height: 74px;
+}
+
+DIV.commentsBox {
+    background: url(../images/movies_layout/back-comments-mid.png) 0 0 repeat-y;
+    margin: 0px auto;
+    position: relative;
+    width: 627px;
+    min-height: 200px;
+    text-align: left;
+    padding: 0 40px 0 40px;
+}
+
+DIV.commentsBot {
+    background: url(../images/movies_layout/back-comments-bot.png) 0 0 no-repeat;
+    margin: 0px auto;
+    position: relative;
+    width: 707px;
+    height: 31px;
+}
+
+div.midBar {
+    background: url(../images/movies_layout/back-bar-lg.gif) no-repeat scroll 0 2px transparent;
+    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 15px;
+    margin: -5px 0 15px 15px;
+    padding: 10px;
+    text-align: left;
+    width: 685px;
+    color: #fff;
+}
+
+img.arrowDown {
+    float: left;
+    margin-right: 8px;
+}
+
+img.arrowUp {
+    float: left;
+    margin-top: -18px;
+    margin-right: 10px;
+}
+
+div.headerBox {
+    background: url(../images/movies_layout/back-bar.gif) no-repeat scroll 0 1px transparent;
+    color: #FFFFFF;
+    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 15px;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+div.tellFriends {
+    background: url(../images/movies_layout/arrow-down-sm.png) no-repeat scroll 2px 0 transparent;
+    color: #666666;
+    font-size: 12px;
+    font-style: italic;
+    margin: -19px 0 0 40px;
+    padding: 4px 0 8px 28px;
+    text-align: left;
+}
+
+/*Overlay*/
+
+/*modal*/
+
+.module-modal {
+    position: relative;
+
+    padding: 0 0 0 18px;
+    width: 460px;
+    min-height: 278px;
+
+    filter: alpha(opacity = 94);
+    -moz-opacity: 0.94;
+    -khtml-opacity: 0.94;
+    opacity: 0.94;
+
+    border: 1px solid #666666;
+    @include border-radius(15px);
+}
+
+#simplemodal-overlay {
+    background-color: #000;
+}
+
+DIV.close {
+    width: 20px;
+    float: right;
+    padding: 5px 10px 0 0;
+}
+
+A.simplemodal-close {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.warn-modal {
+    position: relative;
+    display: none;
+
+    padding: 0 0 0 18px;
+    width: 300px;
+    min-height: 220px;
+    border: none;
+    color: #ffffff;
+
+    filter: alpha(opacity = 77);
+    -moz-opacity: 0.77;
+    -khtml-opacity: 0.77;
+    opacity: 0.77;
+
+    background: #2e5830; /* for non-css3 browsers */
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#666666', endColorstr = '#000000'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#000000)); /* for webkit browsers */
+    background: -moz-linear-gradient(top, #666666, #000000); /* for firefox 3.6+ */
+
+    border: 1px solid #666666;
+    @include border-radius(15px);
+}
+
+A.butWatch {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    width: 209px;
+    text-align: center;
+    height: 31px;
+    font-size: 21px;
+    padding-top: 4px;
+    filter: alpha(opacity = 9);
+    -moz-opacity: 0.9;
+    -khtml-opacity: 0.9;
+    opacity: 0.9;
+    background: #8f0606;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f36f79', endColorstr = '#8f0606'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#f36f79), to(#8f0606)); /* for webkit browsers */
+    border: 1px solid #cccccc;
+
+    margin-left: 30px;
+}
+
+A.butWatch:hover {
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    border: 1px solid #eeeeee;
+    text-decoration: none;
+}
+
+.btn-duration {
+    left: -13px;
+    position: relative;
+}
+
+.rentalDurationBadge {
+    @include backgroundGradient(#A31114, #834548);
+    display: block;
+    width: 81px;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2px;
+    font-weight: bold;
+    text-shadow: -2px -2px 2px #633;
+    margin-left: 90px;
+
+    span {
+        margin: auto;
+        display: block;
+    }
+
+    span.duration {
+        font-size: 24px;
+    }
+
+    span.more {
+        font-size: 8px;
+        padding: 0.5em 0.1em;
+        margin: 2px ;
+        border: solid 1px white;
+        background-color: #600;
+    }
+
+
+}
+
+
+.facebook_like {
+    /*position: relative;*/
+    /*top: -3px;*/
+    display: inline-block;
+    width: 200px;
+}
+
+#comments {
+    margin-top: 5px;
+    padding-top: 10px;
+    margin-left: 20px;
+    width: 700px;
+    max-height: 375px;
+    overflow-y: auto;
+}
+
+body.movies.index {
+  form.filter {
+      margin-left: 156px;
+      font-size: 14px;
+      label {
+        margin-right: 7px;
+      }
+      
+      li {
+          list_item_style: none;
+          display: inline;
+      }
+  }
+}
+
+@import "comments_style";
+@import "quotes_style";
+@import "heat_map";
+
+.thumb {
+    height:24px;
+    margin-right: 2px;
+    @include border-radius(4px);
+}
+
+#commentStream .commentContainer .like {
+    padding: 0px;
+       @include border-radius(4px);
+           border: 2px groove #000;
+           border-left:none;
+           border-right:none;
+           opacity: 0.8;
+}
+
+.bubble {
+ position: relative;
+ margin-bottom: 5px;
+ font-family: Tahoma, Geneva, sans-serif;
+ font-size: 12px;
+ background-color: #fff;
+ border-radius: 4px;
+ -moz-border-radius: 4px;
+ padding-bottom: 3px;
+ padding-left: 3px;
+ padding-top: 3px;
+}
+
+img.likeButton {
+position: relative;
+top: 3px
+}
+
+#two_button_row {
+    padding-bottom: 20px;
+    position: relative;
+    text-align: center;
+}
+
+#spacer {
+   padding: 0 10px;
+}
+
+#paypal_button {
+position: relative;
+top: 23px
+}
+
+input[type=button]#credits, input[type=button]#groupDiscount {
+width: 144px
+}
+
+#quoteFrame, #clipFrame, #likeFrame {
+    background-color: #F7F0E0;
+    border: 1px solid #333342;
+    font-style: italic;
+    margin-left: 200px;
+    padding: 5px;
+    position: absolute;
+    z-index: 90;
+    border-radius: 10px 10px 10px 10px;
+    }
+#quoteFrame {
+
+}
+#clipFrame {
+    float: left;
+    margin-left: 6px;
+    margin-top: 0;
+    padding-top: 7px;
+    width: 170px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+#likeFrame {
+  margin-left: 135px;
+}
+
+#icon_bar {
+ background-image: url('/images/tallQueue.png');
+ border-bottom: 2px groove #000000;
+ height: auto;
+ left: 18px;
+ height: 36px;
+ margin-bottom: 6px;
+ position: relative;
+ width: 704px;
+ z-index: 0;
+}
+
+#bevel {
+    background: url(../images/bevel.png) 0 0 no-repeat;
+    width: 705px;
+}
+img.icon_bar {
+position: absolute;
+float: left;
+}
+
+.streamCreator{
+  background: url(../images/commentBkg.png) 0 0 no-repeat;
+  margin-left: 18px;
+  margin-top: -10px;
+  padding-bottom: 12px;
+  padding-top: 10px;
+};
+
+.insertCommentButton{
+ position: absolute;
+ z-index: 50;
+}
+
+.like .name{
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #33F;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: -11px;
+}
+
+#filter_comments {
+    float: right;
+    font-size: 1em;
+    margin-right: 30px;
+    position: relative;
+}
+
+#bar_marker {
+  border-left: 1px solid yellow;
+    height: 36px;
+    left: 24px;
+    opacity: 0.7;
+    position: absolute;
+    width: 1px;
+    z-index: 9;
+}
+
+
+
+img.icon_bar.clip {
+top: 0px
+}
+
+img.icon_bar.quote {
+top: 10px
+}
+
+img.icon_bar.like {
+top: 18px
+}
+
+#buy {
+position: relative;
+}
+
+.nameOnButton a {
+    position: relative;
+    height: 0px
+}
+
+.nameOnButton a[href="javascript:"] {
+    left: 85px;
+    position: relative;
+    top: 66px;
+}
+
+ a.ppWatch {
+    margin-left: 30px;
+    display: block;
+    width: 209px;
+    text-align: center;
+    height: 64px;
+    font-size: 21px;
+    padding-top: 4px;
+ }
+
+
+.most_popular_fideos {
+    position:relative;
+}
+
+.bestsellers {
+
+}
+
+#watch_now_button_preview {
+    padding:5px;
+    float: right;
+}

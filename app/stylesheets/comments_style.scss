@@ -1,0 +1,46 @@
+$videoPlayerWidth: 704px;
+
+#commentStream {
+    $momentStreamHeight: 200px;
+    background-color: #e5e5e5;
+    height: $momentStreamHeight;
+    width: $videoPlayerWidth;
+    color: white;
+    margin: 10px auto;
+    padding-top: -7px;
+    position: relative;
+    overflow: hidden;
+    margin-top:-7px;
+    $outerColor: #969696;
+    $secondOuterColor: #ccc;
+    $innerColor: #e7e6e2;
+    border-bottom: 2px groove black;
+    background: url(../images/commentBkg.png) 0 0 no-repeat;
+
+
+
+    .commentContainer {
+        $videoSeconds : 200;
+        $pixelsPerSecond : 23px;
+        width: $videoSeconds * $pixelsPerSecond;
+        position: relative;
+        height: $momentStreamHeight - 10;
+        left: 0px;
+
+
+        .like {
+            background-color: #fff;
+            display: inline-block;
+            position: absolute;
+            padding: 5px;
+            color: #333;
+
+            span.name {
+                font-weight: bold;
+                color: #517197;
+            }
+        }
+    }
+
+
+}

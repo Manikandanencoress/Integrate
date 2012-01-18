@@ -1,0 +1,22 @@
+%h1 Tax Report
+
+%table.gridTable
+  %tr
+    %th Movie
+    %th Tax Collected
+    %th Zip Code
+    %th Rented at
+    %th Facebook user
+    %th Facebook order
+    %th Status
+    %th Total credits
+  - @orders.each do |order|
+    %tr
+      %td= order.movie.title
+      %td= format("%.2f",order.tax_collected)
+      %td= order.zip_code.to_s.rjust(5, '0')
+      %td= order.rented_at.strftime('%m/%d/%y - %I:%M%p') unless order.rented_at.nil?
+      %td= order.user.name
+      %td= order.facebook_order_id
+      %td= order.status
+      %td= order.total_credits

@@ -1,0 +1,10 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]],
+      "Edit Studio").html_safe
+
+= render :partial => 'admin/studios/nav', :locals => {:active_tab => "Studio Edit"}
+.navTabContent
+
+  = render :partial => "studio", :object => @studio
+
+

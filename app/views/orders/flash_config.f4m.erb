@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<%@url = @movie.video_file_path%>
+<manifest xmlns="http://ns.adobe.com/f4m/1.0">
+	<id>Dynamic Streaming</id>
+	<duration>1200</duration>
+	<mimeType><%= "video/mp4"%></mimeType>
+	<baseURL><%= @url %></baseURL>
+   <%@movie.streams.each do |stream|%>
+    <media url="<%= stream.url%>"  bitrate="<%=stream.bitrate%>" width="<%=stream.width%>" height="<%=stream.height%>" />
+   <%end%>
+</manifest>

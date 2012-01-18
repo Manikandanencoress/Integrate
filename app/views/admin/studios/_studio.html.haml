@@ -1,0 +1,55 @@
+= semantic_form_for [:admin, studio] do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :facebook_app_id
+    = f.input :facebook_app_secret
+    = f.input :facebook_canvas_page
+    = f.input :player, :as => 'select', :collection => Studio::PLAYERS
+    = f.input :default_sort, :as => 'select', :collection => Studio::DEFAULT_SORT
+    - if studio.is_brightcove?
+      = f.input :brightcove_id, :label => "Brightcove ID"
+      = f.input :brightcove_key
+    = f.input :privacy_policy_url, :input_html => {:type => "notUrl"}
+    = f.input :viewing_details
+    = f.input :copyright_notice
+    = f.input :help_text
+    = f.input :max_ips_for_movie
+    = f.input :og_prefix
+
+    .navTabContent
+      %ul
+        %h2 Enter the country codes using Comma Separated Values(eg: MX,CA,US)
+        %li US - USA
+        %li MX - Mexico
+        %li CA - Canada
+
+    = f.input :white_listed_country_codes
+
+    = f.input :black_listed_country_codes
+
+    = f.input :genre_list, :label => "Genre list (comma separated)", :input_html => { :value => studio.genre_list.join(', ')}
+    - if current_admin.milyoni_admin?
+      = f.input :series_enabled, :label => "Enable Serialized Content"
+      = f.input :comment_stream_enabled, :label => "Enable Comment Stream"
+      = f.input :gallery_header_box
+      = f.input :gallery_footer_box
+
+    = f.input :paypal_enabled, :label => "Activate Paypal"
+
+    .navTabContent
+      %h2 The following steps are mandatory for Paypal setup:
+      %ul
+        %li Log into #{link_to "Paypal", "https://www.paypal.com/us/cgi-bin/webscr?cmd=_login-run", :target => "_blank"}
+        %li
+          = link_to "Accept Micro Payments", "https://www.paypal.com/us/cgi-bin/?cmd=_micropay-pricing-agreement&fli=true", :target => "_blank"
+        %li
+          = link_to "Click View API Signature under 'Option 2'", "https://www.paypal.com/cgi-bin/customerprofileweb?cmd=_profile-api-access", :target => "_blank"
+        %li Plug your credentials below.
+
+    = f.input :paypal_api_user
+    = f.input :paypal_api_password
+    = f.input :paypal_api_signature
+
+    = f.input :group_buy_enabled, :label => "Enable Group Buy"
+
+  = f.buttons

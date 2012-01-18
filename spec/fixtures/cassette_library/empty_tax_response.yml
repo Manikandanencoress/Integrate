@@ -1,0 +1,22 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://webservices.datapakservices.com:443/TaxServiceTest
+    body: <?xml version="1.0" encoding="UTF-8"?><DatapakServices><Source><Username>mi53nna</Username><Password>y34dfr2</Password></Source><TaxService><CompNum>239asdfasdfasd</CompNum><ProjNum>002</ProjNum><ShipToZip>asd</ShipToZip><ShipHandle>0.00</ShipHandle><ItemDetail>true</ItemDetail><TaxDetail>true</TaxDetail><TaxItems><TaxItem><ProductID>FB_VOD01</ProductID><Quantity>1</Quantity><Price>1.00</Price></TaxItem></TaxItems></TaxService></DatapakServices>
+    headers: 
+      content-type: 
+      - text/xml
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      server: 
+      - Apache-Coyote/1.1
+      content-length: 
+      - "0"
+      date: 
+      - Tue, 03 May 2011 21:36:17 GMT
+    body: 
+    http_version: "1.1"

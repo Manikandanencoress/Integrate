@@ -1,0 +1,10 @@
+- content_for :breadcrumbs do
+  = breadcrumbs(["Studios Home", [:admin, Studio]], ["#{ @studio.name } Home", [:admin, @studio, Movie]],  "Add a Movie").html_safe
+
+%h1 New #{@series ? "Series" : "Title" } for #{@studio.name}
+%hr{:class => "greenBar"}
+%br
+
+= render 'form'
+
+= link_to 'Back', admin_studio_movies_path(@studio)

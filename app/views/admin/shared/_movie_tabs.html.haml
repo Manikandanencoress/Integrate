@@ -1,0 +1,17 @@
+%ul.navTabs
+  %li
+    = link_to "Settings", edit_admin_studio_movie_path(@studio, @movie), :class => tab_active?(request.request_uri, 'movie')
+  -#%li
+  -#  = link_to "Preview", admin_studio_movie_preview_path(@studio, @movie), :class => tab_active?(request.request_uri, 'preview')
+  %li
+    = link_to "Images", edit_admin_studio_movie_skin_path(@studio, @movie), :class => tab_active?(request.request_uri, 'skin')
+  %li
+    = link_to "Promotions", admin_studio_movie_promotions_path(@studio, @movie), :class => tab_active?(request.request_uri, 'promotion')
+  %li
+    = link_to "Moderation", admin_studio_movie_comments_path(@studio, @movie), :class => tab_active?(request.request_uri, 'comment')
+  - if @movie.serial
+    %li
+      = link_to "Series Settings", edit_admin_studio_series_path(@studio, @movie.series(true))
+  
+  %li
+    = link_to "Movie configuration", new_admin_studio_movie_stream_path(@studio,@movie), :class => tab_active?(request.request_uri, 'streams')

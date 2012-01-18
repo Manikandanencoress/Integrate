@@ -1,0 +1,30 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://api.brightcove.com:80/services/library?command=find_video_by_id&token=ZRh043aNSjl-FlXKKw-UZRzKGbvqPgcUHpT3Cmonsztpk0ctofOfZw..&video_fields=id,name,thumbnailURL&video_id=1079164031001
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-bc-client-ip: 
+      - 76.230.52.123
+      x-bc-connecting-ip: 
+      - 76.230.52.123
+      last-modified: 
+      - Thu, 06 Oct 2011 20:41:32 UTC
+      cache-control: 
+      - must-revalidate,max-age=0
+      content-type: 
+      - application/json;charset=UTF-8
+      content-length: 
+      - "208"
+      date: 
+      - Fri, 07 Oct 2011 00:27:28 GMT
+      server: 
+      - ""
+    body: "{\"id\":1079164031001,\"name\":\"They Peed On My Rug (R)\",\"thumbnailURL\":\"http:\\/\\/brightcove.vo.llnwd.net\\/d16\\/unsecured\\/media\\/937222930001\\/937222930001_1079275524001_th-1079232161001.jpg?pubId=937222930001\"}"
+    http_version: "1.1"

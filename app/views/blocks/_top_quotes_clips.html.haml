@@ -1,0 +1,22 @@
+%p
+  - if shares && !shares[:quotes].empty? && movie.top_quotes_enabled
+    %fieldset
+      #top_quotes.most_popular_fideos
+        %h3 Top Shared Quotes
+        %hr
+        %ol
+          - shares[:quotes].each do |q|
+            %li
+              = q.text
+              %img{:src=>'/images/share.png', :width => '60', :height => '18', :class=>'shareButton', :onclick => 'fbCallQuoteTop(' + q.id.to_s + ', "' + q.text.gsub('"', "`") + '")' }
+  - if shares && !shares[:clips].empty? && movie.top_clips_enabled
+    %fieldset
+      #top_clips.most_popular_fideos
+        %h3 Top Shared Clips
+        %hr
+        %ol
+          - shares[:clips].each do |q|
+            %li
+              = image_tag q.thumbnail_url
+              = q.name
+              %img{:src=>'/images/share.png', :width => '60', :height => '18', :class=>'shareButton', :onclick => 'fbCallClipTop(' + q.id.to_s + ', "' + q.name + '", ' + q.video_id + ', "' + q.thumbnail_url + '" )'}

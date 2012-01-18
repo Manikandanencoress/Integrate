@@ -1,0 +1,12 @@
+%h1 New Coupon
+= semantic_form_for [:admin, @studio, @movie, @coupon] do |f|
+  = f.inputs do
+    = f.input :movie_id, :as => :hidden
+    = f.input :title
+    = f.input :code, :size=> '6'
+    = f.input :percent, :label => "Discount Percentage %"
+    = f.input :comments
+    = f.input :expires_at, :as => :date
+
+  = f.buttons do
+    = f.commit_button "Save &amp; Continue &raquo;".html_safe

@@ -1,0 +1,47 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    = hoptoad_javascript_notifier
+    = javascript_include_tag 'vendor/jquery/jquery.min', "vendor/rails"
+    = javascript_include_tag 'vendor/jquery/jquery.form-2.72', 'vendor/jquery.miniColors-0.1/jquery.miniColors', 'vendor/jquery/jquery-ui.js'
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'
+    = javascript_include_tag 'admin'
+    = javascript_include_tag 'vendor/jquery/jquery.tablesorter.js'
+    = javascript_include_tag 'vendor/jquery/jquery.metadata.js'
+    = stylesheet_link_tag  'formtastic', 'formtastic_changes', 'scaffold', 'admin', 'admin_template'
+    = stylesheet_link_tag '/javascripts/vendor/jquery.miniColors-0.1/jquery.miniColors.css'
+    = csrf_meta_tag
+
+    %title Milyoni Admin
+    = yield(:head)
+
+  %body{:class => [:admin, controller_name, action_name]}
+
+    #dropshadow
+      %span#dropshadowTop
+      #allcontent
+        #header
+          %a{:href => "/"}
+            %img#logo{:alt => "milyoni", :src => "/images/admin/logo.png"}/
+          %img#phonetics{:alt => "milyoni", :src => "/images/admin/milyoni-phonetics.png"}/
+          #snNav
+          .adminTitle Social Theater Admin
+          .tertiary
+
+        #breadcrumbs
+          = yield(:breadcrumbs)
+          - if current_admin
+            = link_to "Logout", destroy_admin_session_path, :class => "logOutlink"
+
+        %p.notice= notice
+        %p.alert= alert
+
+        = yield
+
+        #footer
+          \&copy; 2011 Milyoni
+          %a{:href => "/"} home
+          %a{:href => "http://www.milyoni.com/contact/", :target => "_new"} contact us
+          %a{:href => "http://www.milyoni.com/", :target => "_new"} milyoni.com
+
+      %span#dropshadowBot

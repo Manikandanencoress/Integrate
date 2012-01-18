@@ -1,0 +1,10 @@
+#mediaspace{:style => "color: #ffffff"}
+  %h1= movie.title
+  %h2
+    :erb
+      To view this movie requires the latest
+      <strong><%= link_to "Adobe Flash Player", "http://get.adobe.com/flashplayer/", :target => "_blank" %></strong>
+  = link_to(image_tag("/images/movies_layout/get_flash_player.gif", :height => "39", :width => "138"), "http://get.adobe.com/flashplayer/", :target => "_blank")
+  %p
+    Bookmark this page to return and view the movie once the Flash player has installed.
+  %br

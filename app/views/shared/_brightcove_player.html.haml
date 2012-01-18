@@ -1,0 +1,10 @@
+= content_for :head  do
+  = javascript_include_tag "https://sadmin.brightcove.com/js/BrightcoveExperiences_all.js"
+  = javascript_include_tag "https://sadmin.brightcove.com/js/APIModules_all.js"
+
+#brightcovePlayer
+
+:javascript
+  window.brightcovePlayerID = "#{movie.studio.brightcove_id}"
+  window.brightcovePlayerKey = "#{movie.studio.brightcove_key}"
+  window.brightcoveVideoID = "#{movie.brightcove_movie_id}"

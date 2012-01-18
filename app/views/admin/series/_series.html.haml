@@ -1,0 +1,4 @@
+%ul#series-list
+  - @titles.each do |title|
+    %li{:id => "#{title.id}"}
+      =  link_to title.title, [:admin, @studio, title]

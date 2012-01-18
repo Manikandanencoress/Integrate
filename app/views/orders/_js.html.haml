@@ -1,0 +1,14 @@
+:javascript
+  var movie = #{@movie.as_json.merge( :feed_dialog_desc => @movie.facebook_share_text ).merge(:actions => actions).merge(:discount_key_link => @discount_key_link, :expired => @expired, :viewing_party_complete => @viewing_party_complete).merge(@movie.skin.as_json).to_json };
+
+  if (#{@movie.studio.player == 'milyoni'}) {
+    var video_location = @movie.
+  }
+
+  var user = { facebook_id : "#{@facebook_user.try(:facebook_user_id)}",
+                name : "#{@facebook_user.try(:name)}",
+                friends : #{facebook_friends} };
+
+  var show_facebook_feed_dialog = #{@show_facebook_feed_dialog};
+  var show_facebook_feed_dialog_with_group_discount = #{@show_facebook_feed_dialog_with_group_discount};
+  var flash_player_upgrade_dialog = true;

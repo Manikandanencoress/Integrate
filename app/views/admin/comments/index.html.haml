@@ -1,0 +1,57 @@
+- content_for :breadcrumbs do
+  :erb
+    <%= breadcrumbs(["Studios Home", [:admin, Studio]],
+                    ["#{ @studio.name } Home", [:admin, @studio, Movie]],
+                    "Edit Movie - #{@movie.title}").html_safe %>
+
+=render :partial => 'admin/shared/movie_tabs'
+
+.clear
+
+.navTabContent
+  %h1 Moderate Comments - #{@movie.title}
+  %hr{:class => "greenBar"}
+  %br
+
+.navTabContent
+
+  -#TODO
+  %table.gridTable
+    %tr
+      %th Created At
+      %th Comment
+      %th Facebook User Name
+      %th Facebook User ID
+      %th Edit
+      %th Destroy
+
+      - @comments.each do |comment|
+        - if comment.user
+          %tr
+            %td= comment.created_at
+            %td= comment.text
+            %td= comment.user.name
+            %td= comment.user.facebook_user_id
+            %td= link_to "Edit", edit_admin_studio_movie_comments_path(@studio, comment.movie_id, comment)
+            -#%td= link_to 'Destroy', "/comments/#{comment.id}", :confirm => 'Are you sure?', :method => :delete
+            %td= check_box_tag 'Delete', comment.id
+
+  = will_paginate @comments
+  = link_to 'Destroy', '#', :id => 'destroy_link'
+
+:javascript
+  var list = '';
+  var selected_comments = $(':input').map(function(){ list = list + ',' + $(this).val() });
+  $("#destroy_link").click(function() {
+    $.ajax({
+    type: 'DELETE',
+    url: 'moderate',
+    data: {
+    list : list
+    },
+    success : function(data) {
+     alert(data.success);
+     location.reload();
+    }
+    });
+  });

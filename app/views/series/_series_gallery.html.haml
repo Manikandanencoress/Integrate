@@ -1,0 +1,18 @@
+#series-items.gallerySection
+  %h2
+    = @series.movie.title
+  %div.series-carousel
+    %a.prev{:href => "#"} Prev
+    %a.next{:href => "#"} Next
+
+    .slides_container
+      = movie_gallery(titles, :pages_of => 5)
+:javascript
+$(function(){
+  $(".series-carousel").slides({
+    generatePagination: false
+      });
+});
+
+
+

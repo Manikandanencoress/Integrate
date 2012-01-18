@@ -1,0 +1,64 @@
+= include_styles_for(@movie)
+= javascript_include_tag  "https://www.paypalobjects.com/js/external/dg.js"
+
+-#- content_for(:head) do
+-#  = facebook_metadata_for_movie(@movie)
+
+.mainContainer
+  .header
+  .content
+    = like_box_for(@movie)
+    .module-menu
+
+      - unless @restrict_age
+        - if @movie.price.zero?
+          %a.butWatch#zeroPayButton{:href => "#", :rel => "#dialogueBox"} Watch Now
+          - else
+          - if @paypal_token
+            #payNormalButton
+              %img{:src=>"/images/pay-with-fb.png"}
+            #paypal_ecdg
+              %a.ppWatch{ :href=>"#{Paypal.incontext_url @paypal_token}", :id=>"submitBtn"}
+                %img{:src=>"https://www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif", :border => "0" }
+            :javascript
+              var dg = new PAYPAL.apps.DGFlow({ trigger: "submitBtn" });
+          - else
+            %a.butWatch#payButton{:href => "#", :rel => "#dialogueBox"} Watch Now
+
+      - else
+        %h2#ageRestriction You are not old enough to view this movie
+      =# image_tag("btn-rental-duration-lg.jpg", :class => "btn-duration", :alt => "48 Hour Rental - See Details Below")
+      - if @movie.series
+        = (link_to "Buy Series", "#", :class => "butWatch", :id => "seriesPassButton", :rel => "#dialogueBox") if @movie.series.enable_series_pass
+      - if @movie.rental_badge
+        :erb
+          <div class="rentalDurationBadge">
+            <span class="duration"><%= @movie.badge_number %></span>
+            <span><%= @movie.badge_text %></span>
+            <span class="more">Details Below</span>
+          </div>
+
+      #coupon_code
+        #coupon_text{:onclick =>'$("#coupon_input").show();'}
+          %a Coupon Code? Click here
+        #coupon_input{:style=>'display:none'}
+          %input{:id => 'coupon_value', :name =>"coupon_value", :movie_id => @movie.id, :value => "CODE" }
+            %button{:id=>'coupon_button'}
+              Check
+      .shareButtons
+        %a.butShare#facebookShareButton{:href => "#"}
+          = image_tag("icon-facebook.png")
+        = tweet_button_for(@movie)
+        = like_button_for(@movie)
+    = render :partial => 'shared/movie_details_module', :locals => {:thing => @movie}
+  = render :partial => 'shared/movie_footer', :locals => {:thing => @movie}
+
+
+:javascript
+   milyoni.paypal_enabled = "#{@studio.paypal_enabled?}"
+   var movie = #{@movie.as_json.merge( :feed_dialog_desc => @movie.facebook_share_text  ).merge(:discount_key_link => @discount_key_link).merge(:discount_key => @discount_key, :expired => @expired, :viewing_party_complete => @viewing_party_complete).merge(@movie.skin.as_json).to_json };
+   var group_buy_enable = #{@group_buy_enable};
+   var series = #{@movie.series.as_json.to_json || "null"};
+
+#coupon_final
+

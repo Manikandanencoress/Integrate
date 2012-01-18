@@ -1,0 +1,30 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://api.brightcove.com:80/services/library?command=find_video_by_id&token=ZRh043aNSjl-FlXKKw-UZRzKGbvqPgcUHpT3Cmonsztpk0ctofOfZw..&video_fields=id,name,thumbnailURL&video_id=1161807728001
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-bc-client-ip: 
+      - 75.17.117.146
+      x-bc-connecting-ip: 
+      - 75.17.117.146
+      last-modified: 
+      - Fri, 07 Oct 2011 16:29:22 EDT
+      cache-control: 
+      - must-revalidate,max-age=0
+      content-type: 
+      - application/json;charset=UTF-8
+      content-length: 
+      - "222"
+      date: 
+      - Fri, 07 Oct 2011 20:29:21 GMT
+      server: 
+      - ""
+    body: "{\"id\":1161807728001,\"name\":\"Steven Bauer Commentary: Dinner Scene\",\"thumbnailURL\":\"http:\\/\\/brightcove.vo.llnwd.net\\/d17\\/unsecured\\/media\\/937222930001\\/937222930001_1161860267001_th-1161851656001.jpg?pubId=937222930001\"}"
+    http_version: "1.1"

@@ -1,0 +1,19 @@
+--- 
+whitelist: 
+- Public Domain
+- BSD
+- MIT
+- Apache 1.0
+- Apache 1.1
+- Apache 2.0
+- Ruby License
+- zlib/libpng License
+- OpenSSL
+- SSLeay
+- GPL 2.0 plus linking exception
+- GPL 2.0 plus FOSS exception (MySQL)
+- LGPL 2.1
+
+ignore_groups:
+- test
+- development
